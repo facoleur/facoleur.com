@@ -32,6 +32,7 @@ export default async function Page({
   );
 }
 
+
 export async function generateStaticParams() {
   const slugs = POSTS;
   return slugs.map((slug) => ({ slug }));
