@@ -1,3 +1,4 @@
+import { PROJECTS } from "@/content";
 import Image from "next/image";
 
 export default async function Page({
@@ -33,8 +34,9 @@ export default async function Page({
   );
 }
 
-// export function generateStaticParams() {
-//   return [{ slug: "test" }];
-// }
+export async function generateStaticParams() {
+  const slugs = PROJECTS;
+  return slugs.map((slug) => ({ slug }));
+}
 
-// export const dynamicParams = false;
+export const dynamicParams = false;

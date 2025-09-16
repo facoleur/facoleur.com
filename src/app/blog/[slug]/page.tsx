@@ -1,3 +1,4 @@
+import { POSTS } from "@/content";
 import Image from "next/image";
 
 export default async function Page({
@@ -30,3 +31,10 @@ export default async function Page({
     </article>
   );
 }
+
+export async function generateStaticParams() {
+  const slugs = POSTS;
+  return slugs.map((slug) => ({ slug }));
+}
+
+export const dynamicParams = false;
