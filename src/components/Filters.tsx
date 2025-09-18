@@ -4,11 +4,13 @@ import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface FiltersProps {
+  allMsg: unknown;
   allTechnologies: string[];
   selectedTech: string | null;
 }
 
 export default function Filters({
+  allMsg,
   allTechnologies,
   selectedTech,
 }: FiltersProps) {
@@ -37,7 +39,7 @@ export default function Filters({
               !selectedTech && "!text-slate-800 dark:!text-slate-200"
             }`}
           >
-            {t("all")}
+            {allMsg as string}
           </button>
           {allTechnologies.map((tech) => (
             <button
