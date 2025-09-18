@@ -1,6 +1,8 @@
 import { MDXRenderer } from "@/components/MDXRenderer";
+import PostCard from "@/components/PostCard";
 import { PostToc } from "@/components/PostTOC";
 import { allPosts, Post } from "contentlayer/generated";
+import { useLocale, useTranslations } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -13,14 +15,16 @@ export const Page = async ({
 
   const locale = await getLocale();
 
-  const post = allPosts.find(
-    (post) => post._raw.sourceFileName.replace(/\.mdx?$/, "") === slug,
-  ) as Post;
+  const post = allPosts.find((post) => {
+    const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, "");
+    const contentSlug = fileName.replace(`.${locale}`, "");
+
+    return contentSlug === slug;
+  }) as Post;
 
   if (!post) {
     return notFound();
   }
-
   return (
     <div className="grid grid-cols-[1fr_2fr_1fr] gap-12">
       <div className="sticky top-0 left-0 h-screen pt-4">
@@ -41,7 +45,7 @@ export const Page = async ({
                 post.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-md bg-white px-[4px] py-[1px] text-slate-600 dark:bg-slate-800 dark:text-slate-400"
+                    className="rounded-md bg-slate-200 px-[4px] py-[1px] text-slate-600 dark:bg-slate-800 dark:text-slate-400"
                   >
                     {tech}
                   </span>
@@ -51,7 +55,36 @@ export const Page = async ({
           <h1 className="mb-8">{post.title}</h1>
         </div>
         <MDXRenderer content={post.body.code} />
+        <SuggestedPosts type={post._type} />
       </article>
+    </div>
+  );
+};
+
+const SuggestedPosts = ({ type }: { type?: string }) => {
+  const locale = useLocale();
+
+  const localePost = allPosts.filter((post) => post.url.endsWith(locale));
+
+  const post1 = localePost
+    .filter((post) => !type || post._type === type)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 1);
+
+  const post2 = localePost
+    .filter((post) => !type || post._type === type)
+    .filter((post) => post._id !== post1[0]._id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 1);
+
+  const t = useTranslations();
+
+  return (
+    <div className="mt-20 flex flex-col">
+      <h3 className="mt-12 mb-6">{t("suggestedPost")}</h3>
+      {[post1[0], post2[0]].map((post) => (
+        <PostCard key={post._id} url={post.url.slice(0, -3)} />
+      ))}
     </div>
   );
 };

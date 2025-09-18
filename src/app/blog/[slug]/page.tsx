@@ -13,9 +13,12 @@ export const Page = async ({
 
   const locale = await getLocale();
 
-  const post = allPosts.find(
-    (post) => post._raw.sourceFileName.replace(/\.mdx?$/, "") === slug,
-  ) as Post;
+  const post = allPosts.find((post) => {
+    const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, "");
+    const contentSlug = fileName.replace(`.${locale}`, "");
+
+    return contentSlug === slug;
+  }) as Post;
 
   if (!post) {
     return notFound();

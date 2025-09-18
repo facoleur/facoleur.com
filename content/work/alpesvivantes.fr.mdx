@@ -1,0 +1,89 @@
+---
+title: "Alpes Vivantes : une webapp complète pour l'association"
+date: "2024-08-30"
+snippet: "Conception d'une plateforme WordPress sur mesure pour Alpes Vivantes avec un CMS robuste, des types d'articles structurés et un e-commerce intégré"
+featured: "/assets/alpesvivantes/thumbnail.jpg"
+_type: project
+technologies: [WordPress, PHP, Elementor, Figma]
+---
+
+## Le projet
+
+Alpes Vivantes est une association suisse à but non lucratif dédiée à la préservation et à l'éducation autour de la biodiversité dans les Alpes. Ils m'ont sollicité pour concevoir et développer une plateforme web complète qui serve à la fois de site vitrine public et de système de gestion de contenu (CMS) interne pour leurs membres.
+
+![Alpes Vivantes logo](/assets/alpesvivantes/av_1.jpg)
+
+La plateforme devait prendre en charge un large éventail de fonctionnalités : publication d'événements et gestion des inscriptions, vente de produits locaux, collecte de dons, ainsi que la gestion de différents types de contenus comme les publications, les partenaires et les membres du comité.
+
+## Le processus
+
+- Plusieurs réunions avec le client pour comprendre leurs besoins, leurs utilisateurs et leurs objectifs.
+- Utilisation de ces échanges pour expliquer les possibilités et limites du web, et aligner les attentes avec le budget et les délais disponibles.
+- Création de wireframes et d'un board de design afin d'aider le client à choisir une direction visuelle, garantissant une identité cohérente avec la mission de l'association.
+- Développement du site avec WordPress et Elementor, complété par une quantité importante de **PHP sur mesure**. En raison de la complexité et des délais serrés, j'ai souvent dû _vibecoder_, en expérimentant et en itérant rapidement pour trouver des solutions malgré mes connaissances limitées en PHP à l'époque.
+
+## Les défis
+
+Le projet a présenté plusieurs défis. Le premier fut de coordonner les apports des membres de l'association, chacun ayant des idées et priorités différentes. Trouver un terrain d'entente a nécessité patience et communication claire.
+
+![Alpes Vivantes homepage](/assets/alpesvivantes/options.jpg)
+
+Un autre défi majeur fut de respecter le budget malgré la complexité des fonctionnalités requises. En parallèle, je devais garantir que le CMS reste attrayant et facile à utiliser. Comme la création de contenu devait être réalisée par les membres eux-mêmes — pour la plupart non techniques — il était crucial de concevoir un backoffice intuitif qui encourage la participation.
+
+## Fonctionnalités de la webapp
+
+- **Identité visuelle sur mesure** offrant à Alpes Vivantes une présence en ligne cohérente et professionnelle.
+- **CMS personnalisé** adapté aux besoins de l'association, permettant la gestion de :
+  - Publications (actualités, articles, rapports de projets)
+  - Produits pour la boutique
+  - Partenaires
+  - Membres du comité
+  - Événements
+- **Carte interactive** affichant les projets en cours, codés par couleur selon leur type.
+- **Générateur de newsletters** permettant de sélectionner des publications récentes, d'ajouter un titre et de générer automatiquement une newsletter formatée, prête pour Mailchimp.
+
+## Un système de rôles complexe
+
+L'une des parties les plus exigeantes fut la mise en place d'un système de rôles avec des permissions différenciées selon chaque type d'utilisateur. L'association avait besoin d'un contrôle granulaire sur ce que les administrateurs, éditeurs, auteurs, contributeurs et visiteurs pouvaient faire.
+
+| Permissions                   | Admin | Éditeur | Auteur | Contributeur | Visiteur |
+| ----------------------------- | :---: | :-----: | :----: | :----------: | :------: |
+| Tout                          |   X   |         |        |              |          |
+| Changer les rôles             |   X   |         |        |              |          |
+| Modifier le contenu statique  |   X   |    X    |        |              |          |
+| Ajouter des membres du comité |   X   |    X    |        |              |          |
+| Approuver les publications    |   X   |    X    |        |              |          |
+| Ajouter des partenaires       |   X   |    X    |        |              |          |
+| Créer des produits            |   X   |    X    |   X    |              |          |
+| Publier                       |   X   |    X    |        |              |          |
+| Publier avec approbation      |       |         |   X    |              |          |
+| S'inscrire                    |       |         |        |      X       |    X     |
+
+Ce système garantissait que :
+
+- **Les administrateurs** pouvaient tout gérer, y compris les rôles.
+- **Les éditeurs** disposaient de pouvoirs avancés de gestion de contenu sans contrôle administratif.
+- **Les auteurs** pouvaient créer des produits et publier sous approbation.
+- **Les contributeurs** et **visiteurs** avaient des droits minimaux, limités à l'inscription ou à la soumission de contenu pour validation.
+
+## Le résultat
+
+Malgré les contraintes, le projet a abouti à une **plateforme fonctionnelle et engageante** combinant site vitrine et backoffice puissant. Le CMS personnalisé a simplifié la gestion de :
+
+![Alpes Vivantes](/assets/alpesvivantes/single.jpg)
+![Alpes Vivantes](/assets/alpesvivantes/article.jpg)
+
+- Contenu des pages statiques
+- CRUD des publications
+- CRUD des produits de la boutique
+- CRUD des partenaires
+- CRUD des événements, avec gestion des inscriptions
+- CRUD des membres du comité
+
+Le design intuitif a encouragé une plus grande participation des membres, qui ont pu contribuer et publier en toute confiance.
+
+De plus, la nouvelle plateforme a offert à Alpes Vivantes une **identité digitale professionnelle et unifiée**. La carte interactive et le générateur de newsletters ont apporté une valeur ajoutée tant pour le client que pour leurs utilisateurs, tandis que le système de rôles a trouvé le bon équilibre entre flexibilité et contrôle.
+
+En fin de compte, le projet a non seulement atteint les objectifs du client, mais il a aussi permis à l'association de mieux communiquer, collaborer et partager sa mission en ligne.
+
+![Alpes Vivantes](/assets/alpesvivantes/features.jpg)

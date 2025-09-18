@@ -1,5 +1,23 @@
 import type { MDXComponents } from "mdx/types";
 
+export const meComponents: MDXComponents = {
+  ul: (props) => <ul className="!m-0 !p-0" {...props} />,
+  // eslint-disable-next-line
+  img: (props) => <img className="my-2 rounded-lg" {...props} />,
+  li: (props) => (
+    <li
+      className="!mb-2 !list-none !text-sm text-slate-600 dark:!text-slate-400"
+      {...props}
+    />
+  ),
+  a: (props) => (
+    <a
+      className="!text-sm text-slate-950 underline underline-offset-3 hover:no-underline dark:text-white"
+      {...props}
+    />
+  ),
+};
+
 export const mdxComponents: MDXComponents = {
   // Tables
   table: (props) => (
@@ -59,7 +77,7 @@ export const mdxComponents: MDXComponents = {
   ),
   li: (props) => (
     <li
-      className="mb-[0.5em] text-base leading-[1.4] font-normal !text-slate-400"
+      className="mb-[0.5em] text-base leading-[1.4] font-normal text-slate-600 dark:!text-slate-400"
       {...props}
     />
   ),

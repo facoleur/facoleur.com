@@ -1,0 +1,36 @@
+{
+  "nav.bite": "👋 Hi, I'm Fabien",
+
+  "bite": "Un morceau de code, une astuce ou une idée rapide.",
+  "nav": {
+    "work": "Projets",
+    "blog": "Blog",
+    "resume": "CV",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "home": {
+    "whatIDo": {
+      "uxuiDesign": {
+        "title": "UX & UI",
+        "desc": "Concevoir des interfaces intuitives et attrayantes que les utilisateurs aiment utiliser."
+      },
+      "frontendDev": {
+        "title": "Frontend",
+        "desc": "Créer des applications web performantes et évolutives qui durent."
+      },
+      "data": {
+        "title": "Data",
+        "desc": "Transformer les données en informations grâce à la recherche, la visualisation et les pipelines."
+      }
+    }
+  },
+  "filters": {
+    "all": "Tous"
+  },
+  "rooted": "Depuis 4 ans, je conçois et développe des interfaces, des expériences et des solutions frontend pour des produits numériques Web3 et traditionnels, en collaborant avec des équipes internationales pour offrir des résultats sans faille.",
+  "projects": {
+    "title": "Projets à la une"
+  },
+  "suggestedPost": "Vous aimerez aussi"
+}

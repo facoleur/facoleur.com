@@ -1,31 +1,34 @@
 {
+  "nav.bite": "👋 Hi, I'm Fabien",
+  "nav": {
+    "work": "Work",
+    "blog": "Blog",
+    "resume": "Resume",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
   "home": {
-    "title": "Welcome to My Portfolio",
     "whatIDo": {
-      "userResearch": {
-        "title": "User Research",
-        "desc": "Understanding user needs through research and analysis to create better experiences."
-      },
       "uxuiDesign": {
-        "title": "UX/UI Design",
+        "title": "UX & UI",
         "desc": "Designing intuitive and beautiful interfaces that users love to interact with."
       },
       "frontendDev": {
-        "title": "Frontend Development",
-        "desc": "Building responsive and performant web applications with modern technologies."
+        "title": "Frontend",
+        "desc": "Building performant and scalable web applications that last."
       },
-      "qa": {
-        "title": "Quality Assurance",
-        "desc": "Ensuring high-quality software through testing and quality control processes."
+      "data": {
+        "title": "Data",
+        "desc": "Transforming data into insights through research, visualization, and pipelines."
       }
     }
   },
-  "rooted": {
-    "title": "Rooted in Excellence",
-    "description1": "I'm passionate about creating meaningful digital experiences that make a difference.",
-    "description2": "With a focus on user-centered design and technical excellence, I bring ideas to life."
+  "filters": {
+    "all": "All"
   },
+  "rooted": "For the past 4 years, I've been designing and building user interfaces, experiences, and frontend solutions for both Web3 and traditional digital products, collaborating with global teams to deliver seamless results.",
   "projects": {
     "title": "Featured Projects"
-  }
+  },
+  "suggestedPost": "You may also like"
 }

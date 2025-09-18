@@ -1,5 +1,6 @@
 // components/PostCard.tsx
 import { allPosts } from "contentlayer/generated";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,16 +12,18 @@ type Post = {
 };
 
 export default function PostCard({ url }: { url: string }) {
-  const post = allPosts.find((p) => p.url === url);
+  const locale = useLocale();
+
+  const post = allPosts.find((p) => p.url === `${url}.${locale}`);
 
   if (!post) {
     return null;
   }
 
   return (
-    <Link href={post.url} className="block">
-      <div className="mb-4 rounded-lg bg-white dark:bg-gray-900 transition-all duration-75 hover:translate-x-3">
-        <div className="flex flex-row items-center gap-3 p-2">
+    <Link href={post.url.slice(0, -3)} className="block">
+      <div className="mb-4 rounded-lg bg-white transition-all duration-75 hover:translate-x-3 dark:bg-gray-900">
+        <div className="flex flex-col items-center gap-3 p-2 md:flex-row">
           {post.featured && (
             <Image
               src={post.featured}

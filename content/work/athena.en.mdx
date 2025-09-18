@@ -1,0 +1,47 @@
+---
+date: 2025-03-01
+_type: project
+title: Building Athena, an ecommerce product manager & repricer
+snippet: When I co-founded SyncAI, the first product we built was Athena, a product manager and repricer tool for Swiss marketplaces.
+featured: /assets/athena/thumbnail.jpg
+
+technologies: [Typescript, React, Figma]
+---
+
+I designed and developed the frontend for monitoring products, analyzing the performance of the repricer, and managing shipping rules and product data health.
+
+It was built with TypeScript and React using Next.js. The stack includes Tailwind CSS for styling, Axios with a custom fetcher, React Query for data fetching and caching, Recharts for charts, TanStack Table for datatables, Radix UI for components, and Zustand for state management.
+
+![Charts](/assets/athena/single.jpg)
+
+## Technical details
+
+#### Backend integration
+
+The backend was built with Django, which returned snake_case keys. To align with established TypeScript conventions, I implemented a custom Axios instance with interceptors that converted keys to camelCase on the fly, while handling exceptions such as Django's nested filter keys using double underscores.
+
+#### Filtering system and data tables
+
+To enable efficient search across hundreds of products, I built a flexible filtering system with multiple combinable filters, managed through a [Zustand store](https://zustand.docs.pmnd.rs/getting-started/introduction) and synchronized with the UI. I also developed a reusable filter component that supported number, text, select, multiselect, and boolean filters, automatically adapting its behavior to the filter type.
+
+![Charts](/assets/athena/filters.jpg)
+
+I implemented a full featured datatable with column visibility, pagination and global search. The datatable was integrated with [Tanstack Query](https://tanstack.com/query/latest) to manage loading states and cache data, and to invalidate queries when filters or parameters changed.
+
+#### Charts
+
+I first implemented charts with Plotly but later refactored to [Recharts](https://recharts.org/) for better integration with React. I built custom chart components supporting multi line, bar, grouped bar, and scatter charts, with attention to responsiveness and interactivity. Chart data was cached when possible using React Query.
+
+![Charts](/assets/athena/charts.jpg)
+
+#### Authentication and roles
+
+Athena supports customer, admin, and sales roles. The sales role was a custom role with backoffice access to supplier data across marketplaces.
+
+#### Testing
+
+I wrote unit tests for critical components using [Vitest](https://vitest.dev/), focusing on the filtering system, datatable, and chart components. End to end testing was handled with [Cypress](https://www.cypress.io/) in a separate repository, integrated with CI/CD to run on every push and send notifications to Slack.
+
+## Bottom line
+
+Athena's frontend brought together complex data handling, interactive visualization, and role based access into a single application, making it a reliable tool for managing products and pricing on Swiss marketplaces.

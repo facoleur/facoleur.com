@@ -12,12 +12,12 @@ export const Posts = async ({ publications }: { publications: Post[] }) => {
 
   return (
     <>
-      <div className="grid gap-1">
+      <div className="flex flex-col gap-6 sm:gap-0">
         {sortedPosts.map((post, index) => (
           <Link
             key={index}
-            href={post.url}
-            className="light:hover:bg-white flex items-center gap-4 rounded-lg p-2 transition-all duration-75 hover:translate-x-3 hover:bg-white dark:hover:bg-gray-900"
+            href={post.url.slice(0, -3)}
+            className="light:hover:bg-white ml-[calc(var(--spacing)*-2)] flex h-fit flex-col items-start gap-1 rounded-lg p-2 transition-all duration-75 hover:translate-x-3 hover:bg-white sm:flex-row sm:items-center sm:gap-4 dark:hover:bg-gray-900"
           >
             {post.featured && (
               <Image
@@ -25,7 +25,7 @@ export const Posts = async ({ publications }: { publications: Post[] }) => {
                 alt={post.title}
                 width={200}
                 height={200}
-                className="h-40 w-52 rounded object-cover"
+                className="h-56 w-full rounded object-cover sm:h-40 sm:w-52"
               />
             )}
             <div>

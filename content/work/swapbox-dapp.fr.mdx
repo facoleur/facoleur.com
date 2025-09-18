@@ -1,0 +1,52 @@
+---
+title: Concevoir une DApp de gestion pour les opérateurs Swapbox de A à Z
+date: 2023-11-25
+snippet: "Conception d'une dApp complexe avec les contraintes du web3, utilisée par les opérateurs Swapbox pour gérer leur flotte de machines."
+featured: "/assets/swapbox-dapp/thumbnail.svg"
+_type: project
+technologies: [Figma, Web3]
+---
+
+Swapbox est un ATM crypto qui n'a pas besoin d'être connecté à un exchange centralisé. À la place, il utilise un smart contract et une réserve de stablecoins pour effectuer des échanges directement on-chain sur des exchanges décentralisés comme Uniswap.
+
+## Admin dApp décentralisée : la valeur centrale de Swapbox
+
+La dApp admin est utilisée par les opérateurs Swapbox pour contrôler leur flotte. C'est un composant essentiel de Swapbox, permettant de déployer un smart contract Swapbox, de choisir le stablecoin utilisé comme liquidité, de configurer les frais, de lier ou délier des machines, de définir des limites de transactions, d'explorer des analytics détaillés, etc.
+
+### Compréhension des besoins et des parcours utilisateurs
+
+La dApp admin Swapbox est une plateforme complexe qui sert d'interface principale pour les opérateurs. L'équipe Swapbox et moi avons d'abord dû réfléchir aux fonctionnalités nécessaires et à la façon de les rendre simples à utiliser, tout en tenant compte des limitations liées à la nature Web3 de Swapbox.
+
+![user flow diagram](/assets/swapbox-dapp/swapbox_site_structure.jpg)
+
+![icons](/assets/swapbox-dapp/4.svg)
+
+La dApp Swapbox est un système complexe composé de 3 grands volets :
+
+### 1. Déploiement de contrat
+
+Déployer et configurer un contrat Swapbox. La configuration se structure en 3 parties :
+
+1. Sélection de l'AMM
+2. Sélection du stablecoin
+3. Informations du contrat (nom)
+
+![icons](/assets/swapbox-dapp/stable.svg)
+![icons](/assets/swapbox-dapp/11.png)
+
+### 2. Gestion des contrats et des machines
+
+Gestion des paramètres globaux du contrat : liquidité en stablecoins, dépôts et retraits de liquidité, collecte des frais, gestion des machines liées et tokens whitelistés.
+
+![icons](/assets/swapbox-dapp/9.svg)
+
+Gestion des paramètres spécifiques aux machines : taux de frais et limites de transactions.
+
+![icons](/assets/swapbox-dapp/limits.svg)
+![icons](/assets/swapbox-dapp/10.svg)
+
+### 3. Analytics des contrats et machines
+
+Explorateur de transactions, informations de contrat et graphiques personnalisés pour afficher les informations les plus pertinentes concernant un contrat et ses machines.
+
+![icons](/assets/swapbox-dapp/8.svg)

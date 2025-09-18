@@ -59,7 +59,7 @@ export const PostToc: React.FC<{ code: string }> = ({ code }) => {
 
   return (
     <nav className="mb-4">
-      <ul className="flex flex-col gap-0.5">
+      <ul className="flex flex-col gap-0.5 px-4">
         {toc.map((item) => (
           <a
             style={{ marginLeft: (item.level - 2) * 12 }}

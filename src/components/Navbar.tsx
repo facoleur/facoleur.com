@@ -1,8 +1,8 @@
-"use client";
-
-import { useTheme } from "next-themes";
+import { LocaleToggle } from "@/components/LocaleToggle";
+import { MobileMenu } from "@/components/MobileMenu";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type NavLink = {
   label: string;
@@ -10,32 +10,37 @@ type NavLink = {
   external?: boolean;
 };
 
-const leftLinks: NavLink[] = [
-  { label: "Work", href: "/work" },
-  { label: "Blog", href: "/blog" },
-  { label: "Resume", href: "/resume" },
-];
+export const Navbar = () => {
+  const t = useTranslations("nav");
 
-const rightLinks: NavLink[] = [
-  { label: "GitHub", href: "https://github.com/facoleur", external: true },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/luca-ferro",
-    external: true,
-  },
-];
+  const leftLinks: NavLink[] = [
+    { label: t("work"), href: "/work" },
+    { label: t("blog"), href: "/blog" },
+    { label: t("resume"), href: "/resume" },
+    {
+      label: t("github"),
+      href: "https://github.com/facoleur",
+      external: true,
+    },
+    {
+      label: t("linkedin"),
+      href: "https://linkedin.com/in/luca-ferro",
+      external: true,
+    },
+  ];
 
-const Navbar = () => {
   return (
     <header>
-      <nav className="mx-auto grid w-full grid-cols-3 p-4">
-        {/* Brand / Home */}
-        <Link className="!text-sm font-semibold" href="/">
+      <nav className="mx-auto grid w-full grid-cols-3 items-center p-4 px-0 md:px-4">
+        <Link
+          className="w-fit py-2 !text-center !text-sm font-medium transition-all duration-75 hover:translate-y-1"
+          href="/"
+        >
           Luca Ferro
         </Link>
 
-        {/* Left links */}
-        <div className="mx-auto flex space-x-6 text-slate-700 dark:text-slate-400">
+        {/* Desktop links */}
+        <div className="mx-auto hidden space-x-2 text-slate-700 md:flex dark:text-slate-400">
           {leftLinks.map(({ label, href, external }) => (
             <Link
               key={label}
@@ -43,50 +48,22 @@ const Navbar = () => {
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="!text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-2 !text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
             >
               {label}
             </Link>
           ))}
         </div>
 
-        {/* Right links + theme toggle */}
-        <div className="sticky top-0 right-0 flex items-center justify-end space-x-6 text-slate-700 dark:text-slate-400">
-          {rightLinks.map(({ label, href, external }) => (
-            <Link
-              key={label}
-              href={href}
-              {...(external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="!text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
-            >
-              {label}
-            </Link>
-          ))}
+        {/* Desktop toggles */}
+        <div className="hidden items-center justify-end space-x-2 text-slate-700 md:flex dark:text-slate-400">
+          <LocaleToggle />
           <ThemeToggle />
         </div>
+
+        {/* Mobile menu trigger */}
+        <MobileMenu links={leftLinks} />
       </nav>
     </header>
   );
 };
-
-export default Navbar;
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
-  return (
-    <button
-      className="!text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-    >
-      {theme === "dark" ? "Light" : "Dark"}
-    </button>
-  );
-}

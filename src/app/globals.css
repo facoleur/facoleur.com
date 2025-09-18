@@ -12,7 +12,7 @@ h1 {
 h2 {
   font-size: var(--text-2xl);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.65;
   margin-bottom: 0.65em;
 }
 
@@ -61,4 +61,18 @@ ul {
 
 .bg-_white {
   background-color: var(--color-white);
+}
+
+button {
+  font-size: var(--text-sm);
+  color: var(--color-slate-600);
+  [data-theme="dark"] & {
+    color: var(--color-slate-400);
+  }
+  &:hover {
+    color: var(--color-slate-800);
+    [data-theme="dark"] & {
+      color: var(--color-slate-200);
+    }
+  }
 }

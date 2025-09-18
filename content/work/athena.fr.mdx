@@ -1,0 +1,47 @@
+---
+date: 2025-03-01
+_type: project
+title: Construire Athena, un gestionnaire de produits e-commerce et repricer
+snippet: Quand j'ai cofondé SyncAI, le premier produit que nous avons développé était Athena, un outil de gestion de produits et de repricing pour les marketplaces suisses.
+featured: /assets/athena/thumbnail.jpg
+
+technologies: [Typescript, React, Figma]
+---
+
+J'ai conçu et développé le frontend pour le suivi des produits, l'analyse des performances du repricer, ainsi que la gestion des règles d'expédition et de la qualité des données produits.
+
+Le projet a été construit avec TypeScript et React via Next.js. La stack comprenait Tailwind CSS pour le style, Axios avec un fetcher personnalisé, React Query pour la récupération et la mise en cache des données, Recharts pour les graphiques, TanStack Table pour les datatables, Radix UI pour les composants, et Zustand pour la gestion d'état.
+
+![Charts](/assets/athena/single.jpg)
+
+## Détails techniques
+
+#### Intégration backend
+
+Le backend a été construit avec Django, qui renvoyait des clés en snake_case. Pour respecter les conventions établies de TypeScript, j'ai mis en place une instance Axios personnalisée avec des intercepteurs qui convertissaient les clés en camelCase à la volée, tout en gérant les exceptions comme les clés de filtres imbriquées de Django utilisant des doubles underscores.
+
+#### Système de filtres et datatables
+
+Pour permettre une recherche efficace parmi des centaines de produits, j'ai développé un système de filtres flexible, combinables entre eux, géré via un [store Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction) et synchronisé avec l'UI. J'ai aussi conçu un composant de filtre réutilisable prenant en charge les filtres numériques, textuels, select, multiselect et booléens, en adaptant automatiquement son comportement au type de filtre.
+
+![Charts](/assets/athena/filters.jpg)
+
+J'ai implémenté un datatable complet avec gestion de la visibilité des colonnes, pagination et recherche globale. Le datatable était intégré avec [Tanstack Query](https://tanstack.com/query/latest) pour gérer les états de chargement, mettre en cache les données et invalider les requêtes lorsque les filtres ou paramètres changeaient.
+
+#### Graphiques
+
+J'ai d'abord implémenté les graphiques avec Plotly, mais j'ai ensuite refactoré vers [Recharts](https://recharts.org/) pour une meilleure intégration avec React. J'ai construit des composants graphiques personnalisés prenant en charge les courbes multi-lignes, barres, barres groupées et nuages de points, en veillant à la réactivité et à l'interactivité. Les données des graphiques étaient mises en cache lorsque possible grâce à React Query.
+
+![Charts](/assets/athena/charts.jpg)
+
+#### Authentification et rôles
+
+Athena prend en charge les rôles client, admin et sales. Le rôle sales était un rôle personnalisé avec accès backoffice aux données fournisseurs à travers les marketplaces.
+
+#### Tests
+
+J'ai écrit des tests unitaires pour les composants critiques avec [Vitest](https://vitest.dev/), en me concentrant sur le système de filtres, le datatable et les graphiques. Les tests end-to-end étaient gérés avec [Cypress](https://www.cypress.io/) dans un dépôt séparé, intégrés au CI/CD pour s'exécuter à chaque push et envoyer des notifications sur Slack.
+
+## Conclusion
+
+Le frontend d'Athena a réuni gestion complexe de données, visualisation interactive et contrôle des accès par rôles dans une seule application, en en faisant un outil fiable pour gérer produits et prix sur les marketplaces suisses.

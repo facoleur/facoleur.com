@@ -1,30 +1,40 @@
+import { MDXRenderer } from "@/components/MDXRenderer";
 import { Posts } from "@/components/Posts";
+import { meComponents } from "@/mdx-components";
 import { allPosts } from "contentlayer/generated";
-import { BookUser, Braces, FlaskConical, Palette } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Braces, FlaskConical, Palette } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Home() {
   const t = useTranslations();
 
   const projects = allPosts.filter((post) => post._type === "project");
 
-  return (
-    <div className="mx-auto max-w-2xl">
-      <h1>{t("home.title")}</h1>
+  const locale = useLocale();
 
-      <div>
-        <div className="grid grid-cols-2 gap-1">
+  const me = allPosts.find(
+    (post) => post.title === "me" && post.url.endsWith(locale),
+  );
+
+  console.log(me);
+
+  return (
+    <div className="grid sm:grid-cols-[1fr_2fr_1fr]">
+      <div></div>
+      <div className="space-y-24">
+        <div>
+          <h2 className="!font-normal">{t("rooted")}</h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {[
-            { key: "userResearch", Icon: BookUser },
             { key: "uxuiDesign", Icon: Palette },
             { key: "frontendDev", Icon: Braces },
-            { key: "qa", Icon: FlaskConical },
+            { key: "data", Icon: FlaskConical },
           ].map(({ key, Icon }) => (
-            <div
-              key={key}
-              className="flex flex-col gap-2 rounded-md bg-white p-4 dark:bg-gray-900"
-            >
-              <Icon className="h-6 w-6 text-slate-600" />
+            <div key={key} className="flex flex-col gap-2">
+              <Icon className="h-5 w-5 text-slate-600" />
               <h4 className="!m-0 text-lg font-semibold">
                 {t(`home.whatIDo.${key}.title`)}
               </h4>
@@ -35,19 +45,28 @@ export default function Home() {
           ))}
         </div>
 
-        <div>
-          <h2>{t("rooted.title")}</h2>
-          <p>{t("rooted.description1")}</p>
-          <p>{t("rooted.description2")}</p>
-        </div>
+        <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
+          <div>
+            {me && (
+              <MDXRenderer content={me.body.code} components={meComponents} />
+            )}
+          </div>
 
-        <img src="/me.png" alt="me" />
+          <Image
+            width={800}
+            height={800}
+            src="/assets/me.jpg"
+            alt="me"
+            className="w-full rounded-lg"
+          />
+        </div>
 
         <div>
           <h2>{t("projects.title")}</h2>
           <Posts publications={projects} />
         </div>
       </div>
+      <div></div>
     </div>
   );
 }
