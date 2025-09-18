@@ -66,6 +66,8 @@ export const mdxComponents: MDXComponents = {
   // eslint-disable-next-line
   img: (props) => <img className="my-2 rounded-lg" {...props} />,
   PostCard,
+  LottiePlayer,
 };
 
+import LottiePlayer from "@/components/Lottie";
 import PostCard from "@/components/PostCard";
