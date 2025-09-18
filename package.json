@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build:content": "contentlayer2 build",
+    "build": "npm run build:content && next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "build:content": "contentlayer2 build"
+    "lint": "eslint"
   },
   "dependencies": {
     "@next/mdx": "^15.5.3",
