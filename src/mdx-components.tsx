@@ -1,72 +1,71 @@
-import LottiePlayer from "@/components/Lottie";
 import type { MDXComponents } from "mdx/types";
 
-export function useMDXComponents(
-  components: MDXComponents = {},
-): MDXComponents {
-  return {
-    h1: (props) => (
-      <h1
-        className="mt-8 mb-4 pb-2 text-4xl leading-tight font-medium"
-        {...props}
-      />
-    ),
-    h2: (props) => (
-      <h2 className="mt-6 mb-3 text-3xl leading-snug font-medium" {...props} />
-    ),
-    h3: (props) => (
-      <h3
-        className="mt-5 mb-2 text-2xl leading-snug font-semibold"
-        {...props}
-      />
-    ),
-    h4: (props) => (
-      <h4 className="mt-4 mb-2 text-xl leading-snug font-semibold" {...props} />
-    ),
-    p: (props) => <p className="my-4 text-lg leading-relaxed" {...props} />,
-    a: (props) => (
-      <a
-        className="text-blue-600 hover:underline"
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      />
-    ),
-    ul: (props) => (
-      <ul className="my-4 list-inside list-disc space-y-1 pl-4" {...props} />
-    ),
-    ol: (props) => (
-      <ol className="my-4 list-inside list-decimal space-y-1 pl-4" {...props} />
-    ),
-    li: (props) => <li className="ml-2" {...props} />,
-    blockquote: (props) => (
-      <blockquote
-        className="my-4 border-l-4 border-gray-300 pl-4 text-gray-700 italic"
-        {...props}
-      />
-    ),
-    code: (props) => (
-      <code
-        className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800"
-        {...props}
-      />
-    ),
-    pre: (props) => (
-      <pre
-        className="my-4 overflow-x-auto rounded bg-gray-900 p-4 font-mono text-sm text-gray-100"
-        {...props}
-      />
-    ),
-    hr: (props) => <hr className="my-8 border-gray-300" {...props} />,
-    img: (props) => <img className="my-4 rounded-md" {...props} />,
-    table: (props) => (
-      <table className="my-6 w-full border-collapse" {...props} />
-    ),
-    th: (props) => (
-      <th className="border bg-gray-100 px-3 py-2 text-left" {...props} />
-    ),
-    td: (props) => <td className="border px-3 py-2 align-top" {...props} />,
-    ...components,
-    LottiePlayer,
-  };
-}
+export const mdxComponents: MDXComponents = {
+  // Tables
+  table: (props) => (
+    <table
+      className="my-6 w-full border-collapse overflow-hidden text-sm"
+      {...props}
+    />
+  ),
+  th: (props) => (
+    <th
+      className="border-b border-slate-400 px-3 py-2 text-left font-medium dark:border-slate-600"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td
+      className="border-b border-slate-300 px-3 py-1 text-slate-400 dark:border-slate-800"
+      {...props}
+    />
+  ),
+
+  // Headings
+  h1: (props) => (
+    <h1 className="mb-[0.75em] text-3xl leading-[1.3] font-medium" {...props} />
+  ),
+  h2: (props) => (
+    <h2
+      className="mb-[0.65em] text-2xl leading-[1.35] font-medium"
+      {...props}
+    />
+  ),
+  h3: (props) => (
+    <h3 className="mb-[0.6em] text-xl leading-[1.4] font-medium" {...props} />
+  ),
+  h4: (props) => (
+    <h4 className="mb-[0.5em] text-lg leading-[1.45] font-medium" {...props} />
+  ),
+
+  // Paragraphs
+  p: (props) => (
+    <p className="mb-[1.1em] leading-[1.65] text-slate-700" {...props} />
+  ),
+
+  // Links
+  a: (props) => (
+    <a
+      className="text-base text-slate-950 underline underline-offset-3 hover:no-underline dark:text-slate-200"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  ),
+
+  // Lists
+  ul: (props) => (
+    <ul className="mb-[1.25em] list-inside list-disc pl-[1em]" {...props} />
+  ),
+  li: (props) => (
+    <li
+      className="mb-[0.5em] text-base leading-[1.4] font-normal !text-slate-400"
+      {...props}
+    />
+  ),
+  // eslint-disable-next-line
+  img: (props) => <img className="my-2 rounded-lg" {...props} />,
+  PostCard,
+};
+
+import PostCard from "@/components/PostCard";

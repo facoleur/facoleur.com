@@ -1,0 +1,89 @@
+---
+title: "Alpes Vivantes: a complete webapp for the association"
+date: "2024-08-30"
+snippet: "Building a bespoke WordPress platform for Alpes Vivantes with a robust CMS, structured article types, and integrated e-commerce"
+featured: "/assets/alpesvivantes/thumbnail.jpg"
+_type: project
+technologies: [WordPress, PHP, Elementor, Figma]
+---
+
+## The project
+
+Alpes Vivantes is a Swiss non-profit association dedicated to the preservation and education of biodiversity in the Alps. They approached me to design and develop a comprehensive web platform that would serve both as a public-facing website and an internal content management system (CMS) for their members.
+
+![Alpes Vivantes logo](/assets/alpesvivantes/av_1.jpg)
+
+The platform needed to support a wide range of features, including the ability to publish events and manage subscriptions, sell local products, accept donations, and oversee different types of content such as publications, partners, and committee members.
+
+## The process
+
+- Held several meetings with the client to understand their needs, their users, and their overall goals.
+- Used these discussions to explain the possibilities and limitations of the web, and to align expectations with the available budget and time constraints.
+- Created wireframes and a design board to help the client choose a design direction, ensuring that the visual identity matched both the client's vision and the association's mission.
+- Developed the website using WordPress and Elementor, combined with a significant amount of **custom PHP**. Due to the project's complexity and tight deadlines, I often had to _vibecode_, experimenting and iterating quickly to reach solutions despite my limited PHP knowledge at the time.
+
+## The challenges
+
+The project presented several challenges. First, I had to coordinate the input of association members, who each had different ideas and priorities for the platform. Balancing these diverse perspectives and finding common ground required patience and clear communication.
+
+![Alpes Vivantes homepage](/assets/alpesvivantes/options.jpg)
+
+Another major challenge was staying within budget, which was particularly difficult given the complexity of the required features. At the same time, I had to ensure that the CMS was engaging and easy to use. Since content creation was expected to come from the members themselves—most of whom were not technical users—it was crucial to design an intuitive backoffice that encouraged participation.
+
+## Webapp features
+
+- **Custom visual identity** designed to give Alpes Vivantes a coherent and professional online presence.
+- **Custom CMS backoffice** tailored to the association's needs, supporting management of:
+  - Publications (such as news, articles, and project reports)
+  - Products for the shop
+  - Partners
+  - Committee members
+  - Events
+- **Interactive map** displaying ongoing projects, color-coded by type.
+- **Newsletter generator** that allowed the client to select recent publications, provide a title, and automatically generate a formatted newsletter ready for Mailchimp.
+
+## Complex role system
+
+One of the most demanding parts of the project was the creation of a complex role system with different permissions for each type of user. The association required granular control over what admins, editors, authors, contributors, and visitors could do.
+
+| Permissions                         | Admin | Editor | Author | Contributor | Visitor |
+| ----------------------------------- | :---: | :----: | :----: | :---------: | :-----: |
+| Everything                          |   X   |        |        |             |         |
+| Change user roles                   |   X   |        |        |             |         |
+| Edit static content (text + images) |   X   |   X    |        |             |         |
+| Add committee members               |   X   |   X    |        |             |         |
+| Approve publications                |   X   |   X    |        |             |         |
+| Add partners                        |   X   |   X    |        |             |         |
+| Create products                     |   X   |   X    |   X    |             |         |
+| Publish                             |   X   |   X    |        |             |         |
+| Publish with approval               |       |        |   X    |             |         |
+| Register                            |       |        |        |      X      |    X    |
+
+This system ensured that:
+
+- **Admins** could manage everything, including roles and permissions.
+- **Editors** had strong content management powers but without administrative control.
+- **Authors** could create products and publish with approval.
+- **Contributors** and **visitors** had minimal rights, restricted mainly to registering or submitting content for validation.
+
+## The result
+
+Despite the constraints, the project delivered a **functional and engaging platform** that combined both a public-facing website and a powerful private backoffice. The custom CMS streamlined workflows for managing:
+
+![Alpes Vivantes](/assets/alpesvivantes/single.jpg)
+![Alpes Vivantes](/assets/alpesvivantes/article.jpg)
+
+- Content of static pages
+- CRUD publications
+- CRUD shop products
+- CRUD partners
+- CRUD events, with subscription management
+- CRUD committee members
+
+The intuitive design encouraged greater participation from members, who were now able to contribute and publish content with confidence.
+
+In addition, the new platform gave Alpes Vivantes a **professional and unified digital identity**. The interactive map and newsletter generator added value for both the client and their users, while the complex role system ensured the right balance between flexibility and control.
+
+Ultimately, the project not only met the client's goals but also empowered the association to better communicate, collaborate, and share its mission online.
+
+![Alpes Vivantes](/assets/alpesvivantes/features.jpg)

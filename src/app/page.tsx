@@ -1,48 +1,15 @@
-"use client";
-
 import { Posts } from "@/components/Posts";
-import { PROJECTS } from "@/content/index";
-import { useQuery } from "@tanstack/react-query";
+import { allPosts } from "contentlayer/generated";
 import { BookUser, Braces, FlaskConical, Palette } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { getLocale } from "next-intl/server";
-
-export type PostMetadata = {
-  title: string;
-  snippet: string;
-  link: string;
-  date: string;
-  featured?: string;
-};
-
-const usePosts = (slugs: string[]) => {
-  return useQuery({
-    queryKey: ["posts", slugs],
-    queryFn: async () => {
-      const locale = await getLocale();
-
-      const posts = await Promise.all(
-        slugs.map(async (slug) => {
-          const post = await import(`@/content/${slug}.mdx`);
-          const metadata = post.metadata as PostMetadata;
-          metadata.date = new Date(metadata.date).toLocaleDateString(locale);
-          return { slug, metadata };
-        }),
-      );
-      return posts;
-    },
-  });
-};
 
 export default function Home() {
   const t = useTranslations();
 
-  const { data: projects } = usePosts(PROJECTS);
-
-  if (!projects) return;
+  const projects = allPosts.filter((post) => post._type === "project");
 
   return (
-    <div className="">
+    <div className="mx-auto max-w-2xl">
       <h1>{t("home.title")}</h1>
 
       <div>
@@ -55,7 +22,7 @@ export default function Home() {
           ].map(({ key, Icon }) => (
             <div
               key={key}
-              className="flex flex-col gap-2 rounded-md bg-white p-4"
+              className="flex flex-col gap-2 rounded-md bg-white p-4 dark:bg-gray-900"
             >
               <Icon className="h-6 w-6 text-slate-600" />
               <h4 className="!m-0 text-lg font-semibold">
@@ -70,8 +37,8 @@ export default function Home() {
 
         <div>
           <h2>{t("rooted.title")}</h2>
-          <div>{t("rooted.description1")}</div>
-          <div>{t("rooted.description2")}</div>
+          <p>{t("rooted.description1")}</p>
+          <p>{t("rooted.description2")}</p>
         </div>
 
         <img src="/me.png" alt="me" />

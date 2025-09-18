@@ -1,5 +1,6 @@
-import Navbar from "@/components/navbar";
-import { QueryLayout } from "@/components/QueryLayout";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { Providers } from "@/components/QueryLayout";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
@@ -23,14 +24,17 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-slate-100 antialiased`}>
-        <div className="mx-auto flex max-w-2xl flex-col gap-8">
-          <QueryLayout locale={locale}>
-            <Navbar />
-            {children}
-          </QueryLayout>
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <Providers locale={locale}>
+          <div className="bg-slate-100 dark:bg-gray-950">
+            <div className="mx-auto flex max-w-7xl flex-col gap-8">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
   );

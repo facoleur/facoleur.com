@@ -1,1 +1,31 @@
-{}
+{
+  "home": {
+    "title": "Welcome to My Portfolio",
+    "whatIDo": {
+      "userResearch": {
+        "title": "User Research",
+        "desc": "Understanding user needs through research and analysis to create better experiences."
+      },
+      "uxuiDesign": {
+        "title": "UX/UI Design",
+        "desc": "Designing intuitive and beautiful interfaces that users love to interact with."
+      },
+      "frontendDev": {
+        "title": "Frontend Development",
+        "desc": "Building responsive and performant web applications with modern technologies."
+      },
+      "qa": {
+        "title": "Quality Assurance",
+        "desc": "Ensuring high-quality software through testing and quality control processes."
+      }
+    }
+  },
+  "rooted": {
+    "title": "Rooted in Excellence",
+    "description1": "I'm passionate about creating meaningful digital experiences that make a difference.",
+    "description2": "With a focus on user-centered design and technical excellence, I bring ideas to life."
+  },
+  "projects": {
+    "title": "Featured Projects"
+  }
+}

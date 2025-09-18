@@ -1,22 +1,25 @@
 "use client";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { NextIntlClientProvider } from "next-intl";
 
-export const QueryLayout = ({
+export const Providers = ({
   locale,
   children,
 }: {
   locale: string;
   children: React.ReactNode;
 }) => {
-  const queryClient = new QueryClient();
-
   return (
-    <NextIntlClientProvider locale={locale} onError={() => {}}>
-      <QueryClientProvider client={queryClient}>
+    <ThemeProvider
+      attribute="data-theme"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <NextIntlClientProvider locale={locale} onError={() => {}}>
         <div>{children}</div>
-      </QueryClientProvider>
-    </NextIntlClientProvider>
+      </NextIntlClientProvider>
+    </ThemeProvider>
   );
 };

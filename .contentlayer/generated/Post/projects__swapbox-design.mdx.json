@@ -1,0 +1,21 @@
+{
+  "title": "A strong brand and design system for Swapbox",
+  "date": "2023-12-13T00:00:00.000Z",
+  "_type": "project",
+  "snippet": "Building a strong Web3 brand and design system that is intemporal and for all device types",
+  "featured": "/assets/swapbox-design/thumbnail.svg",
+  "body": {
+    "raw": "\nSwapbox is a crypto ATM that does not need to be connected to a centralized exchange. Instead, it uses a smart contract and a stablecoin reserve to perform trades directly on-chain on decentralized exchanges such as Uniswap.\n\n### Building a design system that scale on all types of devices\n\nThe challenge of designing UI and UX for Swapbox is that has apps on all types of devices: Desktop, mobile and the machine 7\" screen. I built the design system with those constraint in mind.\n\n![swapboxx branding](/assets/swapbox-design/brand.svg)\n![icons](/assets/swapbox-design/icons.svg)\n\n### Diagrams\n\nExplaining Swapbox transaction and the Swapbox ecosystem with simple diagrams understandable by anyone\n![swapbox diagram](/assets/swapbox-design/diagram1.svg)\n![swapbox diagram](/assets/swapbox-design/diagram2.svg)\n\n### Conference visual support\n\n![swapbox talk](/assets/swapbox-design/talk.svg)\n\n### Various illustrations\n\n![swapbox mascott](/assets/swapbox-design/mascoot.svg)\n![swapbox boxes](/assets/swapbox-design/boxes.svg)\n\n### How-Tos gifs\n\n<div className=\"grid w-full grid-cols-2 gap-1\">\n  <LottiePlayer src=\"/assets/swapbox-ui/buy_1.json\" />\n  <LottiePlayer src=\"/assets/swapbox-ui/buy_3.json\" />\n  <LottiePlayer src=\"/assets/swapbox-ui/buy_4.json\" />\n  <LottiePlayer src=\"/assets/swapbox-ui/sell_1.json\" />\n</div>\n\n### Swapbox video explainer\n\n<iframe\n  width=\"680\"\n  height=\"380\"\n  src=\"https://www.youtube.com/embed/bASTotYI-6Q\"\n  title=\"Swapbox video explainer\"\n  frameborder=\"0\"\n  allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"\n  allowfullscreen\n></iframe>\n",
+    "html": "<p>Swapbox is a crypto ATM that does not need to be connected to a centralized exchange. Instead, it uses a smart contract and a stablecoin reserve to perform trades directly on-chain on decentralized exchanges such as Uniswap.</p>\n<h3>Building a design system that scale on all types of devices</h3>\n<p>The challenge of designing UI and UX for Swapbox is that has apps on all types of devices: Desktop, mobile and the machine 7\" screen. I built the design system with those constraint in mind.</p>\n<p><img src=\"/assets/swapbox-design/brand.svg\" alt=\"swapboxx branding\">\n<img src=\"/assets/swapbox-design/icons.svg\" alt=\"icons\"></p>\n<h3>Diagrams</h3>\n<p>Explaining Swapbox transaction and the Swapbox ecosystem with simple diagrams understandable by anyone\n<img src=\"/assets/swapbox-design/diagram1.svg\" alt=\"swapbox diagram\">\n<img src=\"/assets/swapbox-design/diagram2.svg\" alt=\"swapbox diagram\"></p>\n<h3>Conference visual support</h3>\n<p><img src=\"/assets/swapbox-design/talk.svg\" alt=\"swapbox talk\"></p>\n<h3>Various illustrations</h3>\n<p><img src=\"/assets/swapbox-design/mascoot.svg\" alt=\"swapbox mascott\">\n<img src=\"/assets/swapbox-design/boxes.svg\" alt=\"swapbox boxes\"></p>\n<h3>How-Tos gifs</h3>\n<h3>Swapbox video explainer</h3>"
+  },
+  "_id": "projects/swapbox-design.mdx",
+  "_raw": {
+    "sourceFilePath": "projects/swapbox-design.mdx",
+    "sourceFileName": "swapbox-design.mdx",
+    "sourceFileDir": "projects",
+    "contentType": "mdx",
+    "flattenedPath": "projects/swapbox-design"
+  },
+  "type": "Post",
+  "url": "/posts/projects/swapbox-design"
+}
