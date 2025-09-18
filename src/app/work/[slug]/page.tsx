@@ -26,9 +26,11 @@ export const Page = async ({
     return notFound();
   }
   return (
-    <div className="grid grid-cols-[1fr_2fr_1fr] gap-12">
-      <div className="sticky top-0 left-0 h-screen pt-4">
-        <PostToc code={post.body.raw} />
+    <div className="grid grid-cols-[0fr_1fr_0fr] gap-0 sm:grid-cols-[1fr_2fr_1fr] sm:gap-12">
+      <div className="invisible w-0 sm:visible sm:w-fit">
+        <div className="sticky top-0 left-0 h-screen pt-4">
+          <PostToc code={post.body.raw} />
+        </div>
       </div>
       <article className="mx-auto max-w-2xl pt-4">
         <div className="flex flex-col gap-2 !text-sm">
@@ -90,12 +92,13 @@ const SuggestedPosts = ({ type }: { type?: string }) => {
 };
 
 export async function generateStaticParams() {
-  const slugs = allPosts.map((post) =>
-    post._raw.sourceFileName.replace(/\.mdx?$/, ""),
-  );
+  const slugs = allPosts.map((post) => {
+    const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, ""); // e.g. why42.en
+    return fileName.replace(/\.(en|fr)$/, ""); // strip locale
+  });
+
   return slugs.map((slug) => ({ slug }));
 }
-
 export const dynamicParams = false;
 
 export default Page;

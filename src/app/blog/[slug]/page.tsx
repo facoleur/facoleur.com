@@ -13,6 +13,8 @@ export const Page = async ({
 
   const locale = await getLocale();
 
+  console.log(locale);
+
   const post = allPosts.find((post) => {
     const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, "");
     const contentSlug = fileName.replace(`.${locale}`, "");
@@ -25,7 +27,7 @@ export const Page = async ({
   }
 
   return (
-    <div className="grid grid-cols-[1fr_2fr_1fr] gap-12">
+    <div className="grid grid-cols-[0fr_1fr_0fr] gap-0 sm:grid-cols-[1fr_2fr_1fr] sm:gap-12">
       <div className="sticky top-0 left-0 h-screen pt-4">
         <PostToc code={post.body.raw} />
       </div>
@@ -60,9 +62,11 @@ export const Page = async ({
 };
 
 export async function generateStaticParams() {
-  const slugs = allPosts.map((post) =>
-    post._raw.sourceFileName.replace(/\.mdx?$/, ""),
-  );
+  const slugs = allPosts.map((post) => {
+    const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, ""); // e.g. why42.en
+    return fileName.replace(/\.(en|fr)$/, ""); // strip locale
+  });
+
   return slugs.map((slug) => ({ slug }));
 }
 
