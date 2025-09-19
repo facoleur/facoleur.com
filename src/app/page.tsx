@@ -9,15 +9,15 @@ import Image from "next/image";
 export default function Home() {
   const t = useTranslations();
 
-  const projects = allPosts.filter((post) => post._type === "project");
-
   const locale = useLocale();
+
+  const projects = allPosts.filter(
+    (post) => post._type === "project" && post.url.endsWith(locale),
+  );
 
   const me = allPosts.find(
     (post) => post.title === "me" && post.url.endsWith(locale),
   );
-
-  console.log(me);
 
   return (
     <div className="grid sm:grid-cols-[1fr_2fr_1fr]">

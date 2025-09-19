@@ -42,7 +42,7 @@ export const Page = async ({
                 day: "numeric",
               })}
             </p>
-            <div className="flex flex-row gap-1">
+            <div className="flex flex-wrap gap-1 items-end justify-end">
               {post.technologies &&
                 post.technologies.map((tech) => (
                   <span

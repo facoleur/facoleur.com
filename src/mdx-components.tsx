@@ -21,20 +21,25 @@ export const meComponents: MDXComponents = {
 export const mdxComponents: MDXComponents = {
   // Tables
   table: (props) => (
-    <table
-      className="my-6 w-full border-collapse overflow-hidden text-sm"
-      {...props}
-    />
+    <div className="my-6 w-[calc(100vw-2rem)] overflow-x-auto">
+      <div className="inline-block min-w-full align-middle">
+        <table
+          className="border-collapse text-sm"
+          style={{ minWidth: "600px" }} // <-- pick a sensible min width
+          {...props}
+        />
+      </div>
+    </div>
   ),
   th: (props) => (
     <th
-      className="border-b border-slate-400 px-3 py-2 text-left font-medium dark:border-slate-600"
+      className="border-b border-slate-400 px-3 py-2 text-left font-medium whitespace-nowrap dark:border-slate-600"
       {...props}
     />
   ),
   td: (props) => (
     <td
-      className="border-b border-slate-300 px-3 py-1 text-slate-400 dark:border-slate-800"
+      className="border-b border-slate-300 px-3 py-1 whitespace-nowrap text-slate-400 dark:border-slate-800"
       {...props}
     />
   ),
