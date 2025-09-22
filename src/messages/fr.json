@@ -14,18 +14,18 @@
       },
       "frontendDev": {
         "title": "Frontend",
-        "desc": "Créer des applications web performantes et évolutives qui durent."
+        "desc": "Créer des applications web performantes, scalables et faites pour durer."
       },
       "data": {
         "title": "Data",
-        "desc": "Transformer les données en informations grâce à la recherche, la visualisation et les pipelines."
+        "desc": "Transformer des données brutes en informations exploitables."
       }
     }
   },
   "filters": {
     "all": "Tous"
   },
-  "rooted": "Depuis 4 ans, je conçois et développe des interfaces, des expériences et des solutions frontend pour des produits numériques Web3 et traditionnels, en collaborant avec des équipes internationales pour offrir des résultats sans faille.",
+  "rooted": "Je conçois et développe des interfaces frontend performantes et intuitives depuis plus de 4 ans, en collaborant avec des équipes suisses et internationales pour concrétiser des projets numériques.",
   "projects": {
     "title": "Projets à la une"
   },

@@ -45,7 +45,7 @@ export const mdxComponents: MDXComponents = {
   ),
   td: (props) => (
     <td
-      className="border-b border-slate-300 px-3 py-1 whitespace-nowrap text-slate-400 dark:border-slate-800"
+      className="border-b border-slate-300 px-3 py-1 whitespace-nowrap text-slate-600 dark:border-slate-800 dark:text-slate-300"
       {...props}
     />
   ),

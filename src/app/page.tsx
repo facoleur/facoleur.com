@@ -1,8 +1,8 @@
 import { MDXRenderer } from "@/components/MDXRenderer";
-import { GridPosts } from "@/components/Posts";
+import { Posts } from "@/components/Posts";
 import { meComponents } from "@/mdx-components";
 import { allPosts } from "contentlayer/generated";
-import { Braces, FlaskConical, Palette } from "lucide-react";
+import { Code, Database, SplinePointer } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -48,9 +48,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              { key: "uxuiDesign", Icon: Palette },
-              { key: "frontendDev", Icon: Braces },
-              { key: "data", Icon: FlaskConical },
+              { key: "uxuiDesign", Icon: SplinePointer },
+              { key: "frontendDev", Icon: Code },
+              { key: "data", Icon: Database },
             ].map(({ key, Icon }) => (
               <div key={key} className="flex flex-col gap-2">
                 <Icon className="h-5 w-5 text-slate-600" />
@@ -79,14 +79,12 @@ export default function Home() {
               className="w-full rounded-lg"
             />
           </div>
-
-          <div></div>
+          <div>
+            <h3>{t("projects.title")}</h3>
+            <Posts publications={featuredProjects} />
+          </div>
         </div>
         <div></div>
-      </div>
-      <div>
-        <p className="!mb-2">{t("projects.title")}</p>
-        <GridPosts publications={featuredProjects} />
       </div>
     </>
   );
