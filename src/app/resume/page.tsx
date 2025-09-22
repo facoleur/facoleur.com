@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <MDXRenderer content={resume.body.code} />;
+      <MDXRenderer content={resume.body.code} />
     </div>
   );
 }

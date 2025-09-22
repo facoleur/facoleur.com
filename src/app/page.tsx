@@ -1,5 +1,5 @@
 import { MDXRenderer } from "@/components/MDXRenderer";
-import { Posts } from "@/components/Posts";
+import { GridPosts } from "@/components/Posts";
 import { meComponents } from "@/mdx-components";
 import { allPosts } from "contentlayer/generated";
 import { Braces, FlaskConical, Palette } from "lucide-react";
@@ -11,8 +11,26 @@ export default function Home() {
 
   const locale = useLocale();
 
-  const projects = allPosts.filter(
-    (post) => post._type === "project" && post.url.endsWith(locale),
+  const featured = [
+    "athena",
+    "themis",
+    "swapbox-dapp",
+    "mipasa",
+    "alpesvivantes",
+    "coaching",
+  ];
+
+  const featuredProjects = allPosts.filter(
+    (post) =>
+      post._type === "project" &&
+      featured.includes(post._raw.sourceFileName.split(".")[0]) &&
+      post.url.endsWith(locale),
+  );
+
+  featuredProjects.sort(
+    (a, b) =>
+      featured.indexOf(a._raw.sourceFileName.split(".")[0]) -
+      featured.indexOf(b._raw.sourceFileName.split(".")[0]),
   );
 
   const me = allPosts.find(
@@ -20,53 +38,56 @@ export default function Home() {
   );
 
   return (
-    <div className="grid sm:grid-cols-[1fr_2fr_1fr]">
-      <div></div>
-      <div className="space-y-24">
-        <div>
-          <h2 className="!font-normal">{t("rooted")}</h2>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {[
-            { key: "uxuiDesign", Icon: Palette },
-            { key: "frontendDev", Icon: Braces },
-            { key: "data", Icon: FlaskConical },
-          ].map(({ key, Icon }) => (
-            <div key={key} className="flex flex-col gap-2">
-              <Icon className="h-5 w-5 text-slate-600" />
-              <h4 className="!m-0 text-lg font-semibold">
-                {t(`home.whatIDo.${key}.title`)}
-              </h4>
-              <p className="!m-0 text-sm text-gray-600">
-                {t(`home.whatIDo.${key}.desc`)}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
+    <>
+      <div className="grid sm:grid-cols-[1fr_2fr_1fr]">
+        <div></div>
+        <div className="space-y-24">
           <div>
-            {me && (
-              <MDXRenderer content={me.body.code} components={meComponents} />
-            )}
+            <h2 className="!font-normal">{t("rooted")}</h2>
           </div>
 
-          <Image
-            width={800}
-            height={800}
-            src="/assets/me.jpg"
-            alt="me"
-            className="w-full rounded-lg"
-          />
-        </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {[
+              { key: "uxuiDesign", Icon: Palette },
+              { key: "frontendDev", Icon: Braces },
+              { key: "data", Icon: FlaskConical },
+            ].map(({ key, Icon }) => (
+              <div key={key} className="flex flex-col gap-2">
+                <Icon className="h-5 w-5 text-slate-600" />
+                <h4 className="!m-0 text-lg font-semibold">
+                  {t(`home.whatIDo.${key}.title`)}
+                </h4>
+                <p className="!m-0 text-sm text-gray-600">
+                  {t(`home.whatIDo.${key}.desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
 
-        <div>
-          <h2>{t("projects.title")}</h2>
-          <Posts publications={projects} />
+          <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
+            <div>
+              {me && (
+                <MDXRenderer content={me.body.code} components={meComponents} />
+              )}
+            </div>
+
+            <Image
+              width={800}
+              height={800}
+              src="/assets/me.jpg"
+              alt="me"
+              className="w-full rounded-lg"
+            />
+          </div>
+
+          <div></div>
         </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
+      <div>
+        <p className="!mb-2">{t("projects.title")}</p>
+        <GridPosts publications={featuredProjects} />
+      </div>
+    </>
   );
 }

@@ -32,7 +32,7 @@ export default function Filters({
   return (
     <div className="mb-6 flex h-fit flex-col gap-2">
       {
-        <div className="mx-[calc(var(--spacing)*-3)] flex flex-wrap items-start px-4 lg:flex-col">
+        <div className="mx-[calc(var(--spacing)*-3)] flex flex-wrap items-start px-1 lg:px-4 lg:flex-col">
           <button
             onClick={() => handleFilterChange(null)}
             className={`w-fit rounded-xl px-3 py-1 text-left transition-all duration-75 hover:translate-x-3 lg:w-full ${

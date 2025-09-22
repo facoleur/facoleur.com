@@ -23,14 +23,14 @@ export default function PostCard({ url }: { url: string }) {
   return (
     <Link href={post.url.slice(0, -3)} className="block">
       <div className="mb-4 rounded-lg bg-white transition-all duration-75 hover:translate-x-3 dark:bg-gray-900">
-        <div className="flex flex-col items-center gap-3 p-2 md:flex-row">
+        <div className="flex flex-col items-center gap-3 p-2 sm:flex-row">
           {post.featured && (
             <Image
               src={post.featured}
               alt={post.title}
-              width={100}
-              height={80}
-              className="h-20 w-28 rounded-sm"
+              width={450}
+              height={300}
+              className="h-42 w-full rounded-sm object-cover sm:h-20 sm:w-28"
             />
           )}
           <div className="flex flex-col gap-0">

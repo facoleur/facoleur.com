@@ -3,15 +3,14 @@ import { Posts } from "@/components/Posts";
 import { allPosts } from "contentlayer/generated";
 import { useLocale, useTranslations } from "next-intl";
 
-interface WorkProps {
-  searchParams: { tech?: string };
-}
-
-export default function Work({ searchParams }: WorkProps) {
-  const projects = allPosts.filter((post) => post._type === "project");
-
+function WorkContent({
+  projects,
+  tech,
+}: {
+  projects: typeof allPosts;
+  tech?: string;
+}) {
   const t = useTranslations("filters");
-
   const locale = useLocale();
 
   const localeProjects = projects.filter((post) => post.url.endsWith(locale));
@@ -20,10 +19,8 @@ export default function Work({ searchParams }: WorkProps) {
     new Set(localeProjects.flatMap((post) => post.technologies || [])),
   );
 
-  const filteredProjects = searchParams.tech
-    ? localeProjects.filter((post) =>
-        post.technologies?.includes(searchParams.tech!),
-      )
+  const filteredProjects = tech
+    ? localeProjects.filter((post) => post.technologies?.includes(tech))
     : localeProjects;
 
   return (
@@ -32,10 +29,21 @@ export default function Work({ searchParams }: WorkProps) {
         <Filters
           allMsg={t("all")}
           allTechnologies={allTechnologies}
-          selectedTech={searchParams.tech || null}
+          selectedTech={tech || null}
         />
       </div>
       <Posts publications={filteredProjects} />
     </main>
   );
+}
+
+export default async function Work({
+  searchParams,
+}: {
+  searchParams: { tech?: string };
+}) {
+  const projects = allPosts.filter((post) => post._type === "project");
+  const tech = searchParams.tech;
+
+  return <WorkContent projects={projects} tech={tech} />;
 }

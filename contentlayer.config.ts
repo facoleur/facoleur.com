@@ -1,5 +1,7 @@
+import remarkCaption from "@/lib/remark";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeSlug from "rehype-slug";
+import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
 
 export const Post = defineDocumentType(() => ({
@@ -31,6 +33,7 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [remarkGfm, rehypeSlug],
+    rehypePlugins: [rehypeSlug],
+    remarkPlugins: [remarkDirective, remarkGfm, remarkCaption],
   },
 });

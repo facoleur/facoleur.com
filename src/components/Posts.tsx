@@ -3,6 +3,41 @@ import { getLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
+export const GridPosts = async ({ publications }: { publications: Post[] }) => {
+  const locale = await getLocale();
+
+  return (
+    <>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {publications.map((post, index) => (
+          <Link
+            key={index}
+            href={post.url.slice(0, -3)}
+            className="group relative flex h-fit flex-col items-start gap-1 rounded-lg transition-all duration-75 hover:translate-y-[-3px] hover:bg-white dark:hover:bg-gray-900"
+          >
+            {post.featured && (
+              <div className="relative w-full">
+                <Image
+                  src={post.featured}
+                  alt={post.title}
+                  width={400}
+                  height={400}
+                  className="h-76 w-full rounded object-cover"
+                />
+                <div className="absolute inset-0 flex flex-col items-start justify-between rounded opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  <h4 className="!m-3 rounded-lg bg-slate-800/45 px-2 py-[2px] !text-sm font-semibold text-white/80 backdrop-blur-xl">
+                    {post.title}
+                  </h4>
+                </div>
+              </div>
+            )}
+          </Link>
+        ))}
+      </div>
+    </>
+  );
+};
+
 export const Posts = async ({ publications }: { publications: Post[] }) => {
   const sortedPosts = [...publications].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),

@@ -19,6 +19,12 @@ export const meComponents: MDXComponents = {
 };
 
 export const mdxComponents: MDXComponents = {
+  figcaption: (props) => (
+    <figcaption
+      className="mb-6 text-center text-sm text-slate-400 italic dark:!text-slate-500 [&>p]:!text-inherit"
+      {...props}
+    />
+  ),
   // Tables
   table: (props) => (
     <div className="my-6 w-[calc(100vw-2rem)] overflow-x-auto">
@@ -63,7 +69,10 @@ export const mdxComponents: MDXComponents = {
 
   // Paragraphs
   p: (props) => (
-    <p className="mb-[1.1em] leading-[1.65] text-slate-700" {...props} />
+    <p
+      className="mb-[1.1em] leading-[1.65] text-slate-700 dark:!text-slate-300"
+      {...props}
+    />
   ),
 
   // Links
@@ -82,12 +91,12 @@ export const mdxComponents: MDXComponents = {
   ),
   li: (props) => (
     <li
-      className="mb-[0.5em] text-base leading-[1.4] font-normal text-slate-600 dark:!text-slate-400"
+      className="mb-[0.5em] list-inside list-disc text-base leading-[1.4] font-normal text-slate-600 marker:text-slate-600 dark:!text-slate-300 dark:marker:text-slate-300 [&_li]:mb-[0.5em]"
       {...props}
     />
   ),
   // eslint-disable-next-line
-  img: (props) => <img className="my-2 rounded-lg" {...props} />,
+  img: (props) => <img className="mt-8 rounded-lg" {...props} />,
   PostCard,
   LottiePlayer,
 };

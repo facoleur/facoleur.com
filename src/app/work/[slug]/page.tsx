@@ -42,7 +42,7 @@ export const Page = async ({
                 day: "numeric",
               })}
             </p>
-            <div className="flex flex-wrap gap-1 items-end justify-end">
+            <div className="flex flex-wrap items-end justify-end gap-1">
               {post.technologies &&
                 post.technologies.map((tech) => (
                   <span
@@ -54,7 +54,7 @@ export const Page = async ({
                 ))}
             </div>
           </div>
-          <h1 className="mb-8">{post.title}</h1>
+          <h1 className="mt-6 mb-12">{post.title}</h1>
         </div>
         <MDXRenderer content={post.body.code} />
         <SuggestedPosts type={post._type} />
