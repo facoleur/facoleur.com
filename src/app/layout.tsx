@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "Luca Ferro",
   description:
     "Personal website of Luca Ferro, a UX/UI designer and frontend developer.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default async function RootLayout({
