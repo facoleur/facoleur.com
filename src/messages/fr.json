@@ -29,5 +29,22 @@
   "projects": {
     "title": "Projets à la une"
   },
-  "suggestedPost": "Vous aimerez aussi"
+  "suggestedPost": "Vous aimerez aussi",
+  "404": {
+    "title": "Cette page n'existe pas, mais peut-être est-elle là pour vous rappeler quelque chose.",
+    "texts": [
+      {
+        "heading": "Passez plus de temps dehors.",
+        "desc": "Que ce soit une séance de sport, un pique-nique entre amis ou simplement une promenade pour vous vider la tête. L'air frais renouvelle l'esprit et apporte une nouvelle énergie."
+      },
+      {
+        "heading": "Concentrez-vous sur une chose, et faites-la avec intention.",
+        "desc": "La grandeur ne consiste pas à tout faire, mais à faire ce qui compte, vraiment bien."
+      },
+      {
+        "heading": "Le bonheur est un choix.",
+        "desc": "Même quand les choses ne se passent pas comme prévu (comme arriver sur une page 404), vous pouvez toujours sourire, respirer et voir le bon côté. Chaque « mauvais tournant » peut mener à quelque chose d'inattendu et de beau."
+      }
+    ]
+  }
 }

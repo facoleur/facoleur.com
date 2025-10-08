@@ -29,5 +29,22 @@
   "projects": {
     "title": "Featured Projects"
   },
-  "suggestedPost": "You may also like"
+  "suggestedPost": "You may also like",
+  "404": {
+    "title": "This page doesn't exist but maybe it's here to remind you of something.",
+    "texts": [
+      {
+        "heading": "Spend more time outside.",
+        "desc": "Whether it's a workout, a picnic with friends, or just a walk to clear your head. Fresh air resets your mind and brings new energy."
+      },
+      {
+        "heading": "Focus on one thing, and do it with intention.",
+        "desc": "Greatness isn't about doing everything, it's about doing what matters, really well."
+      },
+      {
+        "heading": "Happiness is a choice.",
+        "desc": "Even when things don't go as planned (like landing on a 404 page), you can still smile, breathe, and see the good in it. Every “wrong turn” can lead to something unexpectedly beautiful."
+      }
+    ]
+  }
 }
