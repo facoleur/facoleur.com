@@ -1,4 +1,8 @@
+import LottiePlayer from "@/components/Lottie";
+import PostCard from "@/components/PostCard";
+import "katex/dist/katex.min.css";
 import type { MDXComponents } from "mdx/types";
+import { BlockMath, InlineMath } from "react-katex";
 
 export const meComponents: MDXComponents = {
   ul: (props) => <ul className="!m-0 !p-0" {...props} />,
@@ -106,9 +110,3 @@ export const mdxComponents: MDXComponents = {
   ),
   InlineMath,
 };
-
-import LottiePlayer from "@/components/Lottie";
-import PostCard from "@/components/PostCard";
-import { BlockMath, InlineMath } from "react-katex";
-
-import "katex/dist/katex.min.css";
