@@ -1,0 +1,78 @@
+---
+date: 2025-10-30
+_type: blog
+title: How I hedge my crypto portfolio
+snippet: As my crypto asset growth accelerated, I wanted to hedge my portfolio and start to reduce my risk, without losing too much upside exposure.
+featured: /assets/crypto_hedging/volat.png
+category: [crypto, web3]
+---
+
+My crypto portfolio is composed of 85% BTC and ETH, and 15% DeFi positions. Since my BTC and ETH holdings have appreciated significantly since I began DCA'ing into them, I wanted to de-risk my portfolio without selling my assets.
+
+I had several options, but each came with trade-offs. Using options requires paying a premium, while using futures essentially replicates the payoff of selling the assets.
+
+So, I chose a different approach with a risk profile that I believe is much more favorable. Since 99.99% of tokens are destined to go to zero (that's a fact, not an opinion), I decided to short a basket of altcoins against BTC. I don't want exposure to the overall market direction; I want exposure to these altcoins relative to the market. I'm confident that the coins I selected will underperform, and the past six months since I started the strategy have confirmed this view.
+
+## How I Select the Coins
+
+- The narrative has already died (e.g., alt layer-1s, NFT collection tokens)
+- The hype cycle is over (was strong in 2021–2022)
+- High market capitalization (e.g., POL, DOT, ICP)
+- Marketing budgets largely exhausted
+- TVL consistently decreasing
+- No real user adoption
+- Better alternatives exist
+
+## How I allocate the capital
+
+Some coins cannot be shorted directly against BTC. In that case, you need two positions: one short on the altcoin and one long on BTC. How do you determine the size of the short relative to the BTC long?
+
+Since we're targeting coins with asymmetric beta, we separate beta into its positive and negative components and focus on the negative one. Typically, our altcoin will have:
+
+- beta+: < 1
+- beta-: > 1
+
+The negative beta is calculated as follows:
+
+<BlockMath math="\beta_{A/B}^{-} = \frac{\mathrm{Cov}(r_A, r_B \mid r_B < 0)}{\mathrm{Var}(r_B \mid r_B < 0)}" />
+
+where:
+
+- <InlineMath math="r_A" /> = return of the altcoin
+- <InlineMath math="r_B" /> = return of Bitcoin
+
+Once we have calculated the negative beta, we can determine the hedge ratio relative to the BTC spot position:
+
+<BlockMath math="w_A = -\frac{1}{\beta_{A/B}^{-}}" />
+
+where <InlineMath math="w_A" /> represents the USD notional ratio of the altcoin
+short to the BTC long.
+
+## Where to implement
+
+1. On mature exchanges, you pay higher funding rates but reduce counterparty risk.
+2. On newer “degen” perpetual exchanges (Aster, Hyperliquid, etc.), you might even earn funding, but you take on higher counterparty risk.
+
+Since this is primarily a hedge, I prefer to pay a bit more and use established exchanges to minimize counterparty exposure.
+
+## And the results ?
+
+I implemented this strategy gradually starting in May 2025. I built a basket of five altcoins for which I had a strong bearish view, based on the criteria above: POL, DOT, APE, EGLD, and XTZ.
+
+The results have exceeded expectations. The volatility of the combined (BTC + hedge) position is lower than anticipated, while the downside pressure on altcoins has been stronger than expected.
+
+The chart below illustrates how the volatility of the hedged position is significantly lower than that of a pure BTC long.
+
+![volatility](/assets/crypto_hedging/volat.png)
+
+Below is the performance of the overall position, including the BTC spot long. For simplicity, it assumes a static negative funding rate of 10% APR for all altcoins, which corresponds to the six-month average.
+
+The performance slightly exceeds that of a pure BTC long, but with much smoother returns and smaller drawdowns.
+
+![performance](/assets/crypto_hedging/perf.png)
+
+## Going forwards
+
+I could have made the allocation calculation more dynamic, or used a more precise formula, sure. But that would not have improved the quality of the hedge in any meaningful way. What really matters is which altcoins I chose and why, because that is where most of the hedge's performance actually comes from.
+
+I also did not expect the risk profile to be this attractive. As a result, I am now considering treating this strategy as a standalone position in my portfolio, not just a hedge. That is why I will keep researching coins with similar downside potential and gradually increase the position size within my overall allocation.

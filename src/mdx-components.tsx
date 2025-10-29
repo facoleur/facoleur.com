@@ -99,7 +99,16 @@ export const mdxComponents: MDXComponents = {
   img: (props) => <img className="mt-8 rounded-lg" {...props} />,
   PostCard,
   LottiePlayer,
+  BlockMath: (props) => (
+    <div className="my-6">
+      <BlockMath {...props} />
+    </div>
+  ),
+  InlineMath,
 };
 
 import LottiePlayer from "@/components/Lottie";
 import PostCard from "@/components/PostCard";
+import { BlockMath, InlineMath } from "react-katex";
+
+import "katex/dist/katex.min.css";

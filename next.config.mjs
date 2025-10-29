@@ -16,7 +16,9 @@ const withMDX = createMDX({
     remarkPlugins: [
       "remark-frontmatter",
       ["remark-mdx-frontmatter", { name: "metadata" }],
+      "remarkMath",
     ],
+    rehypePlugins: ["rehypeKatex"],
   },
 });
 const withNextIntl = createNextIntlPlugin();

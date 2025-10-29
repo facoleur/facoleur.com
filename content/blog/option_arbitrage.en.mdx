@@ -1,0 +1,79 @@
+---
+date: 2025-10-02
+_type: blog
+title: Crypto option arbitrage strategies for all-greek-neutral yielding positions
+snippet: "Exploring high-yield, Greek-neutral strategies through cross-exchange arbitrage."
+featured: /assets/option_arbitrage/cover.png
+category: [crypto, web3]
+---
+
+In 2021 I was at the army in Switzerland. During my free time (which was quite a lot), I read [Option Volatility and Pricing](https://www.amazon.com/Option-Volatility-Pricing-Strategies-Techniques/dp/0071818774). I heard about options before, especially with protocol like Opyn and I wanted to understand deeply how they work and what was possible. I was fascinated by the number of strategies that could derive from options.
+
+I started manually arbitraging options in 2022 when I discovered Lyra protocol.
+Back then, I wrote [an article](https://mirror.xyz/larbitrator.eth/nhmB6VDWQeQUc_VU5jQotE3CIuSmozM03EONJltGYHg) presenting the protocol, as I believed onchain options had major advantages, especially during the greatest CEX collapse: FTX.
+
+The first version of Lyra’s AMM that priced options used a simple model based on Black-Scholes. It tended to overprice options slightly, with IV often significantly higher than on more established crypto options exchanges like Deribit. So I simply bought the cheaper options on Deribit and sold the more expensive ones on Lyra.
+
+Back in 2022, I barely knew how to code, so I was not confident enough to automate either the data gathering or the execution of the strategy. I did everything manually, but it was worth it. The spreads between Lyra and Deribit were huge. We are talking about over 100% APR for a delta-neutral trade. (Not counting counterparty risk here, only financial.) Liquidity was also surprisingly decent.
+
+![arbitrage options](/assets/option_arbitrage/cover.png)
+
+## Early onchain options landscape
+
+During that period, another protocol, Premia, was launching. Their UI aimed to be simpler, without a full option chain display. Their options were better priced than Lyra, so arbitrage would have been possible there too.
+
+However, their frontend was incredibly slow, and I preferred to stay on Deribit for the long leg to reduce counterparty risk. Premia was quite new at the time, and onchain options were not as robust as they are today (if we can even say they are now).
+
+I mention this because Premia recently announced a rebrand and full rebuild of the protocol under the name Kyan.blue. I am looking forward to seeing what they propose and whether new arbitrage opportunities appear there.
+
+## Current strategy
+
+Enough of the backstory. Let’s jump into my current arbitrage setup.
+
+### TLDR
+
+- Arbitrage between Derive (previously Lyra) and Deribit
+- Smaller spreads and better-priced options on Derive, thanks to a new pricing engine and more liquidity
+- Fully automated system with two modules: data and execution
+- Exchange-agnostic architecture. I can add new exchanges by implementing a single class with a defined interface
+- Still an MVP, built as a side project
+
+## Technical setup
+
+The system is fully automated but still evolving.
+What I plan to improve:
+
+- Replace REST with WebSocket for faster data feeds
+- Improve monitoring using a proper dashboard (probably Grafana). Right now, I only receive alerts on Telegram
+- Move execution to a low-latency, high-performance server. Currently using [trigger.dev](https://trigger.dev) to schedule and execute tasks
+- Better manage position sizing and reallocation. Currently, the bot keeps contracts until expiration. This makes trades financially risk-free but not capital-efficient. If spreads tighten faster, it would be better to liquidate positions earlier and redeploy capital into new opportunities
+
+## On the codebase
+
+I may lose some credibility saying this, but the entire codebase is written in TypeScript.
+There are two main reasons for that:
+
+1. I have more experience in TypeScript from my frontend background
+2. I prefer a type-safe language and feel more confident working with it
+
+Yes, I know Python is the standard for quant and trading systems, and it can be typed too, but for now, TypeScript works perfectly. I might migrate one day, but why change what already works?
+
+## Next Step: Futures and Options Arbitrage
+
+I would like to go a step further and arbitrage between futures and options.
+With options, you can create synthetic positions:
+
+- Synthetic Long: long call + short put
+- Synthetic Short: short call + long put
+
+By doing this, we can compare the price of the synthetic position to the real perp or spot price, and look for discrepancies.
+
+This could even extend to arbitraging funding rates, by taking offsetting synthetic positions against perpetual futures. Of course, this approach is more complex than simply arbitraging identical contracts across two venues. It requires deeper modeling, more data, and constant monitoring.
+
+I might lack the time to fully dive into this strategy right now, but it is absolutely on the roadmap.
+
+## Conclusion
+
+What started as a simple manual arbitrage experiment in 2022 became a working automated system connecting multiple venues and generating consistent returns. The DeFi options space is evolving fast, and with new protocols like Kyan.blue entering the field, fresh opportunities will keep appearing.
+
+The next goal is to go beyond pure price arbitrage and explore synthetic-based and funding-rate-driven strategies. The infrastructure is ready. It is just a matter of time and iteration.
