@@ -9,7 +9,7 @@ thumbnail: "cover.jpeg"
 # Embracing the Future of Decentralized Exchanges with DEX Aggregators
 
 ## Introduction to DEX Aggregators
-Have you ever wondered if it's possible to simultaneously connect to all decentralized exchanges (DEXs), compare prices across them, and choose the one offering the best deal? Well, now it's not just a possibility – it's a reality, thanks to DEX aggregators!
+Have you ever wondered if it's possible to simultaneously connect to all decentralized exchanges (DEXs), compare prices across them, and choose the one offering the best deal? Well, now it's not just a possibility: it's a reality, thanks to DEX aggregators!
 
 ## Using a DEX Aggregator (DEXag)
 DEX aggregators like @paraswap, @1inch, and @matchaxyz are changing the game by providing the best available prices across all DEXs on a chain. This innovation in the cryptocurrency world is not only convenient but also cost-effective.

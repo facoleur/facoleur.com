@@ -2,7 +2,7 @@ import { MDXRenderer } from "@/components/MDXRenderer";
 import { Posts } from "@/components/Posts";
 import { meComponents } from "@/mdx-components";
 import { allPosts } from "contentlayer/generated";
-import { Gauge, ScanSearch, VectorSquare } from "lucide-react";
+import { Code, Database, SplinePointer } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -11,16 +11,30 @@ export default function Home() {
 
   const locale = useLocale();
 
-  const featured = ["option_arbitrage", "crypto_hedging", "defi_journey"];
+  const featured = [
+    "athena",
+    "themis",
+    "swapbox-dapp",
+    "mipasa",
+    "alpesvivantes",
+    "coaching",
+  ];
 
   const featuredProjects = allPosts.filter(
     (post) =>
+      post._type === "project" &&
       featured.includes(post._raw.sourceFileName.split(".")[0]) &&
       post.url.endsWith(locale),
   );
 
+  featuredProjects.sort(
+    (a, b) =>
+      featured.indexOf(a._raw.sourceFileName.split(".")[0]) -
+      featured.indexOf(b._raw.sourceFileName.split(".")[0]),
+  );
+
   const me = allPosts.find(
-    (post) => post._type === "me.defi" && post.url.endsWith(locale),
+    (post) => post.title === "me" && post.url.endsWith(locale),
   );
 
   return (
@@ -29,46 +43,48 @@ export default function Home() {
         <div></div>
         <div className="space-y-24">
           <div>
-            <h2 className="!font-normal">{t("defi.rooted")}</h2>
+            <h2 className="!font-normal">{t("rooted")}</h2>
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              { key: "marketResearch", Icon: ScanSearch },
-              { key: "strategyDesign", Icon: VectorSquare },
-              { key: "onchainAnalytics", Icon: Gauge },
+              { key: "uxuiDesign", Icon: SplinePointer },
+              { key: "frontendDev", Icon: Code },
+              { key: "data", Icon: Database },
             ].map(({ key, Icon }) => (
               <div key={key} className="flex flex-col gap-2">
                 <Icon className="h-5 w-5 text-slate-600" />
                 <h4 className="!m-0 text-lg font-semibold">
-                  {t(`defi.skills.${key}.title`)}
+                  {t(`home.whatIDo.${key}.title`)}
                 </h4>
                 <p className="!m-0 text-sm text-gray-600">
-                  {t(`defi.skills.${key}.desc`)}
+                  {t(`home.whatIDo.${key}.desc`)}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 items-center gap-4">
+          <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
             <div>
               {me && (
                 <MDXRenderer content={me.body.code} components={meComponents} />
               )}
             </div>
+
+            <Image
+              width={800}
+              height={800}
+              src="/assets/me.jpg"
+              alt="me"
+              className="w-full rounded-lg"
+            />
           </div>
           <div>
-            <h3>{t("defi.projects.title")}</h3>
+            <h3>{t("projects.title")}</h3>
             <Posts publications={featuredProjects} />
           </div>
-          <Image
-            width={800}
-            height={800}
-            src="/assets/me.jpg"
-            alt="me"
-            className="w-full rounded-lg"
-          />
         </div>
+        <div></div>
       </div>
     </>
   );

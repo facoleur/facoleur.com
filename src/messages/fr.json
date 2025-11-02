@@ -46,5 +46,24 @@
         "desc": "Même quand les choses ne se passent pas comme prévu (comme arriver sur une page 404), vous pouvez toujours sourire, respirer et voir le bon côté. Chaque « mauvais tournant » peut mener à quelque chose d'inattendu et de beau."
       }
     ]
+  },
+
+  "defi": {
+    "rooted": "Je gère des portefeuilles DeFi personnels et familiaux aux profils de risque distincts, visant un alpha régulier grâce à des méthodes professionnelles de gestion et de surveillance des risques.",
+    "projects": { "title": "Articles à la une" },
+    "skills": {
+      "marketResearch": {
+        "title": "Recherche de marché",
+        "desc": "Identifier les opportunités et les inefficacités sur les marchés crypto et DeFi."
+      },
+      "strategyDesign": {
+        "title": "Conception de stratégies",
+        "desc": "Développer et optimiser des cadres de portefeuille et de couverture crypto fondés sur la recherche quantitative."
+      },
+      "onchainAnalytics": {
+        "title": "Analyse on-chain",
+        "desc": "Exploiter les données on-chain et l'automatisation pour suivre la liquidité, les taux et les performances des protocoles."
+      }
+    }
   }
 }

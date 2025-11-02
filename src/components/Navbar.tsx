@@ -2,6 +2,7 @@ import { LocaleToggle } from "@/components/LocaleToggle";
 import { MobileMenu } from "@/components/MobileMenu";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTranslations } from "next-intl";
+import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import Link from "next/link";
 
 type NavLink = {
@@ -10,10 +11,13 @@ type NavLink = {
   external?: boolean;
 };
 
-export const Navbar = () => {
+export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
   const t = useTranslations("nav");
 
-  const leftLinks: NavLink[] = [
+  const fullUrl = headers.get("x-url") || headers.get("referer") || "";
+  const hasFrontend = fullUrl.includes("frontend");
+
+  let nav: NavLink[] = [
     { label: t("work"), href: "/work" },
     { label: t("blog"), href: "/blog" },
     { label: t("resume"), href: "/resume" },
@@ -29,6 +33,10 @@ export const Navbar = () => {
     },
   ];
 
+  if (!hasFrontend) {
+    nav = nav.filter((n) => n.href !== "/work");
+  }
+
   return (
     <header>
       <nav className="mx-auto grid w-full grid-cols-3 items-center p-4 px-0 md:px-4">
@@ -41,7 +49,7 @@ export const Navbar = () => {
 
         {/* Desktop links */}
         <div className="mx-auto hidden space-x-2 text-slate-700 md:flex dark:text-slate-400">
-          {leftLinks.map(({ label, href, external }) => (
+          {nav.map(({ label, href, external }) => (
             <Link
               key={label}
               href={href}
@@ -62,7 +70,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile menu trigger */}
-        <MobileMenu links={leftLinks} />
+        <MobileMenu links={nav} />
       </nav>
     </header>
   );

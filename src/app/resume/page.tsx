@@ -6,7 +6,7 @@ export default function Page() {
   const locale = useLocale();
 
   const resume = allPosts.find(
-    (post) => post._type === "resume" && post.url.endsWith(locale),
+    (post) => post._type === "resume.defi" && post.url.endsWith(locale),
   );
 
   if (!resume) throw new Error("Resume not found");

@@ -1,10 +1,10 @@
 ---
-date: 2025-10-02
+date: 2025-10-29
 _type: blog
 title: Crypto option arbitrage strategies for all-greek-neutral yielding positions
 snippet: "Exploring high-yield, Greek-neutral strategies through cross-exchange arbitrage."
 featured: /assets/option_arbitrage/cover.png
-category: [crypto, web3]
+technologies: [Crypto, DeFi]
 ---
 
 In 2021 I was at the army in Switzerland. During my free time (which was quite a lot), I read [Option Volatility and Pricing](https://www.amazon.com/Option-Volatility-Pricing-Strategies-Techniques/dp/0071818774). I heard about options before, especially with protocol like Opyn and I wanted to understand deeply how they work and what was possible. I was fascinated by the number of strategies that could derive from options.
@@ -12,7 +12,7 @@ In 2021 I was at the army in Switzerland. During my free time (which was quite a
 I started manually arbitraging options in 2022 when I discovered Lyra protocol.
 Back then, I wrote [an article](https://mirror.xyz/larbitrator.eth/nhmB6VDWQeQUc_VU5jQotE3CIuSmozM03EONJltGYHg) presenting the protocol, as I believed onchain options had major advantages, especially during the greatest CEX collapse: FTX.
 
-The first version of Lyra’s AMM that priced options used a simple model based on Black-Scholes. It tended to overprice options slightly, with IV often significantly higher than on more established crypto options exchanges like Deribit. So I simply bought the cheaper options on Deribit and sold the more expensive ones on Lyra.
+The first version of Lyra's AMM that priced options used a simple model based on Black-Scholes. It tended to overprice options slightly, with IV often significantly higher than on more established crypto options exchanges like Deribit. So I simply bought the cheaper options on Deribit and sold the more expensive ones on Lyra.
 
 Back in 2022, I barely knew how to code, so I was not confident enough to automate either the data gathering or the execution of the strategy. I did everything manually, but it was worth it. The spreads between Lyra and Deribit were huge. We are talking about over 100% APR for a delta-neutral trade. (Not counting counterparty risk here, only financial.) Liquidity was also surprisingly decent.
 
@@ -28,7 +28,7 @@ I mention this because Premia recently announced a rebrand and full rebuild of t
 
 ## Current strategy
 
-Enough of the backstory. Let’s jump into my current arbitrage setup.
+Enough of the backstory. Let's jump into my current arbitrage setup.
 
 ### TLDR
 

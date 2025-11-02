@@ -3,7 +3,7 @@ import { Posts } from "@/components/Posts";
 import { allPosts } from "contentlayer/generated";
 import { useLocale, useTranslations } from "next-intl";
 
-function WorkContent({
+export function ContentWithFilters({
   projects,
   tech,
 }: {
@@ -45,5 +45,5 @@ export default async function Work({
   const projects = allPosts.filter((post) => post._type === "project");
   const tech = searchParams.tech;
 
-  return <WorkContent projects={projects} tech={tech} />;
+  return <ContentWithFilters projects={projects} tech={tech} />;
 }

@@ -46,5 +46,24 @@
         "desc": "Even when things don't go as planned (like landing on a 404 page), you can still smile, breathe, and see the good in it. Every “wrong turn” can lead to something unexpectedly beautiful."
       }
     ]
+  },
+
+  "defi": {
+    "rooted": "I manage personal and family DeFi portfolios with distinct risk profiles, aiming for consistent alpha through professional-grade risk management and monitoring techniques.",
+    "projects": { "title": "Featured posts" },
+    "skills": {
+      "marketResearch": {
+        "title": "Market Research",
+        "desc": "Identifying opportunities and inefficiencies across crypto and DeFi markets."
+      },
+      "strategyDesign": {
+        "title": "Strategy Design",
+        "desc": "Developing and optimizing crypto portfolio and hedging frameworks grounded in quantitative research."
+      },
+      "onchainAnalytics": {
+        "title": "Onchain Analytics",
+        "desc": "Leveraging onchain data and automation to track liquidity, rates, and protocol performance."
+      }
+    }
   }
 }

@@ -1,16 +1,16 @@
 ---
-date: 2025-10-30
+date: 2025-08-02
 _type: blog
 title: "+4 years in DeFi: What I learned about yield, risk and reality"
 snippet:
 featured: /assets/defi_journey/cover.png
-category: [crypto, web3]
+technologies: [Crypto, DeFi, Portfolio management]
 ---
 
-I’ve been in crypto since mid-2020 and deep into DeFi since the beginning of 2021.
-I started building my own portfolio in late 2021, right in the middle of the liquidity mining frenzy on Polygon and Avalanche. Yields became absurd, 30%+ on stablecoins, without even looping. It felt like free money (it wasn’t).
+I've been in crypto since mid-2020 and deep into DeFi since the beginning of 2021.
+I started building my own portfolio in late 2021, right in the middle of the liquidity mining frenzy on Polygon and Avalanche. Yields became absurd, 30%+ on stablecoins, without even looping. It felt like free money (it wasn't).
 
-It didn’t take long to realize that 99% of those tokens would go to zero. So I sold all liquidity mining rewards and I shifted my focus toward stablecoin opportunities, delta-neutral setups, and arbitrage strategies.
+It didn't take long to realize that 99% of those tokens would go to zero. So I sold all liquidity mining rewards and I shifted my focus toward stablecoin opportunities, delta-neutral setups, and arbitrage strategies.
 
 ## Gaining XP and landing my first crypto job
 
@@ -26,7 +26,7 @@ One of them tracked a leveraged sDAI position that yielded 20%+ APR for months, 
 
 ## Curiosity pays (literally)
 
-Since 2021, I’ve been managing my own DeFi portfolio consistenly, although I couldn't spend too many hours per week on it. I earned airdrops, not by farming them deliberately, but simply by being curious and testing everything.
+Since 2021, I've been managing my own DeFi portfolio consistenly, although I couldn't spend too many hours per week on it. I earned airdrops, not by farming them deliberately, but simply by being curious and testing everything.
 A few examples: Arbitrum, ZkSync, Maverick, Exactly, Wormhole, Contango, all from just using the tools and being curious about new primitives available onchain.
 
 I experimented with option arbitrage between on-chain options and Deribit. I even wrote about it:
@@ -41,18 +41,18 @@ As my portfolio grew, I started thinking more about hedging and protecting upsid
 
 ## Contango: fixed vs variable rate loops
 
-One of my favorite experiments was automating an sDAI–DAI looping strategy on Contango.
+One of my favorite experiments was automating an sDAI-DAI looping strategy on Contango.
 The play was simple: borrow DAI at a variable rate (around 8%) and deposit it into sDAI earning up to 15%. The spread was pure profit.
-The real challenge was execution — liquidity on Gnosis Chain is thin, and bridging is painful. My workaround was using Monerium EURE, an off-chain euro stablecoin that let me fund DAI directly on Gnosis 1:1, with zero fees. Smoothest funding process I ever had.
+The real challenge was execution. Liquidity on Gnosis Chain is thin, and bridging is painful. My workaround was using Monerium EURE, an off-chain euro stablecoin that let me fund DAI directly on Gnosis 1:1, with zero fees. Smoothest funding process I ever had.
 
 ## Maverick: he market-making reality check
 
-I also provided liquidity on Maverick, which looked brilliant on paper. In practice, rebalancing meant realizing impermanent loss constantly. With concentrated liquidity, losses stacked up fast. Even LP automation tools like Arakis or Gamma couldn’t make it truly profitable compared to just holding the assets.
+I also provided liquidity on Maverick, which looked brilliant on paper. In practice, rebalancing meant realizing impermanent loss constantly. With concentrated liquidity, losses stacked up fast. Even LP automation tools like Arakis or Gamma couldn't make it truly profitable compared to just holding the assets.
 Lesson learned: market making is a full-time job, not a passive yield strategy.
 
 Morpho Vaults: Plug-and-Play Lending
 
-I experimented with Morpho vaults managed by Ionic. Yields above 10% APY looked solid at first, backed mostly by wETH and cbBTC collateral. But once Morpho’s incentives slowed down, yields dropped quickly. A good reminder that incentives ≠ sustainability.
+I experimented with Morpho vaults managed by Ionic. Yields above 10% APY looked solid at first, backed mostly by wETH and cbBTC collateral. But once Morpho's incentives slowed down, yields dropped quickly. A good reminder that incentives ≠ sustainability.
 
 ## ETH staking yield loops on Contango
 
@@ -80,14 +80,20 @@ This was my more exotic use of DeFi. Most of the time, though, I stick to the bi
 
 I just finished writing this article, but I realized I didn't even mention the tools I use to find opportunities, monitor risk or investigate a strategy, so here is a non exhaustive list.
 
+### Analytics & strategy
+
 - DefiLlama for protocol data
-- DefiLlama Swap for the best onchain swap rates
 - Dune Analytics for monitoring precise protocol and onchain data
-- Debank.com for monitoring my addresses
-- Rabby wallet, to reduce the risk to get scammed
-- Kraken, as my main CEX. Neat UI, useful tools, low fees
 - Coingecko API, for fetching prices
-- Python, for building dashboards and manipulate data
+- Python, NumPy, Pandas and Matplotlib, for manipulate data and tracking
+- Nansen, for analysing flows and big actors
+
+### Execution & Portfolio management
+
+- Rabby wallet, to reduce the risk to get scammed
+- DefiLlama Swap for the best onchain swap rates
+- Kraken, as my main CEX. Neat UI, useful tools, low fees
+- Revoke.cash, for revoking approvals
 
 ## Lesson learned
 

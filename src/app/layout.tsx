@@ -4,6 +4,7 @@ import { Providers } from "@/components/QueryLayout";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,7 +37,7 @@ export default async function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <Providers locale={locale}>
           <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 md:px-0">
-            <Navbar />
+            <Navbar headers={await headers()} />
             {children}
             <Footer />
           </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface FiltersProps {
@@ -17,8 +16,6 @@ export default function Filters({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const t = useTranslations("filters");
-
   const handleFilterChange = (tech: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
     if (tech) {
@@ -32,7 +29,7 @@ export default function Filters({
   return (
     <div className="mb-6 flex h-fit flex-col gap-2">
       {
-        <div className="mx-[calc(var(--spacing)*-3)] flex flex-wrap items-start px-1 lg:px-4 lg:flex-col">
+        <div className="mx-[calc(var(--spacing)*-3)] flex flex-wrap items-start px-1 lg:flex-col lg:px-4">
           <button
             onClick={() => handleFilterChange(null)}
             className={`w-fit rounded-xl px-3 py-1 text-left transition-all duration-75 hover:translate-x-3 lg:w-full ${

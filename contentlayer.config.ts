@@ -13,12 +13,11 @@ export const Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     _type: {
       type: "enum",
-      options: ["blog", "project", "resume"],
+      options: ["blog", "project", "resume", "resume.defi", "me.defi"],
       required: false,
     },
     snippet: { type: "string", required: false },
     featured: { type: "string", required: false },
-    category: { type: "list", of: { type: "string" }, required: false },
     technologies: { type: "list", of: { type: "string" }, required: false },
   },
   computedFields: {
