@@ -1,0 +1,197 @@
+---
+date: 2022-12-04
+_type: blog
+title: Lyra Finance, a promising on chain option protocol
+snippet: ""
+featured: /assets/lyra/cover.png
+technologies: [Crypto, DeFi]
+---
+
+How can we build an efficient AMM for on chain options, and can it be revolutionary for the DeFi space ? This article will explain how the Lyra team built their AMM without going too much in technical details, as their whitepaper already explains really well the math behind Lyra.
+
+## TLDR : Reminder on options
+
+Options are contracts that give the buyer the right to buy or sell an underlying asset at a specified strike price by a specific expiration date.
+Options are complex financial products, and if you are new to options, I highly recommend that you learn more about them before reading this article.
+Here are some valuable resources about options :
+
+- [What are options](https://www.investopedia.com/terms/o/option.asp#toc-what-is-an-option)
+- [Option payoff calculator](https://www.macroption.com/option-strategy-payoff-calculator/)
+- [Options strategies](https://optionstrat.com/)
+- [Options volatility and pricing, book by Sheldon Natenberg](https://www.amazon.com/Option-Volatility-Pricing-Strategies-Techniques/dp/0071818774)
+
+## Intro to on chain options
+
+Options are a very big component to TradFi. I let investors hedge, leverage, speculate on volatility, make very precise payoff strategies, and get yield on top of their assets. They are an essential part of the financial system. But is it possible to trade options directly on chain, and what are the advantages to do so, and what is the advantage over options in traditional finance ?
+
+## Counterparty risk is greater than ever
+
+If you follow the crypto markets, you probably know that centralized exchange are risky black boxes. In addition to require a lot of personal data, theses CEX put your funds at risk. MT Gox, FTX, Derebit lost billions of users funds in recent years.
+With on chain options, your funds are secured in your wallet, and you know exactly with who/what you are interacting with, as everything is on chain and transparent.
+
+## On chain options offer more flexibility
+
+In traditional finance, options contract usually represent 100 shares of an asset. This is not suitable for retail investors, who only has a small capital. With on chain options, users can trade fraction of contracts.
+
+## DeFi is cheaper
+
+Traditional brokers charges huge fees on traders. This is not suitable for small investors who want to access the options market.
+
+## Composability, no silos
+
+As everything in DeFi, options protocols are composable : this means they can be using others protocols for liquidity, pricing, market making, governance, or anything else. And other protocols can leverage options protocols to build structured products, LP tokens, and a lot more. For example, Lyra Finance leverages Synthetix for his liquidity. In DeFi, everything is compatible, which makes it much more efficient than siloed traditional markets.
+
+## Automation
+
+Thanks to smart contract and on chain transparency, options can be fully automated. In traditional markets, options require market makers to provide liquidity. With on chain protocols, liquidity can be managed by an automated market maker, which prices the options based on his model.
+Lyra : an innovative AMM for options
+
+The goal of the AMM is to set a price on implied volatility so that supply and demand are balanced. If the AMM is perfectly balanced between long calls, short calls, long puts and short puts, LPs take no delta or vega risks, and they don't need to hedge.
+In reality, the AMM is never perfectly balanced, as market participant take their bets on their belief, not only on the price of the options.
+
+## Structure of the AMM
+
+The AMM is composed of Market Maker Vaults for each tradable assets. Each vault is divided in two pools :
+
+- Collateral pool: collateralize options and pays/receives the premiums.
+
+- Delta pool : Hedge the delta exposure of the LPs by trading the underlying asset on Synthetix.
+
+## Lyra's AMM pool structure
+
+![Lyra's AMM pool structure](/assets/lyra/diagram_1.png)
+:::caption
+Lyra's AMM pool structure
+:::
+
+In Lyra, the options chain is built in rounds. Each round as a duration of 28 days, with each round divided in 4 discrete expiries (each 7 days). However, it is not clear how strikes are available or not for each expiry.
+Calculate the correct implied volatility
+
+The challenge for an option AMM is to find a market equilibrium price for volatility, where supply roughly equals demand. This way, the AMM can collect fees without taking on risk itself, as it is selling and buying the same amount of options. The market IV is then input into the BSM, to calculate the final price of the option. To find this market equilibrium, Lyra computes 4 different components before finding the IV to input into Black Scholes :
+
+- **Initialization**  
+  This event happens when new expiries are listed on Lyra. During this process, the AMM gives a price to IV, by deriving the current IV from the at-the-money strike.
+
+- **Standard Size**  
+  Each asset has a Standard Size, which is computed from the vega of the 7 days to expiration ATM strike. The more (less) the asset is sensitive to vega, the smaller (bigger) the SS will be. This standard size is then used to calculate the price impact of each trade : A larger trade will result in a bigger IV. For each SS, the AMM buys (sells), the IV will decline (rise) by 1%. This mechanism ensure a fair priced volatility based on market supply/demand, and reduce the arbitrage opportunities which would cause the AMM to lose money.
+
+- **Baseline IV and Skew Ratio**  
+  The Black Scholes model does not take into account the effect of strikes on volatility. To adjust this inaccuracy, Lyra defines 2 implied volatility: the baseIV and the IV. The baseIV is the IV for a whole expiry chain : every strike of the same expiry have the same baseIV. The IV (market IV) is the real implied volatility for a given strike, based on supply/demand. The skewRatio is the ratio between the baseIV of a strike and its real IV (market IV). For every SS bought (sold) by a trader for a strike, the mechanism will increase (decrease) the skewRatio by a constant (parameter). The change of the SR will thus change the IV for the strike more than for others strikes. This system ensure that a trade on a specific strike increase the overall IV AND the specific strike IV.
+  For example, if Bob buys a June 1000 call, IV for all June strikes will increase, but the 1000 June call will increase more than other strikes.
+
+Difference between the base IV and the market IV in function of the size of the trade
+
+![Difference between the base IV and the market IV in function of the size of the trade](/assets/lyra/implied_vol.png)
+:::caption
+Difference between the base IV and the market IV in function of the size of the trade
+:::
+
+## How are LPs hedged against the greeks exposure ?
+
+The main challenge of the protocol is to hedge LPs against greeks risks. Fortunately, it does not have to hedge against all greeks, as some of them have very little impact on the price of the options. LPs are hedged against delta and vega risks, which are the most impactful greeks on options price.
+
+### Delta hedging
+
+Reminder : the delta risk for the AMM is the exposure of the pool to price variation of the underlying asset.
+For example, if a trader buys a ETH call from the AMM, the pool is exposed to the price of ETH: if the price decline, the pool value will decrease and LPs will lose money.
+To hedge LPs against market exposure, the AMM must long or short the underlying assets in proportion to the vault's exposure. This is achieved by calculting the net delta of the vault: the net delta position is computed from the delta of all strikes and all expiries, for all types of options. The delta position in $ is simply the product of the net delta and the current price of the underlying asset.
+As smart contracts need a trigger, the AMM cannot hedge by himself. Instead, anyone can run a Keeper Bot, that will long, short or naked short the underlying asset of the pool on Synthetix. This bot is calling the DeltaHedge function, which can be called every T amount of time, where T is a parameter decided by the governance.
+
+### Vega hedging
+
+In order to hedge against vega risk, the team of Lyra designed an interesting feature : the dynamic fee based on the net vega exposure of the vault, which is called vegaUtilization.
+the computation of vegaUtilization result in an asymmetric spread, where trades that increase (reduce) the vault exposure to vega are more expensive (cheaper). It is important to notice that when a trade reduces the vega exposure of the vault, the fee is equal to 0.
+
+### Fees
+
+The fees of the AMM are 4 distinct components. We already described the first component, the dynamic fees based on the vega risk of the AMM, let's have a look at the 3 others fees.
+
+- **Trading flat fee**  
+  The AMM charges a percentage of each trade, proportionally of the premium paid or received by the trader. This fee is higher (lower) on more volatile (less volatile) asset.
+
+- **Exchanging flat fee**  
+  This fee cover all the trades that take place in the backend, on Synthetix. It is a percentage of the price of the asset.
+
+- **Dynamic volatility fee**  
+  This fee helps the AMM to always keep a positive edge, even in sudden increase in volatility.
+
+![Lyra overall mechanism flowchart](/assets/lyra/diagram_2.png)
+:::caption
+Lyra overall mechanism flowchart
+:::
+
+### Circuit breakers : the ultimate shield
+
+To ensure protection of LPs, Two circuit breakers have been implemented in the Lyra protocol
+
+    Liquidity breaker : a minimum percentage of the vault needs to be available in liquid assets (sUSD, USDC). When there is insufficient liquid assets in the vault, a cooldown timer of 3 days blocks any deposit or withdrawal.
+
+    Volatility breaker : When the GWAV (geometric time weighted average volatility) diverge too much from market values, a cooldown timer of 1.5 days blocks all deposit and withdrawal.
+
+## Lyra for traders
+
+Lyra protocol is one of the few on chain options product where traders can sell options. On other options AMM, such as Premia Finance, the traders can only buy options from a vault which is only selling options.
+This is very interesting for users (and others protocols) to be able to sell options, as it can be a very interesting source of income for investors assets.
+However, when selling on chain options, the traders must deposit a collateral, to ensure he will be able to pay the buyers if the option expires in the money. This also involve a liquidation mechanism.
+
+### Collateralization
+
+On the first version of the protocol, traders who short options to the AMM had to fully collateralize their options, i.e. for 1 call on ETH sold, the trader must deposit 1 ETH. This was not capital efficient, and resulted in less options sold than bought, making the price too high.
+Lyra V2 introduce partial collateralization, and USD collateralized calls. It gives traders more flexibility, and the possibility to become much more capital efficient, by allowing leveraged options selling.
+With USD or asset backed calls, the trader can choose the payoff of his option short.
+However, puts selling is only available with USD. This is probably a risk measure took by the Lyra's team, because it is much harder to liquidate during a black swan.
+
+### Liquidations
+
+Liquidations happen when a short option position falls below the minimum collateral ratio. Keeper bots call the liquidation when a position is underwater. The penalty fee for being liquidated (currently 5%) is split between the liquidator, the AMM and the security module.
+
+## Lyra's dependencies
+
+Lyra is part of the money lego ecosystem made possible by DeFi. To correctly operate, the protocol relies on other decentralized protocols and services :
+
+1. Optimism: Currently, Lyra is only available on the optimistic rollup Optimism. This ensures low fees, which are essential for small users who want to trade options. The team apparently plan to deploy on Arbitrum, as the protocol is already live on an Arbitrum testnet.
+2. Synthetix : Synthetix is an essential component of the Lyra protocol : it is used for 3 different roles :
+3. Currency settlement : all options are cash-settled with sUSD
+4. As collateral for calls : calls can be backed either by sETH or sUSD
+5. Chainlink : Lyra and Synthetix prices get fed by Chainlink price oracle.
+
+## Governance
+
+Lyra's token holders elect a council of 5 representatives members every 4 months. The council is responsible for the LEAP (Lyra Enhancement Action Proposals) framework, which ensure that every protocol changes are transparent, well explained and well governed.
+
+### Elections of the council
+
+1 week before the end of the current council, the election process begins, in 2 phases:
+
+- 4 days of nominations
+- 3 days of voting
+  When the new council is elected, each member receives an NFT granting them the rights to vote on LEAPs. To be eligible for nominations, candidates must nominate themselves on Lyra's Discord.
+
+## Analysis & final thoughts
+
+Lyra protocol is an interesting novel options trading, mostly because it is one of the few protocols that allow options selling. It is already leveraged by others protocols, who built options vault on top of Lyra.
+
+### Pros
+
+- Writing options
+- Partially collateralized options
+- USD backed short calls
+- Great frontend UI/UX
+- Transparent ROI of the vaults (unlike most option vault)
+- Relatively low bid/ask spread on the whole option chain
+
+### Cons
+
+- Few expiries and strikes
+- High fees
+- Few assets available
+- Low liquidity on BTC and SOL
+- Not clear how strikes are selected for each expiry
+
+The main challenge of the protocol is to keep LPs profitable, even in case of blackswan events. Currently, only the ETH vault is clearly profitable, even without the liquidity mining program. I hope the liquidity in the vault will stay constant even after the end of the LM program. The protocol TVL reached nearly $130M, and now sit at $13M. However, 85% of the TVL is used for ETH vault, and BTC and SOL vaults are not successful, neither really profitable.
+
+I think Lyra is a serious protocol run by a serious team : Every aspect of the protocol is well documented on the docs and on the technical papers. The protocol has been audited by 3 firms. However, remember that building a sustainable options AMM is very complex economically and technically, so it is still very risky to use that kind of products. I like the fact that there is a tutorial on how to use the protocol directly from Etherscan, which can be useful if the centralized frontend is shutdown.
+
+In this article, we only described how the protocol works for LPs and for traders. In future articles, we will discuss the web interface of Lyra (which offers one of the best UX for options trading), trading strategies and maybe some thoughts about the governance system and the token.
+
+Everything in this article does not constitute any financial advice. You should always do your own research and understand the products before investing any money. I am not qualified as a financial advisor.

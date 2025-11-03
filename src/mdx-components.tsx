@@ -56,25 +56,28 @@ export const mdxComponents: MDXComponents = {
 
   // Headings
   h1: (props) => (
-    <h1 className="mb-[0.75em] text-3xl leading-[1.3] font-medium" {...props} />
+    <h1
+      className="!mt-12 !mb-8 text-3xl leading-[1.3] font-medium"
+      {...props}
+    />
   ),
   h2: (props) => (
     <h2
-      className="mb-[0.65em] text-2xl leading-[1.35] font-medium"
+      className="!mt-12 !mb-8 text-2xl leading-[1.35] font-medium"
       {...props}
     />
   ),
   h3: (props) => (
-    <h3 className="mb-[0.6em] text-xl leading-[1.4] font-medium" {...props} />
+    <h3 className="!mt-10 !mb-6 text-xl leading-[1.4] font-medium" {...props} />
   ),
   h4: (props) => (
-    <h4 className="mb-[0.5em] text-lg leading-[1.45] font-medium" {...props} />
+    <h4 className="!mb-2 text-lg leading-[1.45] font-medium" {...props} />
   ),
 
   // Paragraphs
   p: (props) => (
     <p
-      className="mb-[1.1em] leading-[1.65] text-slate-700 dark:!text-slate-300"
+      className="mb-[1.1em] !leading-8 text-slate-700 dark:!text-slate-300"
       {...props}
     />
   ),
@@ -95,7 +98,7 @@ export const mdxComponents: MDXComponents = {
   ),
   li: (props) => (
     <li
-      className="mb-[0.5em] list-inside list-disc text-base leading-[1.4] font-normal text-slate-600 marker:text-slate-600 dark:!text-slate-300 dark:marker:text-slate-300 [&_li]:mb-[0.5em]"
+      className="list-inside list-disc text-base font-normal text-slate-600 dark:!text-slate-300 [&>*]:inline"
       {...props}
     />
   ),

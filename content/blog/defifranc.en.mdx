@@ -1,0 +1,148 @@
+---
+date: 2022-12-23
+_type: blog
+title: "DeFi Franc: A Decentralized Swiss Franc Stablecoin"
+snippet: A new contender, DCHF, enters the scene promising a decentralized Swiss Franc stablecoin, but its real impact and resilience remain uncertain.
+featured: /assets/defifranc/cover.png
+technologies: [Crypto, DeFi, Stablecoins]
+---
+
+There are already a few Swiss Franc-backed stablecoins out there, but none have really taken off. Low liquidity and lack of visibility mean CHF stablecoins are still niche.
+
+Right now, the most used and liquid CHF stablecoin is **jCHF** by **Jarvis Network**, a project building a suite of protocols to expand the onchain Forex market.
+
+Jarvis' jFiats are **100% collateralized with USDC**, which makes them vulnerable to USDC's censorability and, by extension, to US law. Not ideal for a CHF stablecoin. What we really want is a **neutral, censorship-resistant, and reliable** Swiss Franc stable.
+
+A decentralized alternative has just appeared: **DCHF**. Let's take a look at its ecosystem, use cases, and potential limitations.
+
+## DeFi Franc: a Swiss fork of Liquity
+
+If you're not familiar with **Liquity**, it's a borrowing protocol that allows you to mint (borrow) **LUSD**, a USD stablecoin, by depositing **ETH** as collateral.
+
+It has several advantages over other lending systems like **MakerDAO** and its DAI.
+
+### ⚖️ Liquity: unstoppable, efficient, and innovative
+
+Liquity was the first borrowing protocol to operate without governance while being low-cost and efficient.
+
+**TLDR of Liquity:**
+
+- Borrow a USD stablecoin (LUSD) by depositing ETH as collateral
+- No interest, only a one-time borrowing fee of 0.5%
+- The loan can be repaid at any time
+- You can borrow up to 90% of your collateral's value (minimum collateral ratio = 110%)
+- Smart contracts are immutable
+- Positions with less than 110% collateral ratio are subject to liquidation
+- Liquidators receive 200 LUSD (for gas costs) plus 0.5% of the position's value in ETH
+- LUSD can be redeemed directly for ETH at the oracle price minus a small fee, creating a price floor for LUSD
+- A **stability pool** allows LUSD holders to deposit their tokens to facilitate liquidations. The pool receives ETH from liquidated positions, usually worth more than the LUSD used to cover the debt.
+- The Liquity team doesn't operate any frontend. They built an SDK that lets anyone deploy their own, which strengthens decentralization and resilience.
+
+## Differences between LUSD and DCHF
+
+### Swiss Franc vs US Dollar
+
+**DCHF** is pegged to the Swiss Franc. That creates major differences compared to USD-based stables.
+
+Borrowing in the strongest currency in history carries unique risks, but it can be attractive for:
+
+- **Swiss residents** who earn income in CHF, avoiding debt volatility relative to their salary
+- **Purchasing CHF-denominated assets**, like Swiss stocks or real estate, to hedge against currency risk
+
+For DeFi users, a CHF stablecoin offers:
+
+- Exposure to the world's strongest fiat without a bank account or restrictions
+- Yield opportunities through liquidity provision
+- Instant and low-cost transfers and remittances
+- Instant settlement for merchant payments in Switzerland
+
+## Collateral
+
+DeFi Franc accepts **ETH** and **wBTC** as collateral, allowing users to borrow against Bitcoin as well.
+
+However, wBTC isn't decentralized and can be censored since it's issued by **BitGo**. That's important to note, as the protocol's smart contracts have no governance — collateral types can't be changed later.
+
+Still, having two collateral assets helps reduce insolvency risk in case of large-scale liquidations.
+
+## Frontend
+
+Unlike Liquity, DeFi Franc runs its own frontend. Anyone could technically build another, but there's no economic incentive or SDK to encourage it.
+
+## Liquidity
+
+DeFi Franc is still very new, so liquidity is limited. Around **6.3 million DCHF** have been borrowed so far.
+
+There are **three liquidity pools** available:
+
+1. **DCHF / 3CRV (Curve)**
+   - 97% of total volume
+   - 4.5M TVL (49% DCHF)
+2. **DCHF / LUSD (Uniswap V3)**
+   - No liquidity
+3. **DCHF / USDC (Uniswap V3)**
+   - 2k TVL
+
+Only the **Curve pool** has real traction, boosted by a liquidity mining program.
+
+Launched in **October 2022**, DeFi Franc already ranks **15th** among CDP protocols on DeFiLlama. That's promising considering the current market conditions.
+
+## Use Cases for DeFi Franc
+
+It's cool to have a Swiss Franc onchain, but what can you really do with it? Is there actual demand for non-dollar stablecoins?
+
+### 1. Credit Line
+
+The main use case is borrowing. A user can deposit BTC or ETH, keep exposure to their assets, and borrow Swiss Francs at **0% interest**.
+
+Still, borrowing in CHF carries risk. It makes sense if you earn in CHF or plan to invest in CHF-denominated assets as a currency hedge.
+
+### 2. Payments
+
+DCHF could work as an online payment method: instant settlement, no bank fees, no chargebacks, and no intermediaries. For cross-border payments, the value proposition is even stronger compared to remittance services that charge high fees.
+
+### 3. Savings and Protection
+
+For the first time in history, DeFi gives anyone access to foreign currencies without banks. DCHF lets people from high-inflation countries like Venezuela or Turkey protect their savings by holding Swiss Franc exposure.
+
+This onchain Swiss Franc can also earn yield by being deposited in the **stability pool** or lent out in DeFi money markets.
+
+### 4. Onchain Forex
+
+Alongside protocols like **Jarvis**, **Angle**, and **Curve**, DeFi Franc adds another layer to the onchain Forex ecosystem, giving traders more options.
+
+---
+
+## Limitations of DeFi Franc
+
+Despite its benefits, DCHF adoption might remain limited unless certain issues are solved:
+
+### Borrowing in CHF isn't attractive
+
+Borrowing in the most stable and historically strong fiat doesn't appeal to everyone. Since DCHF supply only grows when people borrow, low borrowing activity means low liquidity by design.
+
+### The peg isn't stable
+
+When DCHF trades below CHF, arbitrage is easy — buy DCHF, repay debt, profit. The issue is when it trades **above** peg.
+
+A user could:
+Borrow DCHF → sell it → wait for price to return to peg → rebuy cheaper → repay → profit.
+
+But no one knows when the price will normalize, and meanwhile the collateral could drop in value or be liquidated. The risk/reward ratio is poor, which is why DCHF often trades above CHF.
+
+This is a common issue for decentralized, crypto-collateralized stablecoins. It's the same reason Maker introduced **USDC** as collateral to stabilize DAI when it traded above $1.
+
+Liquity later introduced an innovative solution: **Chicken Bonds**. We'll see if DeFi Franc adopts something similar.
+
+### DCHF only exists on Ethereum mainnet
+
+With Ethereum's high and volatile gas fees, mass adoption is unlikely unless DCHF expands to cheaper chains. But since the contracts are immutable, new DCHF cannot be minted outside mainnet.
+
+Hopefully, the DeFi Franc team will work on a **cross-chain strategy** so users with smaller portfolios can interact with DCHF too.
+
+## Conclusion
+
+In this article, we explored how DCHF works, its use cases, and its limitations as a Swiss Franc-backed stablecoin.
+
+Everything written here is **not financial advice**. Always do your own research and understand what you invest in. I am not a financial advisor.
+
+If you found this content valuable, feel free to **share it** and **follow me on Twitter** to support my work.
