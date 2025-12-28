@@ -1,69 +1,125 @@
 {
-  "nav": {
-    "work": "Projets",
-    "blog": "Blog",
-    "resume": "CV",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
-  },
-  "home": {
-    "whatIDo": {
-      "uxuiDesign": {
-        "title": "UX & UI",
-        "desc": "Concevoir des interfaces intuitives et attrayantes que les utilisateurs aiment utiliser."
-      },
-      "frontendDev": {
-        "title": "Frontend",
-        "desc": "Créer des applications web performantes, scalables et faites pour durer."
-      },
-      "data": {
-        "title": "Data",
-        "desc": "Transformer des données brutes en informations exploitables."
-      }
-    }
-  },
-  "filters": {
-    "all": "Tous"
-  },
-  "rooted": "Je conçois et développe des interfaces frontend performantes et intuitives depuis plus de 4 ans, en collaborant avec des équipes suisses et internationales pour concrétiser des projets numériques.",
-  "projects": {
-    "title": "Projets à la une"
-  },
-  "suggestedPost": "Vous aimerez aussi",
-  "404": {
-    "title": "Cette page n'existe pas, mais peut-être est-elle là pour vous rappeler quelque chose.",
-    "texts": [
-      {
-        "heading": "Passez plus de temps dehors.",
-        "desc": "Que ce soit une séance de sport, un pique-nique entre amis ou simplement une promenade pour vous vider la tête. L'air frais renouvelle l'esprit et apporte une nouvelle énergie."
-      },
-      {
-        "heading": "Concentrez-vous sur une chose, et faites-la avec intention.",
-        "desc": "La grandeur ne consiste pas à tout faire, mais à faire ce qui compte, vraiment bien."
-      },
-      {
-        "heading": "Le bonheur est un choix.",
-        "desc": "Même quand les choses ne se passent pas comme prévu (comme arriver sur une page 404), vous pouvez toujours sourire, respirer et voir le bon côté. Chaque « mauvais tournant » peut mener à quelque chose d'inattendu et de beau."
-      }
-    ]
-  },
+  "homepage": {
+    "hero": {
+      "title": "Optimisation SEO et contenu web pour entreprises en Suisse romande",
+      "subtitle": "Transformez votre site en moteur de croissance. Plus de visibilité organique. Plus de clients. Plus de conversions.",
+      "cta": "Réserver un appel stratégique"
+    },
+    "logos": {
+      "title": "Des clients leaders"
+    },
+    "problems": {
+      "title": "Les coûts cachés d'un mauvais site",
+      "items": [
+        {
+          "pain": "Les prospects s'en vont",
+          "solution": "Votre site web pourrait bien faire fuir les prospects au lieu de les accueillir.",
+          "img": "leads.png"
+        },
+        {
+          "pain": "Votre temps est compté",
+          "solution": "Un site web doit vous aider, et non vous détourner de votre activité et vous faire perdre votre concentration.",
+          "img": "time.png"
+        },
+        {
+          "pain": "Noyé dans la concurrence",
+          "solution": "Sans un site web qui se démarque, vous risquez de passer inaperçu tandis que vos concurrents brillent.",
+          "img": "poor.png"
+        }
+      ]
+    },
+    "features": {
+      "title": "Les bénéfices d’un site conçu pour être compris, trouvé et convertir",
+      "items": [
+        {
+          "pain": "Une compréhension immédiate de votre offre",
+          "solution": "Votre activité et ce que vous vendez sont compris en moins de deux secondes grâce à un message clair et un positionnement précis."
+        },
+        {
+          "pain": "Une crédibilité renforcée",
+          "solution": "Une image premium soutenue par des preuves sociales et des cas clients."
+        },
+        {
+          "pain": "Des parcours utilisateurs pensés pour convertir",
+          "solution": "Des user flows stratégiques conçus pour guider l’utilisateur et maximiser la conversion à chaque étape."
+        },
+        {
+          "pain": "Un retour sur investissement mesurable",
+          "solution": "Générez des leads, des ventes et des opportunités avec des décisions orientées performance et résultats concrets."
+        }
+      ]
+    },
 
-  "defi": {
-    "rooted": "Je gère des portefeuilles DeFi personnels et familiaux aux profils de risque distincts, visant un alpha régulier grâce à des méthodes professionnelles de gestion et de surveillance des risques.",
-    "projects": { "title": "Articles à la une" },
-    "skills": {
-      "marketResearch": {
-        "title": "Recherche de marché",
-        "desc": "Identifier les opportunités et les inefficacités sur les marchés crypto et DeFi."
-      },
-      "strategyDesign": {
-        "title": "Conception de stratégies",
-        "desc": "Développer et optimiser des cadres de portefeuille et de couverture crypto fondés sur la recherche quantitative."
-      },
-      "onchainAnalytics": {
-        "title": "Analyse on-chain",
-        "desc": "Exploiter les données on-chain et l'automatisation pour suivre la liquidité, les taux et les performances des protocoles."
-      }
+    "cta": {
+      "title": "Parlons de votre croissance organique",
+      "subtitle": "Analyse rapide de vos opportunités SEO et de visibilité locale",
+      "button": "Réserver un appel"
+    },
+    "packages": {
+      "title": "Services SEO",
+      "items": [
+        {
+          "name": "Optimisation du site",
+          "description": "Amélioration directe de la conversion, de la clarté et de l’efficacité commerciale du site",
+          "features": [
+            "Audit CRO et UX basé sur les parcours utilisateurs réels",
+            "Analyse de la proposition de valeur et du message above the fold",
+            "Audit SEO technique de base impactant la conversion (temps de chargement, structure, indexabilité critique)",
+            "Optimisation des pages stratégiques (homepage, landing pages, pages services)",
+            "Restructuration de l’architecture de contenu pour la lisibilité et la hiérarchisation",
+            "Optimisation des CTA, formulaires et points de friction",
+            "Amélioration mobile-first et performance perçue",
+            "Recommandations priorisées orientées impact business",
+            "Livrable clair avec quick wins et chantiers moyen terme"
+          ],
+          "price": "À partir de 2'500 CHF"
+        },
+        {
+          "name": "Croissance SEO",
+          "description": "Acquisition de trafic qualifié et visibilité organique durable",
+          "features": [
+            "Audit SEO initial approfondi (technique, sémantique, concurrentiel)",
+            "Définition des mots-clés business et mapping intention de recherche",
+            "Optimisations SEO mensuelles on-site et techniques",
+            "Création de contenus optimisés orientés intention et conversion",
+            "Structuration de clusters thématiques et pages piliers",
+            "SEO local et GEO ciblé Suisse romande",
+            "Optimisation continue du maillage interne",
+            "Suivi des positions, trafic et conversions organiques",
+            "Reporting mensuel lisible avec recommandations actionnables"
+          ],
+          "price": "À partir de 800 CHF / mois"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Pourquoi une optimisation SEO continue",
+          "answer": "Le SEO est un processus continu nécessaire pour rester visible face à la concurrence"
+        },
+        {
+          "question": "Quand voir les premiers résultats",
+          "answer": "Les premiers gains organiques apparaissent généralement entre 8 et 12 semaines"
+        },
+        {
+          "question": "Est-ce adapté à ma ville en Suisse",
+          "answer": "Chaque stratégie est GEO ciblée pour Lausanne, Genève, Fribourg et toute la Suisse"
+        },
+        {
+          "question": "Que faire si je n’ai pas de contenu",
+          "answer": "Le contenu est créé de A à Z selon vos objectifs SEO et business"
+        },
+        {
+          "question": "Comment se déroule la collaboration",
+          "answer": "Audit, plan d’action, optimisation, contenu régulier et reporting"
+        }
+      ]
+    },
+    "completed": {
+      "title": "50+ projets complétés avec succès",
+      "subtitle": "Des résultats concrets pour des entreprises en Suisse romande"
     }
   }
 }

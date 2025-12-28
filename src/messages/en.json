@@ -1,69 +1,115 @@
 {
-  "nav": {
-    "work": "Work",
-    "blog": "Blog",
-    "resume": "Resume",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
-  },
-  "home": {
-    "whatIDo": {
-      "uxuiDesign": {
-        "title": "UX & UI",
-        "desc": "Designing intuitive and beautiful interfaces that users love to interact with."
-      },
-      "frontendDev": {
-        "title": "Frontend",
-        "desc": "Building performant and scalable web applications that last."
-      },
-      "data": {
-        "title": "Data",
-        "desc": "Transforming data into insights through research, visualization, and pipelines."
-      }
-    }
-  },
-  "filters": {
-    "all": "All"
-  },
-  "rooted": "I design and develop high-performing, intuitive frontend interfaces with over 4 years of experience, collaborating with Swiss and international teams to deliver digital projects.",
-  "projects": {
-    "title": "Featured Projects"
-  },
-  "suggestedPost": "You may also like",
-  "404": {
-    "title": "This page doesn't exist but maybe it's here to remind you of something.",
-    "texts": [
-      {
-        "heading": "Spend more time outside.",
-        "desc": "Whether it's a workout, a picnic with friends, or just a walk to clear your head. Fresh air resets your mind and brings new energy."
-      },
-      {
-        "heading": "Focus on one thing, and do it with intention.",
-        "desc": "Greatness isn't about doing everything, it's about doing what matters, really well."
-      },
-      {
-        "heading": "Happiness is a choice.",
-        "desc": "Even when things don't go as planned (like landing on a 404 page), you can still smile, breathe, and see the good in it. Every “wrong turn” can lead to something unexpectedly beautiful."
-      }
-    ]
-  },
+  "homepage": {
+    "hero": {
+      "title": "Optimisation SEO et contenu web pour entreprises en Suisse romande",
+      "subtitle": "Transformez votre site en moteur de croissance. Plus de visibilité organique. Plus de clients. Plus de conversions.",
+      "cta": "Réserver un appel stratégique"
+    },
+    "logos": {
+      "title": "Des clients leaders"
+    },
+    "problems": {
+      "title": "Les coûts cachés d'un mauvais site",
+      "items": [
+        {
+          "pain": "Les prospects s'en vont",
+          "solution": "Votre site web pourrait bien faire fuir les prospects au lieu de les accueillir.",
+          "img": "leads.png"
+        },
+        {
+          "pain": "Votre temps est compté",
+          "solution": "Un site web doit vous aider, et non vous détourner de votre activité et vous faire perdre votre concentration.",
+          "img": "time.png"
+        },
+        {
+          "pain": "Noyé dans la concurrence",
+          "solution": "Sans un site web qui se démarque, vous risquez de passer inaperçu tandis que vos concurrents brillent.",
+          "img": "poor.png"
+        }
+      ]
+    },
+    "features": {
+      "title": "Les bénéfices d’un site conçu pour être compris, trouvé et convertir",
+      "items": [
+        {
+          "pain": "Une compréhension immédiate de votre offre",
+          "solution": "Votre activité et ce que vous vendez sont compris en moins de deux secondes grâce à un message clair et un positionnement précis."
+        },
+        {
+          "pain": "Une crédibilité renforcée",
+          "solution": "Une image premium soutenue par des preuves sociales et des cas clients."
+        },
+        {
+          "pain": "Des parcours utilisateurs pensés pour convertir",
+          "solution": "Des user flows stratégiques conçus pour guider l’utilisateur et maximiser la conversion à chaque étape."
+        },
+        {
+          "pain": "Un retour sur investissement mesurable",
+          "solution": "Générez des leads, des ventes et des opportunités avec des décisions orientées performance et résultats concrets."
+        }
+      ]
+    },
 
-  "defi": {
-    "rooted": "I manage personal and family DeFi portfolios with distinct risk profiles, aiming for consistent alpha through professional-grade risk management and monitoring techniques.",
-    "projects": { "title": "Featured posts" },
-    "skills": {
-      "marketResearch": {
-        "title": "Market Research",
-        "desc": "Identifying opportunities and inefficiencies across crypto and DeFi markets."
-      },
-      "strategyDesign": {
-        "title": "Strategy Design",
-        "desc": "Developing and optimizing crypto portfolio and hedging frameworks grounded in quantitative research."
-      },
-      "onchainAnalytics": {
-        "title": "Onchain Analytics",
-        "desc": "Leveraging onchain data and automation to track liquidity, rates, and protocol performance."
-      }
+    "cta": {
+      "title": "Parlons de votre croissance organique",
+      "subtitle": "Analyse rapide de vos opportunités SEO et de visibilité locale",
+      "button": "Réserver un appel"
+    },
+    "packages": {
+      "title": "Services SEO",
+      "items": [
+        {
+          "name": "Optimisation du site",
+          "description": "Amélioration de la conversion et de la clarté du site",
+          "features": [
+            "Audit SEO technique, sémantique et contenu",
+            "Optimisation des pages clés",
+            "Amélioration structure, UX et performance",
+            "Recommandations actionnables priorisées"
+          ],
+          "price": "À partir de 2'500 CHF"
+        },
+        {
+          "name": "Croissance SEO",
+          "description": "Amélioration continue de la visibilité",
+          "features": [
+            "Suivi et optimisations mensuelles",
+            "Création et optimisation de contenu",
+            "SEO local et GEO Suisse romande",
+            "Reporting de performance"
+          ],
+          "price": "À partir de 800 CHF / mois"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Pourquoi une optimisation SEO continue",
+          "answer": "Le SEO est un processus continu nécessaire pour rester visible face à la concurrence"
+        },
+        {
+          "question": "Quand voir les premiers résultats",
+          "answer": "Les premiers gains organiques apparaissent généralement entre 8 et 12 semaines"
+        },
+        {
+          "question": "Est-ce adapté à ma ville en Suisse",
+          "answer": "Chaque stratégie est GEO ciblée pour Lausanne, Genève, Fribourg et toute la Suisse"
+        },
+        {
+          "question": "Que faire si je n’ai pas de contenu",
+          "answer": "Le contenu est créé de A à Z selon vos objectifs SEO et business"
+        },
+        {
+          "question": "Comment se déroule la collaboration",
+          "answer": "Audit, plan d’action, optimisation, contenu régulier et reporting"
+        }
+      ]
+    },
+    "completed": {
+      "title": "50+ projets complétés avec succès",
+      "subtitle": "Des résultats concrets pour des entreprises en Suisse romande"
     }
   }
 }
