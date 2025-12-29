@@ -1,4 +1,11 @@
 {
+  "nav": {
+    "pricing": "Tarifs",
+    "blog": "Blog SEO",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+
   "homepage": {
     "hero": {
       "title": "Optimisation SEO et contenu web pour entreprises en Suisse romande",
@@ -59,36 +66,38 @@
       "title": "Services SEO",
       "items": [
         {
-          "name": "Optimisation du site",
+          "name": "Optimisation taux de conversion (CRO)",
           "description": "Amélioration directe de la conversion, de la clarté et de l’efficacité commerciale du site",
           "features": [
-            "Audit CRO et UX basé sur les parcours utilisateurs réels",
-            "Analyse de la proposition de valeur et du message above the fold",
-            "Audit SEO technique de base impactant la conversion (temps de chargement, structure, indexabilité critique)",
-            "Optimisation des pages stratégiques (homepage, landing pages, pages services)",
-            "Restructuration de l’architecture de contenu pour la lisibilité et la hiérarchisation",
-            "Optimisation des CTA, formulaires et points de friction",
-            "Amélioration mobile-first et performance perçue",
-            "Recommandations priorisées orientées impact business",
-            "Livrable clair avec quick wins et chantiers moyen terme"
+            "- Audit CRO et UX basé sur les parcours utilisateurs réels",
+            "- Analyse de la proposition de valeur et du message above the fold",
+            "- Audit SEO technique de base impactant la conversion (temps de chargement, structure, indexabilité critique)",
+            "- Optimisation des pages stratégiques (homepage, landing pages, pages services)",
+            "- Restructuration de l’architecture de contenu pour la lisibilité et la hiérarchisation",
+            "- Optimisation des CTA, formulaires et points de friction",
+            "- Amélioration mobile-first et performance perçue",
+            "- Recommandations priorisées orientées impact business",
+            "- Livrable clair avec quick wins et chantiers moyen terme"
           ],
-          "price": "À partir de 2'500 CHF"
+          "price": "2'500 CHF",
+          "par": ""
         },
         {
           "name": "Croissance SEO",
           "description": "Acquisition de trafic qualifié et visibilité organique durable",
           "features": [
-            "Audit SEO initial approfondi (technique, sémantique, concurrentiel)",
-            "Définition des mots-clés business et mapping intention de recherche",
-            "Optimisations SEO mensuelles on-site et techniques",
-            "Création de contenus optimisés orientés intention et conversion",
-            "Structuration de clusters thématiques et pages piliers",
-            "SEO local et GEO ciblé Suisse romande",
-            "Optimisation continue du maillage interne",
-            "Suivi des positions, trafic et conversions organiques",
-            "Reporting mensuel lisible avec recommandations actionnables"
+            "- Audit SEO initial approfondi (technique, sémantique, concurrentiel)",
+            "- Définition des mots-clés business et mapping intention de recherche",
+            "- Optimisations SEO mensuelles on-site et techniques",
+            "- Création de contenus optimisés orientés intention et conversion",
+            "- Structuration de clusters thématiques et pages piliers",
+            "- SEO local et GEO ciblé Suisse romande",
+            "- Optimisation continue du maillage interne",
+            "- Suivi des positions, trafic et conversions organiques",
+            "- Reporting mensuel lisible avec recommandations actionnables"
           ],
-          "price": "À partir de 800 CHF / mois"
+          "price": "800 CHF",
+          "par": "par mois"
         }
       ]
     },

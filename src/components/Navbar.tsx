@@ -1,6 +1,3 @@
-import { LocaleToggle } from "@/components/LocaleToggle";
-import { MobileMenu } from "@/components/MobileMenu";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTranslations } from "next-intl";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import Link from "next/link";
@@ -18,19 +15,10 @@ export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
   const hasFrontend = fullUrl.includes("frontend");
 
   let nav: NavLink[] = [
-    { label: t("work"), href: "/work" },
     { label: t("blog"), href: "/blog" },
-    { label: t("resume"), href: "/resume" },
-    {
-      label: t("github"),
-      href: "https://github.com/facoleur",
-      external: true,
-    },
-    {
-      label: t("linkedin"),
-      href: "https://linkedin.com/in/luca-ferro",
-      external: true,
-    },
+    { label: t("pricing"), href: "#pricing" },
+    { label: t("about"), href: "/about" },
+    { label: t("contact"), href: "/contact" },
   ];
 
   if (!hasFrontend) {
@@ -38,17 +26,16 @@ export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
   }
 
   return (
-    <header>
-      <nav className="mx-auto grid w-full grid-cols-3 items-center p-4 px-0 md:px-4">
+    <header className="fixed top-0 left-0 z-100 w-full bg-white/10 !whitespace-nowrap backdrop-blur-2xl">
+      <nav className="mx-auto flex h-16 w-1/4 items-center">
         <Link
-          className="w-fit py-2 !text-center !text-sm font-medium transition-all duration-75 hover:translate-y-1"
           href="/"
+          className="p-2 px-16 text-sm font-medium transition-all duration-75 hover:translate-y-1"
         >
           Luca Ferro
         </Link>
 
-        {/* Desktop links */}
-        <div className="mx-auto hidden space-x-2 text-slate-700 md:flex dark:text-slate-400">
+        <div className="ml-auto flex items-center gap-4">
           {nav.map(({ label, href, external }) => (
             <Link
               key={label}
@@ -56,21 +43,12 @@ export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="p-2 !text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-2 text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
             >
               {label}
             </Link>
           ))}
         </div>
-
-        {/* Desktop toggles */}
-        <div className="hidden items-center justify-end space-x-2 text-slate-700 md:flex dark:text-slate-400">
-          <LocaleToggle />
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile menu trigger */}
-        <MobileMenu links={nav} />
       </nav>
     </header>
   );

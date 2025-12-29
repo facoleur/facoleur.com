@@ -32,7 +32,7 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="bg-slate-100 dark:bg-gray-950"
+      className="bg-[opacity] bg-slate-100 bg-[url('/homepage/bg.png')] bg-[length:100%_auto] bg-no-repeat pt-24 filter dark:bg-gray-950"
     >
       <body className={`${inter.className} antialiased`}>
         <Providers locale={locale}>
