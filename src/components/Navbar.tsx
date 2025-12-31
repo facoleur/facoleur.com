@@ -1,6 +1,7 @@
-import { useTranslations } from "next-intl";
-import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type NavLink = {
   label: string;
@@ -8,34 +9,38 @@ type NavLink = {
   external?: boolean;
 };
 
-export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
-  const t = useTranslations("nav");
+export const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
 
-  const fullUrl = headers.get("x-url") || headers.get("referer") || "";
-  const hasFrontend = fullUrl.includes("frontend");
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  let nav: NavLink[] = [
-    { label: t("blog"), href: "/blog" },
-    { label: t("pricing"), href: "#pricing" },
-    { label: t("about"), href: "/about" },
-    { label: t("contact"), href: "/contact" },
+  const nav: NavLink[] = [
+    { label: "Blog SEO", href: "/blog" },
+    { label: "Tarifs", href: "#pricing" },
+    { label: "À propos", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
-  if (!hasFrontend) {
-    nav = nav.filter((n) => n.href !== "/work");
-  }
-
   return (
-    <header className="fixed top-0 left-0 z-100 w-full bg-white/10 !whitespace-nowrap backdrop-blur-2xl">
-      <nav className="mx-auto flex h-16 w-1/4 items-center">
-        <Link
-          href="/"
-          className="p-2 px-16 text-sm font-medium transition-all duration-75 hover:translate-y-1"
-        >
+    <header
+      className={[
+        "sticky top-2 z-50 w-full whitespace-nowrap transition-all duration-200",
+        scrolled
+          ? "border border-slate-300 bg-white/10 backdrop-blur-2xl"
+          : "backdrop-blur-0 border-transparent bg-transparent",
+      ].join(" ")}
+    >
+      <nav className="flex justify-between p-4">
+        <Link href="/" className="p-2 text-sm font-medium">
           Luca Ferro
         </Link>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="flex gap-2">
           {nav.map(({ label, href, external }) => (
             <Link
               key={label}
@@ -43,7 +48,7 @@ export const Navbar = ({ headers }: { headers: ReadonlyHeaders }) => {
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="p-2 text-sm transition-all duration-75 hover:translate-y-1 hover:text-slate-800 dark:hover:text-slate-200"
+              className="p-2 text-sm"
             >
               {label}
             </Link>

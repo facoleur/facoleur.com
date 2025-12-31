@@ -1,4 +1,29 @@
 {
+  "404": {
+    "title": "Cette page n’existe pas, mais peut-être qu’elle est là pour te rappeler quelque chose.",
+    "texts": [
+      {
+        "heading": "Passe plus de temps dehors.",
+        "desc": "Que ce soit pour t’entraîner, faire un pique-nique entre amis ou simplement marcher pour t’aérer l’esprit. L’air frais réinitialise le mental et apporte une nouvelle énergie."
+      },
+      {
+        "heading": "Concentre-toi sur une seule chose et fais-la avec intention.",
+        "desc": "La grandeur ne vient pas du fait de tout faire, mais de faire ce qui compte vraiment, avec exigence et précision."
+      },
+      {
+        "heading": "Le bonheur est un choix.",
+        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu’il y a de juste. Chaque détour peut mener à quelque chose d’inattendu et de valable."
+      }
+    ]
+  },
+
+  "nav": {
+    "pricing": "Tarifs",
+    "blog": "Blog SEO",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+
   "homepage": {
     "hero": {
       "title": "Optimisation SEO et contenu web pour entreprises en Suisse romande",
@@ -59,26 +84,38 @@
       "title": "Services SEO",
       "items": [
         {
-          "name": "Optimisation du site",
-          "description": "Amélioration de la conversion et de la clarté du site",
+          "name": "Optimisation taux de conversion (CRO)",
+          "description": "Amélioration directe de la conversion, de la clarté et de l’efficacité commerciale du site",
           "features": [
-            "Audit SEO technique, sémantique et contenu",
-            "Optimisation des pages clés",
-            "Amélioration structure, UX et performance",
-            "Recommandations actionnables priorisées"
+            "- Audit CRO et UX basé sur les parcours utilisateurs réels",
+            "- Analyse de la proposition de valeur et du message above the fold",
+            "- Audit SEO technique de base impactant la conversion (temps de chargement, structure, indexabilité critique)",
+            "- Optimisation des pages stratégiques (homepage, landing pages, pages services)",
+            "- Restructuration de l’architecture de contenu pour la lisibilité et la hiérarchisation",
+            "- Optimisation des CTA, formulaires et points de friction",
+            "- Amélioration mobile-first et performance perçue",
+            "- Recommandations priorisées orientées impact business",
+            "- Livrable clair avec quick wins et chantiers moyen terme"
           ],
-          "price": "À partir de 2'500 CHF"
+          "price": "2'500 CHF",
+          "par": ""
         },
         {
           "name": "Croissance SEO",
-          "description": "Amélioration continue de la visibilité",
+          "description": "Acquisition de trafic qualifié et visibilité organique durable",
           "features": [
-            "Suivi et optimisations mensuelles",
-            "Création et optimisation de contenu",
-            "SEO local et GEO Suisse romande",
-            "Reporting de performance"
+            "- Audit SEO initial approfondi (technique, sémantique, concurrentiel)",
+            "- Définition des mots-clés business et mapping intention de recherche",
+            "- Optimisations SEO mensuelles on-site et techniques",
+            "- Création de contenus optimisés orientés intention et conversion",
+            "- Structuration de clusters thématiques et pages piliers",
+            "- SEO local et GEO ciblé Suisse romande",
+            "- Optimisation continue du maillage interne",
+            "- Suivi des positions, trafic et conversions organiques",
+            "- Reporting mensuel lisible avec recommandations actionnables"
           ],
-          "price": "À partir de 800 CHF / mois"
+          "price": "800 CHF",
+          "par": "par mois"
         }
       ]
     },

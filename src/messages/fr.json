@@ -1,4 +1,64 @@
 {
+  "footer": {
+    "titles": {
+      "resources": "Ressources",
+      "tools": "Outils"
+    },
+    "resources": [
+      {
+        "label": "SEO local: attirer des clients sans ads",
+        "href": ""
+      },
+      {
+        "label": "SEO vs Ads pour PME suisses",
+        "href": ""
+      },
+      {
+        "label": "SEO et conversion pour PME en Suisse",
+        "href": ""
+      },
+      {
+        "label": "comment choisir son agence SEO",
+        "href": ""
+      },
+      {
+        "label": "SEO B2B en Suisse romande",
+        "href": ""
+      },
+      {
+        "label": "Structure de page qui convertit",
+        "href": ""
+      },
+      {
+        "label": "Contenu SEO pour PME suisses",
+        "href": ""
+      }
+    ],
+    "tools": {
+      "roiCalculator": "Calculateur de ROI",
+      "auditChecklist": "Checklist d'audit"
+    },
+    "copyright": "© {year} Luca Ferro"
+  },
+
+  "404": {
+    "title": "Cette page n’existe pas, mais peut-être qu’elle est là pour te rappeler quelque chose.",
+    "texts": [
+      {
+        "heading": "Passe plus de temps dehors.",
+        "desc": "Que ce soit pour t’entraîner, faire un pique-nique entre amis ou simplement marcher pour t’aérer l’esprit. L’air frais réinitialise le mental et apporte une nouvelle énergie."
+      },
+      {
+        "heading": "Concentre-toi sur une seule chose et fais-la avec intention.",
+        "desc": "La grandeur ne vient pas du fait de tout faire, mais de faire ce qui compte vraiment, avec exigence et précision."
+      },
+      {
+        "heading": "Le bonheur est un choix.",
+        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu’il y a de juste. Chaque détour peut mener à quelque chose d’inattendu et de valable."
+      }
+    ]
+  },
+
   "nav": {
     "pricing": "Tarifs",
     "blog": "Blog SEO",
