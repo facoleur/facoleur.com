@@ -12,11 +12,39 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Luca Ferro",
+  title:
+    "Agence CRO & SEO | Optimisez le trafic et les conversions | facoleur.com",
   description:
-    "Personal website of Luca Ferro, a UX/UI designer and frontend developer.",
+    "Facoleur.com est une agence SEO et CRO en Suisse romande, spécialisée en création de contenu SEO et sites web performants orientés conversion.",
   icons: {
     icon: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_CH",
+    url: "https://example.ch",
+    siteName: "Agence CRO & SEO Suisse",
+    title: "Agence CRO & SEO pour PME en Suisse",
+    description:
+      "Optimisation SEO, CRO et AI search. Plus de visibilité, plus de conversions, plus de clients.",
+    images: [
+      {
+        url: "https://example.ch/og/og-home.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Agence CRO et SEO pour PME en Suisse",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agence CRO & SEO pour PME en Suisse",
+    description: "SEO, CRO et AI search pour générer des leads et des ventes.",
+    images: ["https://example.ch/og/og-home.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
