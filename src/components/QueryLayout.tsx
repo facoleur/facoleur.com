@@ -14,12 +14,12 @@ export const Providers = ({
   children: React.ReactNode;
 }) => {
   return (
-    <ThemeProvider
-      attribute="data-theme"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
+    // <ThemeProvider
+    //   attribute="data-theme"
+    //   defaultTheme="system"
+    //   enableSystem
+    //   disableTransitionOnChange
+    // >
       <NextIntlClientProvider
         locale={locale}
         messages={messages}
@@ -27,6 +27,6 @@ export const Providers = ({
       >
         <div>{children}</div>
       </NextIntlClientProvider>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 };
