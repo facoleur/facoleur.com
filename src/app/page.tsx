@@ -2,18 +2,28 @@ import { Features, Problems, Projects } from "@/components/Homepage";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const t = useTranslations();
 
   return (
-    <div className="prose dark:prose-invert mx-auto grid w-full grid-cols-1 bg-repeat py-6">
+    <div className="prose mx-auto grid w-full grid-cols-1 bg-repeat py-6 md:px-4">
       <div className="space-y-24">
-        <section className="text-center">
+        <section className="flex flex-col items-center gap-2 text-center">
+          <span className="w-fit p-1 px-3 font-medium text-slate-600">
+            {t("homepage.hero.agency")}
+          </span>
           <h1>{t("homepage.hero.title")}</h1>
-          <p>{t("homepage.hero.subtitle")}</p>
-
-          <Button>{t("homepage.hero.cta")}</Button>
+          {/* <p>{t("homepage.hero.subtitle")}</p> */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Link href="/free-audit">
+              <Button>{t("homepage.hero.cta.audit")}</Button>
+            </Link>
+            <a href="https://app.cal.eu/facoleur/strategie30">
+              <Button variant={"ghost"}>{t("homepage.hero.cta.call")}</Button>
+            </a>
+          </div>
         </section>
 
         <section>
@@ -21,12 +31,12 @@ export default function Home() {
             {t("homepage.logos.title")}
           </p>
           <div className="marquee-wrapper">
-            <div className="marquee grid grid-cols-6 gap-1">
+            <div className="marquee grid grid-cols-3 gap-1 md:grid-cols-6">
               {Array.from({ length: 6 }).map((_, i) => (
                 <Image
+                  key={i}
                   width={400}
                   height={300}
-                  key={`a-${i}`}
                   src={`/clientsLogo/${i + 1}.png`}
                   alt={`client ${i + 1}`}
                   className="inline-block w-auto grayscale transition hover:grayscale-0"
@@ -37,85 +47,131 @@ export default function Home() {
         </section>
 
         <section>
-          <h2>{t("homepage.problems.title")}</h2>
+          <h2 className="!mb-12 !text-4xl">{t("homepage.problems.title")}</h2>
           <Problems />
         </section>
 
-        <section>
-          <h2>{t("homepage.features.title")}</h2>
+        <section id="solutions">
+          <h2 className="!mb-12 !text-4xl">{t("homepage.features.title")}</h2>
           <Features />
         </section>
 
+        <section>
+          <h2 className="!mb-12 !text-4xl">{t("homepage.process.title")}</h2>
+          <div className="flex flex-col gap-1">
+            {t
+              .raw("homepage.process.items")
+              .map(
+                (step: { title: string; description: string }, i: number) => (
+                  <div
+                    key={i}
+                    className="flex flex-col justify-between gap-4 rounded bg-slate-200/60 p-6 md:flex-row md:gap-2"
+                  >
+                    <div className="text-2xl font-semibold text-slate-900 md:min-w-16 dark:text-slate-100">
+                      0{i + 1}.
+                    </div>
+                    <h3 className="!m-0 mt-2 w-full !p-0 !text-left font-medium md:w-1/2">
+                      {step.title}
+                    </h3>
+                    <p className="!mt-auto w-full text-sm text-slate-600 md:w-96 dark:text-slate-300">
+                      {step.description}
+                    </p>
+                  </div>
+                ),
+              )}
+          </div>
+        </section>
+
         <section className="text-center">
-          <h2>{t("homepage.cta.title")}</h2>
+          <h2 className="!text-4xl">{t("homepage.cta.title")}</h2>
           <p>{t("homepage.cta.subtitle")}</p>
           <Button>{t("homepage.cta.button")}</Button>
         </section>
 
         <section>
-          <h2>{t("homepage.packages.title")}</h2>
+          <h2 className="!mb-12 !text-4xl">{t("homepage.packages.title")}</h2>
           <div className="grid gap-1 md:grid-cols-2" id="pricing">
-            {/* @ts-expect-error suppress any warning */}
-            {t.raw("homepage.packages.items").map((pkg) => (
-              <div
-                key={pkg.name}
-                className="flex h-full flex-col justify-between bg-slate-200/60 p-6"
-              >
-                <div>
-                  <h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-slate-200/60">
-                    {pkg.name}
-                  </h3>
-                  <p className="font-medium text-slate-600 dark:text-slate-300">
-                    {pkg.description}
-                  </p>
-                </div>
-
-                <div className="mt-4 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-200/60">
-                  {/* @ts-expect-error suppress any warning */}
-                  {pkg.features.map((feature, i: number) => (
-                    <div key={i} className="dark:bg-slate-800/80">
-                      {feature}
+            {t
+              .raw("homepage.packages.items")
+              .map(
+                (pkg: {
+                  name: string;
+                  description: string;
+                  features: string[];
+                  price: string;
+                  par: string;
+                }) => (
+                  <div
+                    key={pkg.name}
+                    className="flex h-full flex-col justify-between bg-slate-200/60 p-6"
+                  >
+                    <div>
+                      <h3 className="mb-2 !text-2xl font-semibold text-slate-900 dark:text-slate-200">
+                        {pkg.name}
+                      </h3>
+                      <p className="font-medium text-slate-600 dark:text-slate-300">
+                        {pkg.description}
+                      </p>
                     </div>
-                  ))}
 
-                  <div className="mt-auto">
-                    <p className="mt-8 !mb-0">A partir de </p>
-                    <span className="text-2xl font-semibold">
-                      {pkg.price}
-                    </span>{" "}
-                    <span>{pkg.par}</span>
+                    <div className="mt-4 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                      {pkg.features.map((feature, i) => (
+                        <div key={i} className="dark:bg-slate-800/80">
+                          {feature}
+                        </div>
+                      ))}
+
+                      <div className="mt-auto">
+                        <p className="mt-8 !mb-0">A partir de</p>
+                        <span className="text-2xl font-semibold">
+                          {pkg.price}
+                        </span>{" "}
+                        <span>{pkg.par}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ),
+              )}
           </div>
         </section>
 
         <Projects />
 
-        <section>
-          <h2>{t("homepage.faq.title")}</h2>
-          <div className="flex flex-col gap-1">
-            {/* @ts-expect-error suppress any warning */}
-            {t.raw("homepage.faq.items").map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col gap-0 bg-slate-200/60 p-4"
-              >
-                <h3 className="!m-0 !p-0">{item.question}</h3>
-                <p className="!m-0 !p-0">{item.answer}</p>
-              </div>
-            ))}
+        <section className="flex flex-col gap-2 md:flex-row">
+          <h2 className="!mb-12 w-full !text-4xl md:w-1/3">
+            {t("homepage.faq.title")}
+          </h2>
+          <div className="flex w-full flex-col gap-1 md:w-2/3">
+            {t
+              .raw("homepage.faq.items")
+              .map(
+                (item: { question: string; answer: string }, index: number) => (
+                  <div
+                    key={index}
+                    className="flex flex-col gap-2 bg-slate-200/60 p-4"
+                  >
+                    <h3 className="!m-0 !p-0">{item.question}</h3>
+                    <p className="!m-0 !p-0">{item.answer}</p>
+                  </div>
+                ),
+              )}
           </div>
         </section>
 
-        <section className="text-center">
-          <h2>{t("homepage.cta.title")}</h2>
-          <p>{t("homepage.cta.subtitle")}</p>
-          <Button>{t("homepage.cta.button")}</Button>
-        </section>
+        <CallBanner />
       </div>
-      <div></div>
     </div>
   );
 }
+
+export const CallBanner = () => {
+  const t = useTranslations();
+
+  return (
+    <section className="bg-slate-200/60 bg-[url('/homepage/bg.png')] bg-[length:150%_auto] px-4 py-12 text-center">
+      <h2 className="!text-4xl">{t("homepage.cta.title")}</h2>
+      <p className="!text-lg">{t("homepage.cta.subtitle")}</p>
+      <Button>{t("homepage.cta.button")}</Button>
+    </section>
+  );
+};

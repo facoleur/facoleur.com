@@ -1,20 +1,13 @@
 // components/PostCard.tsx
-import { allPosts } from "contentlayer/generated";
+import { allBlogs } from "contentlayer/generated";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
-type Post = {
-  title: string;
-  description?: string;
-  date?: string;
-  url: string;
-};
-
 export default function PostCard({ url }: { url: string }) {
   const locale = useLocale();
 
-  const post = allPosts.find((p) => p.url === `${url}.${locale}`);
+  const post = allBlogs.find((p) => p.url === `${url}.${locale}`);
 
   if (!post) {
     return null;
@@ -24,9 +17,9 @@ export default function PostCard({ url }: { url: string }) {
     <Link href={post.url.slice(0, -3)} className="block">
       <div className="mb-4 rounded-lg bg-white transition-all duration-75 hover:translate-x-3 dark:bg-gray-900">
         <div className="flex flex-col items-center gap-3 p-2 sm:flex-row">
-          {post.featured && (
+          {post.featuredImage && (
             <Image
-              src={post.featured}
+              src={post.featuredImage}
               alt={post.title}
               width={450}
               height={300}
@@ -35,7 +28,7 @@ export default function PostCard({ url }: { url: string }) {
           )}
           <div className="flex flex-col gap-0">
             <p className="!mb-0 !text-xs text-slate-600">
-              {new Date(post.date).toLocaleDateString()}
+              {new Date(post.publishedAt).toLocaleDateString()}
             </p>
             <h2 className="mb-2 !text-lg font-medium">{post.title}</h2>
           </div>

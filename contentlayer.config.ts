@@ -4,35 +4,53 @@ import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
 
-export const Post = defineDocumentType(() => ({
-  name: "Post",
+/*
+Bare-minimum SEO schema.
+Only fields that actually control routing and SERP.
+Everything else lives in MDX.
+*/
+
+export const Page = defineDocumentType(() => ({
+  name: "Blog",
   filePathPattern: `**/*.{en,fr}.mdx`,
   contentType: "mdx",
+
   fields: {
-    title: { type: "string", required: true },
-    date: { type: "date", required: true },
-    _type: {
+    // Page classification
+    type: {
       type: "enum",
-      options: ["blog", "project", "resume", "resume.defi", "me.defi"],
-      required: false,
+      options: ["page", "blog", "service", "case-study"],
+      required: true,
     },
-    snippet: { type: "string", required: false },
-    featured: { type: "string", required: false },
-    technologies: { type: "list", of: { type: "string" }, required: false },
+
+    // Publishing
+    publishedAt: { type: "date", required: true },
+
+    // SEO
+    title: { type: "string", required: true }, // H1
+    metaTitle: { type: "string", required: true }, // <title>
+    metaDescription: { type: "string", required: true }, // SERP
+    tags: { type: "list", of: { type: "string" }, required: false },
+    featuredImage: { type: "string", required: false },
+
+    // Indexing control
+    canonical: { type: "string", required: false },
+    noindex: { type: "boolean", required: false },
   },
+
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/${post._raw.flattenedPath}`,
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
     },
   },
 }));
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post],
+  documentTypes: [Page],
   mdx: {
-    rehypePlugins: [rehypeSlug],
     remarkPlugins: [remarkDirective, remarkGfm, remarkCaption],
+    rehypePlugins: [rehypeSlug],
   },
 });

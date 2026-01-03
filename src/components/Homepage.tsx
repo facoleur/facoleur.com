@@ -17,10 +17,10 @@ export const Problems = () => {
             alt={item.pain ?? `item-${idx}`}
             className="mb-3 bg-slate-200/60"
           />
-          <h3 className="mb-2 text-left text-lg font-semibold text-slate-900 dark:text-slate-200/60">
+          <h3 className="mb-2 pr-2 text-left text-lg font-semibold text-slate-900 dark:text-slate-200/60">
             {item.pain}
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300">
+          <p className="pr-2 text-sm text-slate-600 dark:text-slate-300">
             {item.solution}
           </p>
         </div>
@@ -35,7 +35,7 @@ export const Features = () => {
 
   return (
     <div className="space-y-1">
-      <div className="grid grid-cols-2 gap-1">
+      <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
         <div className="flex flex-col gap-2 bg-slate-200/60">
           <div className="p-4 pb-0">
             <h3 className="text-lg font-semibold">{items[0].pain}</h3>
@@ -46,7 +46,7 @@ export const Features = () => {
             height={500}
             src="/homepage/offer.png"
             alt=""
-            className="px-32 pb-8"
+            className="px-10 pb-8 md:px-32"
           />
         </div>
 
@@ -60,12 +60,12 @@ export const Features = () => {
             height={500}
             src="/homepage/stripe.png"
             alt=""
-            className="px-16 py-12"
+            className="px-10 py-8 md:px-16 md:py-12"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-1">
+      <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
         <div className="p- flex flex-col justify-between bg-slate-200/60">
           <div className="p-4 pb-0">
             <h3 className="text-lg font-semibold">{items[3].pain}</h3>
@@ -82,7 +82,7 @@ export const Features = () => {
             height={300}
             src="/homepage/avis.png"
             alt=""
-            className="px-32 py-8"
+            className="px-10 py-8 md:px-32"
           />
         </div>
       </div>
@@ -94,10 +94,10 @@ export const Projects = () => {
   const t = useTranslations();
 
   return (
-    <div className="flex h-48 flex-row gap-1 bg-slate-200/60 p-6">
-      <div className="group relative top-[-70px] overflow-visible">
+    <div className="flex flex-col gap-4 bg-slate-200/60 p-6 md:h-48 md:flex-row">
+      <div className="group invisible relative overflow-visible md:visible md:top-[-70px]">
         {/* images layer */}
-        <div className="pointer-events-none absolute z-10 h-[220px] w-[320px]">
+        <div className="pointer-events-none absolute z-10 h-[220px] w-[320px] md:h-[220px] md:w-[320px]">
           <div className="relative h-full w-full">
             <Image
               width={400}
@@ -138,7 +138,7 @@ export const Projects = () => {
         </div>
       </div>
 
-      <div className="ml-4 flex h-full flex-col justify-end">
+      <div className="ml-0 flex h-full flex-col justify-end md:ml-4">
         <h2 className="!mb-0">{t("homepage.completed.title")}</h2>
         <p>{t("homepage.completed.subtitle")}</p>
       </div>

@@ -1,5 +1,5 @@
 import { Article } from "@/components/Article";
-import { allPosts, Post } from "contentlayer/generated";
+import { allBlogs, Blog } from "contentlayer/generated";
 import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -14,12 +14,12 @@ export const Page = async ({
 
   console.log(locale);
 
-  const post = allPosts.find((post) => {
+  const post = allBlogs.find((post) => {
     const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, "");
     const contentSlug = fileName.replace(`.${locale}`, "");
 
     return contentSlug === slug;
-  }) as Post;
+  }) as Blog;
 
   if (!post) {
     return notFound();
@@ -29,7 +29,7 @@ export const Page = async ({
 };
 
 export async function generateStaticParams() {
-  const slugs = allPosts.map((post) => {
+  const slugs = allBlogs.map((post) => {
     const fileName = post._raw.sourceFileName.replace(/\.mdx?$/, ""); // e.g. why42.en
     return fileName.replace(/\.(en|fr)$/, ""); // strip locale
   });

@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { MobileMenu } from "@/components/MobileMenu";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -20,11 +22,11 @@ export const Navbar = () => {
   }, []);
 
   const nav: NavLink[] = [
-    { label: "Blog SEO", href: "/blog" },
+    { label: "Solutions", href: "#solutions" },
     { label: "Tarifs", href: "#pricing" },
-    { label: "À propos", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Ressources gratuites", href: "/blog" },
   ];
+  const mobileLinks: NavLink[] = [...nav, { label: "Audit SEO en 1 clic", href: "/free-audit" }];
 
   return (
     <header
@@ -35,12 +37,15 @@ export const Navbar = () => {
           : "backdrop-blur-0 border-transparent bg-transparent",
       ].join(" ")}
     >
-      <nav className="flex justify-between p-4">
-        <Link href="/" className="p-2 text-sm font-medium">
-          Luca Ferro
+      <nav className="flex items-center justify-between gap-3 p-4">
+        <Link
+          href="/"
+          className="p-2 text-sm font-medium transition-transform duration-75 hover:-translate-y-2"
+        >
+          Facoleur
         </Link>
 
-        <div className="flex gap-2">
+        <div className="hidden items-center gap-2 md:flex">
           {nav.map(({ label, href, external }) => (
             <Link
               key={label}
@@ -48,11 +53,24 @@ export const Navbar = () => {
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="p-2 text-sm"
+              className="p-2 text-sm transition-transform duration-75 hover:-translate-y-2"
             >
               {label}
             </Link>
           ))}
+        </div>
+
+        <div className="hidden md:block">
+          <Link href="/free-audit">
+            <Button>Audit SEO en 1 clic</Button>
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <Link href="/free-audit">
+            <Button size="sm">Audit</Button>
+          </Link>
+          <MobileMenu links={mobileLinks} />
         </div>
       </nav>
     </header>

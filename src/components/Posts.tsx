@@ -1,11 +1,9 @@
-import { Post } from "contentlayer/generated";
+import { Blog } from "contentlayer/generated";
 import { getLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-export const GridPosts = async ({ publications }: { publications: Post[] }) => {
-  const locale = await getLocale();
-
+export const GridPosts = async ({ publications }: { publications: Blog[] }) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -15,10 +13,10 @@ export const GridPosts = async ({ publications }: { publications: Post[] }) => {
             href={post.url.slice(0, -3)}
             className="group relative flex h-fit flex-col items-start gap-1 rounded-lg transition-all duration-75 hover:translate-y-[-3px] hover:bg-white dark:hover:bg-gray-900"
           >
-            {post.featured && (
+            {post.featuredImage && (
               <div className="relative w-full">
                 <Image
-                  src={post.featured}
+                  src={post.featuredImage}
                   alt={post.title}
                   width={400}
                   height={400}
@@ -38,9 +36,10 @@ export const GridPosts = async ({ publications }: { publications: Post[] }) => {
   );
 };
 
-export const Posts = async ({ publications }: { publications: Post[] }) => {
+export const Posts = async ({ publications }: { publications: Blog[] }) => {
   const sortedPosts = [...publications].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 
   const locale = await getLocale();
@@ -54,9 +53,9 @@ export const Posts = async ({ publications }: { publications: Post[] }) => {
             href={post.url.slice(0, -3)}
             className="light:hover:bg-white ml-[calc(var(--spacing)*-2)] flex h-fit flex-col items-start gap-1 rounded-lg p-2 transition-all duration-75 hover:translate-x-3 hover:bg-white sm:flex-row sm:items-center sm:gap-4 dark:hover:bg-gray-900"
           >
-            {post.featured && (
+            {post.featuredImage && (
               <Image
-                src={post.featured}
+                src={post.featuredImage}
                 alt={post.title}
                 width={200}
                 height={200}
@@ -65,14 +64,14 @@ export const Posts = async ({ publications }: { publications: Post[] }) => {
             )}
             <div>
               <p className="mt-1 !mb-1 !text-slate-600">
-                {new Date(post.date).toLocaleDateString(locale, {
+                {new Date(post.publishedAt).toLocaleDateString(locale, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </p>
               <h4 className="!mb-1.5">{post.title}</h4>
-              <p>{post.snippet}</p>
+              <p>{post.metaDescription}</p>
             </div>
           </Link>
         ))}

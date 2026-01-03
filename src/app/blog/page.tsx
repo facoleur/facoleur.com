@@ -1,27 +1,46 @@
-import { ContentWithFilters } from "@/app/work/page";
-import { allPosts } from "contentlayer/generated";
+import Filters from "@/components/Filters";
+import { Posts } from "@/components/Posts";
+import { allBlogs } from "contentlayer/generated";
+import { useTranslations } from "next-intl";
 
-export default async function BlogPage({
+export default async function Page({
   searchParams,
 }: {
   searchParams: { tech?: string };
 }) {
-  const projects = allPosts.filter((post) => post._type === "blog");
+  const projects = allBlogs;
   const tech = searchParams.tech;
 
   return <ContentWithFilters projects={projects} tech={tech} />;
 }
 
-// export default function BlogPage() {
-//   const blogPosts = allPosts.filter((post) => post._type === "blog");
+export function ContentWithFilters({
+  projects,
+  tech,
+}: {
+  projects: typeof allBlogs;
+  tech?: string;
+}) {
+  const t = useTranslations("filters");
 
-//   const locale = useLocale();
+  const allTags = Array.from(
+    new Set(projects.flatMap((post) => post.tags || [])),
+  );
 
-//   const localeBlogPosts = blogPosts.filter((post) => post.url.endsWith(locale));
+  const filteredProjects = tech
+    ? projects.filter((post) => post.tags?.includes(tech))
+    : projects;
 
-//   return (
-//     <main className="prose mx-auto w-full max-w-2xl">
-//       <Posts publications={localeBlogPosts} />
-//     </main>
-//   );
-// }
+  return (
+    <main className="prose mx-auto grid w-full grid-cols-1 lg:grid-cols-[1fr_2fr_1fr]">
+      <div className="sticky top-0 left-0 bg-slate-100 pt-4 lg:h-screen dark:bg-gray-950">
+        <Filters
+          allMsg={t("all")}
+          allTechnologies={allTags}
+          selectedTech={tech || null}
+        />
+      </div>
+      <Posts publications={filteredProjects} />
+    </main>
+  );
+}

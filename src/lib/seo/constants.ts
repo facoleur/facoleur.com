@@ -1,0 +1,57 @@
+import type { CheckCategory, CheckStatus } from "./types";
+
+export const STATUS_SCORE: Record<CheckStatus, number> = {
+  good: 100,
+  warning: 60,
+  critical: 20,
+};
+
+export const CHECK_WEIGHTS: Record<string, number> = {
+  html_h1_unique: 2,
+  html_heading_hierarchy: 2,
+  html_title_length: 3,
+  html_meta_description: 3,
+  index_robots_meta: 4,
+  index_canonical: 5,
+  index_robots_txt: 4,
+  index_sitemap: 3,
+  content_main_text: 3,
+  content_min_length: 3,
+  content_duplication: 3,
+  content_readability: 2,
+  structured_presence: 2,
+  structured_validity: 2,
+  social_open_graph: 2,
+  social_twitter_cards: 1,
+  social_share_image: 2,
+  images_alt: 3,
+  images_weight: 3,
+  images_lazy: 2,
+  performance_html_size: 3,
+  performance_script_count: 3,
+  performance_viewport: 3,
+  performance_https: 5,
+  accessibility_lang: 2,
+  accessibility_contrast_notice: 1,
+  accessibility_keyboard_nav: 2,
+  links_internal: 3,
+  links_external: 3,
+  international_hreflang: 2,
+  technical_url_readable: 2,
+  technical_doctype: 2,
+  technical_encoding: 2,
+};
+
+export const CATEGORY_ORDER: CheckCategory[] = [
+  "HTML & balises",
+  "Indexation",
+  "Contenu",
+  "Données structurées",
+  "Social",
+  "Images",
+  "Performance",
+  "Accessibilité",
+  "Liens",
+  "International",
+  "Technique",
+];
