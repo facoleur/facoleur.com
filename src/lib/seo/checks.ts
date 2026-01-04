@@ -1,14 +1,6 @@
 import type { CheerioAPI } from "cheerio";
-import {
-  CHECK_WEIGHTS,
-  STATUS_SCORE,
-  CATEGORY_ORDER,
-} from "./constants";
-import type {
-  AuditCheck,
-  AuditContext,
-  CheckStatus,
-} from "./types";
+import { CATEGORY_ORDER, CHECK_WEIGHTS, STATUS_SCORE } from "./constants";
+import type { AuditCheck, AuditContext, CheckStatus } from "./types";
 import {
   averageSentenceLength,
   fetchWithTimeout,
@@ -18,7 +10,8 @@ import {
   toAbsoluteUrl,
 } from "./utils";
 
-const clampScore = (value: number) => Math.max(0, Math.min(100, Math.round(value)));
+const clampScore = (value: number) =>
+  Math.max(0, Math.min(100, Math.round(value)));
 
 const makeCheck = (
   input: Omit<AuditCheck, "score"> & { score?: number },
@@ -341,7 +334,8 @@ export async function runChecks(
   const imageWeight = await estimateImageWeight($, normalizedUrl);
   const scriptWeight = await estimateScriptWeight($, normalizedUrl);
   const externalHealth = await checkExternalLinksHealth(linkSets.external);
-  sampledRequests += imageWeight.sampled + scriptWeight.sampled + externalHealth.sampled;
+  sampledRequests +=
+    imageWeight.sampled + scriptWeight.sampled + externalHealth.sampled;
 
   // HTML & BALISES
   checks.push(
@@ -349,8 +343,7 @@ export async function runChecks(
       id: "html_h1_unique",
       category: "HTML & balises",
       label: "H1 unique",
-      status:
-        h1Count === 1 ? "good" : h1Count === 0 ? "critical" : "warning",
+      status: h1Count === 1 ? "good" : h1Count === 0 ? "critical" : "warning",
       score: h1Count === 1 ? 100 : h1Count === 0 ? 0 : 55,
       explanation:
         h1Count === 1
@@ -397,12 +390,7 @@ export async function runChecks(
       category: "HTML & balises",
       label: "Title 50–60 caractères",
       status: titleStatus,
-      score:
-        titleStatus === "good"
-          ? 100
-          : titleStatus === "warning"
-            ? 65
-            : 25,
+      score: titleStatus === "good" ? 100 : titleStatus === "warning" ? 65 : 25,
       explanation:
         titleLength === 0
           ? "Aucune balise <title> détectée."
@@ -457,11 +445,7 @@ export async function runChecks(
       label: "Meta robots index/follow",
       status: robotsStatus as CheckStatus,
       score:
-        robotsStatus === "good"
-          ? 100
-          : robotsStatus === "warning"
-            ? 55
-            : 0,
+        robotsStatus === "good" ? 100 : robotsStatus === "warning" ? 55 : 0,
       explanation:
         robotsStatus === "good"
           ? `Meta robots: ${robotsMeta || "index,follow"}.`
@@ -476,31 +460,19 @@ export async function runChecks(
   const canonicalResolved = canonicalHref
     ? toAbsoluteUrl(canonicalHref, normalizedUrl)
     : null;
-  let canonicalStatus: CheckStatus = "warning";
-  if (!canonicalResolved) {
-    canonicalStatus = "warning";
-  } else if (compareUrls(canonicalResolved, normalizedUrl)) {
-    canonicalStatus = "good";
-  } else {
-    canonicalStatus = "critical";
-  }
+  const canonicalStatus: CheckStatus = canonicalResolved ? "good" : "warning";
   checks.push(
     makeCheck({
       id: "index_canonical",
       category: "Indexation",
-      label: "Canonical auto-référent",
+      label: "Canonical présent",
       status: canonicalStatus,
-      score:
-        canonicalStatus === "good"
-          ? 100
-          : canonicalStatus === "warning"
-            ? 60
-            : 25,
+      score: canonicalStatus === "good" ? 100 : 60,
       explanation: canonicalResolved
-        ? `Canonical détectée: ${canonicalResolved}`
-        : "Aucune balise canonical détectée.",
+        ? `Canonical valide: ${canonicalResolved}`
+        : "Aucune canonical valide détectée.",
       howToFix:
-        "Ajouter <link rel=\"canonical\" href=\"URL propre\">. Aligner la canonical sur l’URL finale sans paramètres.",
+        'Ajouter <link rel="canonical" href="URL finale"> avec une URL absolue et cohérente.',
     }),
   );
 
@@ -578,11 +550,7 @@ export async function runChecks(
       label: "Longueur minimale",
       status: lengthStatus,
       score:
-        lengthStatus === "good"
-          ? 100
-          : lengthStatus === "warning"
-            ? 65
-            : 30,
+        lengthStatus === "good" ? 100 : lengthStatus === "warning" ? 65 : 30,
       explanation: `${mainWords} mots trouvés. Une page info devrait viser 500+ mots pertinents.`,
       howToFix:
         "Enrichir le contenu avec des sections supplémentaires (FAQ, preuves, données) sans bourrage de mots-clés.",
@@ -590,11 +558,7 @@ export async function runChecks(
   );
 
   const readabilityStatus =
-    avgSentence <= 20
-      ? "good"
-      : avgSentence <= 25
-        ? "warning"
-        : "critical";
+    avgSentence <= 20 ? "good" : avgSentence <= 25 ? "warning" : "critical";
   checks.push(
     makeCheck({
       id: "content_readability",
@@ -627,7 +591,7 @@ export async function runChecks(
         ? `${jsonLdScripts.length} bloc(s) JSON-LD détecté(s).`
         : "Aucun JSON-LD Schema.org détecté.",
       howToFix:
-        "Ajouter un script type=\"application/ld+json\" avec le schéma adapté (Article, Product, Organization...).",
+        'Ajouter un script type="application/ld+json" avec le schéma adapté (Article, Product, Organization...).',
     }),
   );
 
@@ -672,7 +636,11 @@ export async function runChecks(
   // SOCIAL
   const hasOg =
     !!ogTags.title && !!ogTags.desc && !!ogTags.image && !!ogTags.url;
-  const ogStatus = hasOg ? "good" : ogTags.title || ogTags.desc ? "warning" : "critical";
+  const ogStatus = hasOg
+    ? "good"
+    : ogTags.title || ogTags.desc
+      ? "warning"
+      : "critical";
   checks.push(
     makeCheck({
       id: "social_open_graph",
@@ -700,11 +668,7 @@ export async function runChecks(
       label: "Twitter Cards",
       status: twitterStatus as CheckStatus,
       score:
-        twitterStatus === "good"
-          ? 95
-          : twitterStatus === "warning"
-            ? 55
-            : 25,
+        twitterStatus === "good" ? 95 : twitterStatus === "warning" ? 55 : 25,
       explanation: twitterTags.card
         ? `twitter:card=${twitterTags.card ?? "absent"}`
         : "Aucune meta Twitter détectée.",
@@ -713,9 +677,7 @@ export async function runChecks(
     }),
   );
 
-  const shareImageCheck = checkShareImageUrl(
-    ogTags.image || twitterTags.image,
-  );
+  const shareImageCheck = checkShareImageUrl(ogTags.image || twitterTags.image);
   checks.push(
     makeCheck({
       id: "social_share_image",
@@ -746,12 +708,7 @@ export async function runChecks(
       category: "Images",
       label: "Attribut alt",
       status: altStatus,
-      score:
-        altStatus === "good"
-          ? 100
-          : altStatus === "warning"
-            ? 60
-            : 25,
+      score: altStatus === "good" ? 100 : altStatus === "warning" ? 60 : 25,
       explanation: `${imagesWithAlt}/${imageCount || 0} images avec alt.`,
       howToFix:
         "Ajouter un alt descriptif sur chaque image décorative ou informative. Éviter le bourrage de mots-clés.",
@@ -793,24 +750,15 @@ export async function runChecks(
       category: "Images",
       label: "Lazy loading",
       status: lazyStatus,
-      score:
-        lazyStatus === "good"
-          ? 90
-          : lazyStatus === "warning"
-            ? 60
-            : 30,
+      score: lazyStatus === "good" ? 90 : lazyStatus === "warning" ? 60 : 30,
       explanation: `${lazyImages}/${imageCount || 0} images en lazy-loading.`,
       howToFix:
-        "Ajouter loading=\"lazy\" sur les images non critiques et utiliser l’attribut decoding=\"async\".",
+        'Ajouter loading="lazy" sur les images non critiques et utiliser l’attribut decoding="async".',
     }),
   );
 
   // PERFORMANCE
-  const htmlSizeStatus = statusFromThresholds(
-    htmlBytes,
-    200_000,
-    300_000,
-  );
+  const htmlSizeStatus = statusFromThresholds(htmlBytes, 200_000, 300_000);
   checks.push(
     makeCheck({
       id: "performance_html_size",
@@ -818,11 +766,7 @@ export async function runChecks(
       label: "Taille HTML",
       status: htmlSizeStatus,
       score:
-        htmlSizeStatus === "good"
-          ? 95
-          : htmlSizeStatus === "warning"
-            ? 60
-            : 25,
+        htmlSizeStatus === "good" ? 95 : htmlSizeStatus === "warning" ? 60 : 25,
       explanation: `Taille HTML: ${(htmlBytes / 1024).toFixed(0)} Ko.`,
       howToFix:
         "Réduire le HTML (nettoyage des inlines, minification) et différer les scripts non critiques.",
@@ -887,9 +831,7 @@ export async function runChecks(
       label: "HTTPS actif",
       status: isHttps ? "good" : "critical",
       score: isHttps ? 100 : 0,
-      explanation: isHttps
-        ? "Page servie en HTTPS."
-        : "URL fournie en HTTP.",
+      explanation: isHttps ? "Page servie en HTTPS." : "URL fournie en HTTP.",
       howToFix:
         "Forcer le HTTPS (301), corriger les liens mixtes et configurer HSTS.",
     }),
@@ -929,10 +871,12 @@ export async function runChecks(
   const focusable = $(
     "a[href], button, input, select, textarea, [tabindex]:not([tabindex='-1'])",
   ).length;
-  const hasSkipLink = $("a[href^='#']").toArray().some((node) => {
-    const text = $(node).text().toLowerCase();
-    return text.includes("skip") || text.includes("passer");
-  });
+  const hasSkipLink = $("a[href^='#']")
+    .toArray()
+    .some((node) => {
+      const text = $(node).text().toLowerCase();
+      return text.includes("skip") || text.includes("passer");
+    });
   const keyboardStatus =
     hasSkipLink || focusable > 10
       ? "good"
@@ -946,11 +890,7 @@ export async function runChecks(
       label: "Navigation clavier",
       status: keyboardStatus,
       score:
-        keyboardStatus === "good"
-          ? 95
-          : keyboardStatus === "warning"
-            ? 60
-            : 25,
+        keyboardStatus === "good" ? 95 : keyboardStatus === "warning" ? 60 : 25,
       explanation: hasSkipLink
         ? "Lien d’évitement détecté."
         : focusable
@@ -1005,11 +945,7 @@ export async function runChecks(
       label: "Liens externes",
       status: externalStatus,
       score:
-        externalStatus === "good"
-          ? 95
-          : externalStatus === "warning"
-            ? 60
-            : 25,
+        externalStatus === "good" ? 95 : externalStatus === "warning" ? 60 : 25,
       explanation:
         externalHealth.sampled === 0
           ? "Pas de liens externes échantillonnés."
