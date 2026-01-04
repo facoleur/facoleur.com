@@ -1,3 +1,4 @@
+import { FaqAccordion } from "@/components/FaqAccordion";
 import { Features, Problems, Projects } from "@/components/Homepage";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
@@ -6,10 +7,18 @@ import Link from "next/link";
 
 export default function Home() {
   const t = useTranslations();
+  const essentialsRaw = t.raw("homepage.essentials.items");
+  const essentials = Array.isArray(essentialsRaw)
+    ? (essentialsRaw as { src: string; title: string; desc: string }[])
+    : [];
+  const faqItemsRaw = t.raw("homepage.faq.items");
+  const faqItems = Array.isArray(faqItemsRaw)
+    ? (faqItemsRaw as { question: string; answer: string }[])
+    : [];
 
   return (
     <div className="prose mx-auto grid w-full grid-cols-1 bg-repeat py-6 md:px-4">
-      <div className="space-y-24">
+      <div className="space-y-36">
         <section className="flex flex-col items-center gap-2 text-center">
           <span className="w-fit p-1 px-3 font-medium text-slate-600">
             {t("homepage.hero.agency")}
@@ -49,6 +58,29 @@ export default function Home() {
         <section>
           <h2 className="!mb-12 !text-4xl">{t("homepage.problems.title")}</h2>
           <Problems />
+        </section>
+
+        <section>
+          <h2 className="!mb-12 !text-4xl">
+            {t("homepage.essentials.title", {
+              year: String(new Date().getFullYear()),
+            })}
+          </h2>
+          <div className="grid gap-1 md:grid-cols-3">
+            {essentials.map((item, i) => (
+              <div key={i} className="flex flex-col gap-3 bg-slate-200/60 p-6">
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  width={320}
+                  height={200}
+                  className="w-12 max-w-xs object-contain py-4"
+                />
+                <h3 className="!m-0 !text-xl font-semibold">{item.title}</h3>
+                <p className="!m-0 text-sm text-slate-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section id="solutions">
@@ -137,25 +169,11 @@ export default function Home() {
 
         <Projects />
 
-        <section className="flex flex-col gap-2 md:flex-row">
-          <h2 className="!mb-12 w-full !text-4xl md:w-1/3">
+        <section className="flex flex-col gap-2 md:flex-row md:items-start">
+          <h2 className="md:sticky  top-24 !mb-12 w-full !text-4xl md:w-1/3 md:self-start">
             {t("homepage.faq.title")}
           </h2>
-          <div className="flex w-full flex-col gap-1 md:w-2/3">
-            {t
-              .raw("homepage.faq.items")
-              .map(
-                (item: { question: string; answer: string }, index: number) => (
-                  <div
-                    key={index}
-                    className="flex flex-col gap-2 bg-slate-200/60 p-4"
-                  >
-                    <h3 className="!m-0 !p-0">{item.question}</h3>
-                    <p className="!m-0 !p-0">{item.answer}</p>
-                  </div>
-                ),
-              )}
-          </div>
+          <FaqAccordion items={faqItems} />
         </section>
 
         <CallBanner />
@@ -171,7 +189,9 @@ export const CallBanner = () => {
     <section className="bg-slate-200/60 bg-[url('/homepage/bg.png')] bg-[length:150%_auto] px-4 py-12 text-center">
       <h2 className="!text-4xl">{t("homepage.cta.title")}</h2>
       <p className="!text-lg">{t("homepage.cta.subtitle")}</p>
-      <Button>{t("homepage.cta.button")}</Button>
+      <a href="https://app.cal.eu/facoleur/strategie30">
+        <Button>{t("homepage.cta.button")}</Button>
+      </a>
     </section>
   );
 };

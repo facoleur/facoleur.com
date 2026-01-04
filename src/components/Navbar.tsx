@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { MobileMenu } from "@/components/MobileMenu";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,11 +22,14 @@ export const Navbar = () => {
   }, []);
 
   const nav: NavLink[] = [
-    { label: "Solutions", href: "#solutions" },
-    { label: "Tarifs", href: "#pricing" },
+    { label: "Solutions", href: "/#solutions" },
+    { label: "Tarifs", href: "/#pricing" },
     { label: "Ressources gratuites", href: "/blog" },
   ];
-  const mobileLinks: NavLink[] = [...nav, { label: "Audit SEO en 1 clic", href: "/free-audit" }];
+  const mobileLinks: NavLink[] = [
+    ...nav,
+    { label: "Audit SEO en 1 clic", href: "/free-audit" },
+  ];
 
   return (
     <header
@@ -40,7 +43,7 @@ export const Navbar = () => {
       <nav className="flex items-center justify-between gap-3 p-4">
         <Link
           href="/"
-          className="p-2 text-sm font-medium transition-transform duration-75 hover:-translate-y-2"
+          className="p-2 text-sm font-medium transition-transform duration-75 hover:-translate-y-1"
         >
           Facoleur
         </Link>
@@ -53,7 +56,7 @@ export const Navbar = () => {
               {...(external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="p-2 text-sm transition-transform duration-75 hover:-translate-y-2"
+              className="p-2 text-sm text-slate-600 transition-transform duration-75 hover:-translate-y-1"
             >
               {label}
             </Link>

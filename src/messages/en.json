@@ -45,11 +45,11 @@
   },
 
   "404": {
-    "title": "Cette page n’existe pas, mais peut-être qu’elle est là pour te rappeler quelque chose.",
+    "title": "Cette page n'existe pas, mais peut-être qu'elle est là pour te rappeler quelque chose.",
     "texts": [
       {
         "heading": "Passe plus de temps dehors.",
-        "desc": "Que ce soit pour t’entraîner, faire un pique-nique entre amis ou simplement marcher pour t’aérer l’esprit. L’air frais réinitialise le mental et apporte une nouvelle énergie."
+        "desc": "Que ce soit pour t'entraîner, faire un pique-nique entre amis ou simplement marcher pour t'aérer l'esprit. L'air frais réinitialise le mental et apporte une nouvelle énergie."
       },
       {
         "heading": "Concentre-toi sur une seule chose et fais-la avec intention.",
@@ -57,7 +57,7 @@
       },
       {
         "heading": "Le bonheur est un choix.",
-        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu’il y a de juste. Chaque détour peut mener à quelque chose d’inattendu et de valable."
+        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu'il y a de juste. Chaque détour peut mener à quelque chose d'inattendu et de valable."
       }
     ]
   },
@@ -72,122 +72,141 @@
 
   "homepage": {
     "hero": {
-      "agency": "Agence CRO et SEO pour PME en Suisse",
+      "agency": "Agence CRO et SEO dédiée aux PME en Suisse",
       "croTooltip": "Optimisation du taux de conversion",
       "seoTooltip": "Optimisation pour les moteurs de recherche",
-      "title": "Améliorez votre classement dans Google, soyez cité par ChatGPT et augmentez vos ventes.",
-      "subtitle": "Nos clients dominent les recherches Google et apparaissent dans les réponses de ChatGPT, Gemini, Claude et Perplexity. Renforcez la confiance et attirez des clients grâce à votre site web.",
+      "title": "Gagnez des positions sur Google, soyez référencé par ChatGPT et augmentez vos revenus.",
+      "subtitle": "Nos clients occupent les premières places sur Google et sont repris dans les réponses de ChatGPT, Gemini, Claude et Perplexity. Votre site inspire confiance et génère des clients de manière durable.",
       "cta": {
-        "audit": "Obtenir un audit SEO",
-        "call": "Réserver un appel"
+        "audit": "Demander un audit SEO",
+        "call": "Planifier un appel"
       }
     },
     "logos": {
-      "title": "Des clients leaders dans leur domaine"
+      "title": "Des entreprises reconnues dans leur secteur"
     },
     "problems": {
-      "title": "Les coûts invisibles d’un site mal optimisé",
+      "title": "Ce que coûte réellement un site mal optimisé",
       "items": [
         {
-          "pain": "Les prospects quittent sans convertir",
-          "solution": "Un site lent, mal structuré ou mal positionné en SEO fait chuter le taux de conversion et transforme votre trafic en visiteurs perdus.",
+          "pain": "Les visiteurs partent sans agir",
+          "solution": "Un site lent, confus ou mal référencé réduit fortement la conversion et transforme le trafic en opportunités perdues.",
           "img": "leads.png"
         },
         {
-          "pain": "Du temps perdu sur des actions inefficaces",
-          "solution": "Un site sans stratégie SEO et CRO exige des corrections constantes, détourne votre attention et ne soutient pas vos objectifs business.",
+          "pain": "Du temps investi sans résultats",
+          "solution": "Sans stratégie SEO et CRO claire, le site nécessite des ajustements permanents et ne soutient pas la croissance commerciale.",
           "img": "time.png"
         },
         {
-          "pain": "Invisible face à des concurrents mieux optimisés",
-          "solution": "Sans différenciation claire, sans contenus optimisés et sans parcours utilisateur efficace, votre site reste noyé dans les résultats de recherche.",
+          "pain": "Absence de visibilité face à des concurrents mieux positionnés",
+          "solution": "Sans différenciation, sans contenus pertinents et sans parcours efficaces, le site reste enfoui dans les résultats de recherche.",
           "img": "poor.png"
         }
       ]
     },
-    "features": {
-      "title": "Les bénéfices d’un site conçu pour être compris, trouvé et convertir",
+    "essentials": {
+      "title": "Qu'est-ce qui fait vraiment une stratégie web efficace en {year} ?",
       "items": [
         {
-          "pain": "Une compréhension immédiate de votre offre",
-          "solution": "Votre activité et ce que vous vendez sont compris en moins de deux secondes grâce à un message clair et un positionnement précis."
+          "src": "/homepage/web.png",
+          "title": "Message clair et design utile",
+          "desc": "Un message simple, une proposition de valeur compréhensible immédiatement et un design qui guide l'utilisateur vers l'essentiel."
         },
         {
-          "pain": "Une crédibilité renforcée",
-          "solution": "Une image premium soutenue par des preuves sociales et des cas clients."
+          "src": "/homepage/seo.png",
+          "title": "Être visible pour les bonnes recherches",
+          "desc": "Un site techniquement propre et des contenus pensés pour répondre aux recherches réelles de vos clients et à leurs besoins business."
         },
         {
-          "pain": "Des parcours utilisateurs pensés pour convertir",
-          "solution": "Des user flows stratégiques conçus pour guider l’utilisateur et maximiser la conversion à chaque étape."
-        },
-        {
-          "pain": "Un retour sur investissement mesurable",
-          "solution": "Générez des leads, des ventes et des opportunités avec des décisions orientées performance et résultats concrets."
+          "src": "/homepage/cro.png",
+          "title": "Améliorer en continu ce qui convertit",
+          "desc": "Mesurer ce qui fonctionne, tester des variantes, suivre quelques indicateurs clés et ajuster régulièrement pour générer plus de résultats."
         }
       ]
     },
-
-    "process": {
-      "title": "Comment nous transformons le trafic en leads qualifiés",
+    "features": {
+      "title": "Les avantages d'un site pensé pour être compris, visible et performant",
       "items": [
         {
-          "title": "Appel de découverte",
-          "description": "Analyse de votre activité, de vos objectifs business, de vos cibles et de vos blocages SEO et CRO."
+          "pain": "Une proposition de valeur immédiatement lisible",
+          "solution": "Votre offre et votre positionnement sont compris en quelques secondes grâce à un message structuré et explicite."
         },
         {
-          "title": "Audit SEO & CRO actionnable",
-          "description": "Diagnostic complet du site, du trafic, des parcours utilisateurs, des conversions et de la concurrence."
+          "pain": "Une confiance accrue",
+          "solution": "Une image professionnelle renforcée par des preuves concrètes et des références clients."
         },
         {
-          "title": "Définition des KPIs SEO & CRO",
-          "description": "Définition des priorités, des leviers de croissance et des indicateurs de performance mesurables."
+          "pain": "Des parcours utilisateurs orientés conversion",
+          "solution": "Des chemins utilisateurs conçus pour guider chaque visiteur et maximiser l'impact à chaque interaction."
         },
         {
-          "title": "Optimisations techniques & conversion",
-          "description": "Amélioration de la performance, de la structure, de l’UX et des mécanismes de conversion du site."
+          "pain": "Un ROI clairement mesurable",
+          "solution": "Des leads et des ventes générés par des choix basés sur la donnée et la performance."
+        }
+      ]
+    },
+    "process": {
+      "title": "Notre méthode pour transformer le trafic en prospects qualifiés",
+      "items": [
+        {
+          "title": "Appel de cadrage",
+          "description": "Compréhension de votre activité, de vos objectifs, de vos cibles et des freins SEO et CRO existants."
         },
         {
-          "title": "Contenus SEO orientés business",
-          "description": "Création de contenus continue alignés sur l’intention de recherche et conçus pour générer des leads."
+          "title": "Audit SEO et CRO exploitable",
+          "description": "Analyse complète du site, du trafic, des parcours, des conversions et de l'environnement concurrentiel."
+        },
+        {
+          "title": "Définition des indicateurs SEO et CRO",
+          "description": "Priorisation des actions, identification des leviers de croissance et choix des indicateurs de suivi."
+        },
+        {
+          "title": "Optimisations techniques et conversion",
+          "description": "Amélioration de la performance, de la structure, de l'expérience utilisateur et des points de conversion."
+        },
+        {
+          "title": "Contenus SEO orientés résultats",
+          "description": "Production régulière de contenus alignés sur l'intention de recherche et pensés pour générer des leads."
         }
       ]
     },
     "cta": {
-      "title": "Parlons de votre croissance organique",
-      "subtitle": "Analyse rapide de vos opportunités SEO et de visibilité locale",
+      "title": "Discutons de votre croissance organique",
+      "subtitle": "Analyse ciblée de votre potentiel SEO et de votre visibilité locale",
       "button": "Réserver un appel"
     },
     "packages": {
-      "title": "Services et tarifs SEO & CRO",
+      "title": "Offres et tarifs SEO et CRO",
       "items": [
         {
-          "name": "Optimisation taux de conversion (CRO)",
-          "description": "Amélioration directe de la conversion, de la clarté et de l’efficacité commerciale du site",
+          "name": "Optimisation du taux de conversion (CRO)",
+          "description": "Amélioration immédiate de la conversion, de la lisibilité et de l'efficacité commerciale du site",
           "features": [
-            "- Analyse des parcours utilisateurs",
+            "- Analyse détaillée des parcours utilisateurs",
             "- Audit UX et clarté du message principal",
-            "- Vérification technique impactant la conversion",
-            "- Optimisation des CTA, formulaires et points de friction",
-            "- Simplification de la structure du site",
-            "- Optimisation mobile et performance perçue"
+            "- Vérifications techniques impactant la conversion",
+            "- Optimisation des CTA, formulaires et frictions",
+            "- Simplification de l'architecture du site",
+            "- Optimisation mobile et perception de performance"
           ],
           "price": "2'500 CHF",
           "par": ""
         },
         {
-          "name": "Croissance SEO",
-          "description": "Acquisition de trafic qualifié et visibilité organique durable",
+          "name": "Développement SEO",
+          "description": "Trafic qualifié et visibilité organique sur le long terme",
           "features": [
-            "- Analyse SEO existante du site",
-            "- Analyse stratégique concurrentielle sur les mots-clés",
+            "- Analyse SEO existante",
+            "- Analyse concurrentielle sur les requêtes stratégiques",
             "- Recherche et sélection de mots-clés",
-            "- Analyse des données Search Console (si disponible)",
-            "- Mise en place du suivi Search Console (si absent)",
-            "- Définition de la stratégie de contenu",
-            "- Optimisations SEO techniques et on-page",
-            "- Création de 4 contenus ou plus par mois",
+            "- Analyse des données Search Console si disponibles",
+            "- Mise en place du suivi Search Console si absent",
+            "- Construction de la stratégie de contenu",
+            "- Optimisations techniques et on-page",
+            "- Rédaction de 4 contenus ou plus par mois",
             "- SEO local ciblé Suisse romande",
-            "- Suivi et reporting des positions, du trafic et des conversions"
+            "- Suivi et reporting du trafic, des positions et des conversions"
           ],
           "price": "800 CHF",
           "par": "par mois"
@@ -198,54 +217,54 @@
       "title": "Questions fréquentes",
       "items": [
         {
-          "question": "Pourquoi une optimisation SEO et CRO continue",
-          "answer": "Le SEO amène le trafic, le CRO le transforme en leads. Sans optimisation continue du site, du message et des parcours, le trafic ne se convertit pas."
+          "question": "Pourquoi maintenir une optimisation SEO et CRO continue ?",
+          "answer": "Le SEO génère le trafic, le CRO le transforme en leads. Sans amélioration continue du site, du message et des parcours, la performance stagne."
         },
         {
-          "question": "Quand voir les premiers résultats",
-          "answer": "Les premiers résultats SEO apparaissent en général entre 8 et 12 semaines. Les améliorations CRO sur le site peuvent générer des gains plus rapides."
+          "question": "Quand apparaissent les premiers résultats ?",
+          "answer": "Les premiers effets SEO se constatent généralement entre 8 et 12 semaines. Les optimisations CRO peuvent produire des gains plus rapides."
         },
         {
-          "question": "Est-ce adapté à ma ville en Suisse",
-          "answer": "Le travail combine SEO local et optimisation du site pour cibler Lausanne, Genève, Fribourg et la Suisse romande."
+          "question": "Est-ce pertinent pour ma ville en Suisse ?",
+          "answer": "La stratégie combine SEO local et optimisation du site pour Lausanne, Genève, Fribourg et l'ensemble de la Suisse romande."
         },
         {
-          "question": "Faut-il déjà avoir du trafic pour travailler le SEO et le CRO",
-          "answer": "Non. Le SEO peut construire la visibilité, et le CRO structure le site pour convertir dès l’arrivée des premiers visiteurs."
+          "question": "Faut-il déjà du trafic pour travailler le SEO et le CRO ?",
+          "answer": "Non. Le SEO construit la visibilité et le CRO prépare le site à convertir dès les premiers visiteurs."
         },
         {
-          "question": "Que faire si mon site ne convertit pas",
-          "answer": "Les blocages sont identifiés puis corrigés directement sur le site : message, structure, pages clés, formulaires et parcours utilisateurs."
+          "question": "Que faire si le site ne convertit pas ?",
+          "answer": "Les freins sont identifiés puis corrigés directement sur le site, du message aux formulaires en passant par les parcours clés."
         },
         {
-          "question": "Intervenez-vous directement sur le site",
-          "answer": "Oui. Les optimisations SEO, CRO et techniques sont exécutées directement sur le site et dans le code si nécessaire."
+          "question": "Intervenez-vous directement sur le site ?",
+          "answer": "Oui. Les optimisations SEO, CRO et techniques sont appliquées directement sur le site et dans le code si nécessaire."
         },
         {
-          "question": "Comment se déroule la collaboration",
-          "answer": "Analyse du site et du business, stratégie SEO et CRO, optimisations techniques, améliorations du site, création de contenu et suivi."
+          "question": "Comment se déroule la collaboration ?",
+          "answer": "Analyse du site et du business, définition de la stratégie, optimisations SEO et CRO, création de contenu et suivi des performances."
         },
         {
-          "question": "C’est quoi l’AI search et le GEO",
-          "answer": "L’AI search regroupe les moteurs et assistants IA. Le GEO consiste à optimiser le site et le contenu pour être visible dans ces réponses."
+          "question": "Qu'est-ce que l'AI search et le GEO ?",
+          "answer": "L'AI search regroupe les moteurs et assistants basés sur l'IA. Le GEO vise à optimiser le site et le contenu pour apparaître dans leurs réponses."
         },
         {
-          "question": "Pourquoi l’AI search devient important",
-          "answer": "Les moteurs IA s’appuient sur des sites clairs, structurés et crédibles. Sans optimisation du site et du contenu, la visibilité diminue."
+          "question": "Pourquoi l'AI search devient stratégique ?",
+          "answer": "Les moteurs IA privilégient des sites structurés, clairs et crédibles. Sans optimisation, la visibilité recule."
         },
         {
-          "question": "Comment améliorer sa visibilité en AI search",
-          "answer": "Améliorer la visibilité en AI search revient à renforcer le SEO et le site : structure claire, contenu précis, réponses directes et parcours cohérents."
+          "question": "Comment renforcer sa présence en AI search ?",
+          "answer": "Cela passe par un SEO solide et un site cohérent, avec une structure lisible, des réponses précises et des parcours logiques."
         },
         {
-          "question": "Comment mesurez-vous les résultats",
-          "answer": "Les résultats sont mesurés via le trafic, les leads, les conversions et le comportement des utilisateurs sur le site."
+          "question": "Comment les résultats sont-ils mesurés ?",
+          "answer": "Le suivi s'appuie sur le trafic, les leads, les conversions et le comportement réel des utilisateurs."
         }
       ]
     },
     "completed": {
-      "title": "50+ projets complétés avec succès",
-      "subtitle": "Des résultats concrets pour des entreprises en Suisse romande"
+      "title": "Plus de 50 projets menés à terme",
+      "subtitle": "Des résultats tangibles pour des entreprises en Suisse romande"
     }
   }
 }

@@ -45,11 +45,11 @@
   },
 
   "404": {
-    "title": "Cette page n’existe pas, mais peut-être qu’elle est là pour te rappeler quelque chose.",
+    "title": "Cette page n'existe pas, mais peut-être qu'elle est là pour te rappeler quelque chose.",
     "texts": [
       {
         "heading": "Passe plus de temps dehors.",
-        "desc": "Que ce soit pour t’entraîner, faire un pique-nique entre amis ou simplement marcher pour t’aérer l’esprit. L’air frais réinitialise le mental et apporte une nouvelle énergie."
+        "desc": "Que ce soit pour t'entraîner, faire un pique-nique entre amis ou simplement marcher pour t'aérer l'esprit. L'air frais réinitialise le mental et apporte une nouvelle énergie."
       },
       {
         "heading": "Concentre-toi sur une seule chose et fais-la avec intention.",
@@ -57,7 +57,7 @@
       },
       {
         "heading": "Le bonheur est un choix.",
-        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu’il y a de juste. Chaque détour peut mener à quelque chose d’inattendu et de valable."
+        "desc": "Même quand les choses ne se passent pas comme prévu, comme tomber sur une page 404, il est toujours possible de respirer, de sourire et de voir ce qu'il y a de juste. Chaque détour peut mener à quelque chose d'inattendu et de valable."
       }
     ]
   },
@@ -105,8 +105,28 @@
         }
       ]
     },
+    "essentials": {
+      "title": "Qu'est-ce qui fait une stratégie web efficace en {year} ?",
+      "items": [
+        {
+          "src": "/homepage/web.png",
+          "title": "Message clair et design utile",
+          "desc": "Un message simple, une proposition de valeur compréhensible immédiatement et un design qui guide l'utilisateur vers l'essentiel."
+        },
+        {
+          "src": "/homepage/seo.png",
+          "title": "Être visible pour les bonnes recherches",
+          "desc": "Un site techniquement propre et des contenus pensés pour répondre aux recherches réelles de vos clients et à leurs besoins business."
+        },
+        {
+          "src": "/homepage/cro.png",
+          "title": "Améliorer en continu ce qui convertit",
+          "desc": "Mesurer ce qui fonctionne, tester des variantes, suivre quelques indicateurs clés et ajuster régulièrement pour générer plus de résultats."
+        }
+      ]
+    },
     "features": {
-      "title": "Les avantages d’un site pensé pour être compris, visible et performant",
+      "title": "Les avantages d'un site pensé pour être compris, visible et performant",
       "items": [
         {
           "pain": "Une proposition de valeur immédiatement lisible",
@@ -118,7 +138,7 @@
         },
         {
           "pain": "Des parcours utilisateurs orientés conversion",
-          "solution": "Des chemins utilisateurs conçus pour guider chaque visiteur et maximiser l’impact à chaque interaction."
+          "solution": "Des chemins utilisateurs conçus pour guider chaque visiteur et maximiser l'impact à chaque interaction."
         },
         {
           "pain": "Un ROI clairement mesurable",
@@ -135,7 +155,7 @@
         },
         {
           "title": "Audit SEO et CRO exploitable",
-          "description": "Analyse complète du site, du trafic, des parcours, des conversions et de l’environnement concurrentiel."
+          "description": "Analyse complète du site, du trafic, des parcours, des conversions et de l'environnement concurrentiel."
         },
         {
           "title": "Définition des indicateurs SEO et CRO",
@@ -143,11 +163,11 @@
         },
         {
           "title": "Optimisations techniques et conversion",
-          "description": "Amélioration de la performance, de la structure, de l’expérience utilisateur et des points de conversion."
+          "description": "Amélioration de la performance, de la structure, de l'expérience utilisateur et des points de conversion."
         },
         {
           "title": "Contenus SEO orientés résultats",
-          "description": "Production régulière de contenus alignés sur l’intention de recherche et pensés pour générer des leads."
+          "description": "Production régulière de contenus alignés sur l'intention de recherche et pensés pour générer des leads."
         }
       ]
     },
@@ -161,13 +181,13 @@
       "items": [
         {
           "name": "Optimisation du taux de conversion (CRO)",
-          "description": "Amélioration immédiate de la conversion, de la lisibilité et de l’efficacité commerciale du site",
+          "description": "Amélioration immédiate de la conversion, de la lisibilité et de l'efficacité commerciale du site",
           "features": [
             "- Analyse détaillée des parcours utilisateurs",
             "- Audit UX et clarté du message principal",
             "- Vérifications techniques impactant la conversion",
             "- Optimisation des CTA, formulaires et frictions",
-            "- Simplification de l’architecture du site",
+            "- Simplification de l'architecture du site",
             "- Optimisation mobile et perception de performance"
           ],
           "price": "2'500 CHF",
@@ -197,48 +217,48 @@
       "title": "Questions fréquentes",
       "items": [
         {
-          "question": "Pourquoi maintenir une optimisation SEO et CRO continue",
+          "question": "Pourquoi maintenir une optimisation SEO et CRO continue ?",
           "answer": "Le SEO génère le trafic, le CRO le transforme en leads. Sans amélioration continue du site, du message et des parcours, la performance stagne."
         },
         {
-          "question": "Quand apparaissent les premiers résultats",
+          "question": "Quand apparaissent les premiers résultats ?",
           "answer": "Les premiers effets SEO se constatent généralement entre 8 et 12 semaines. Les optimisations CRO peuvent produire des gains plus rapides."
         },
         {
-          "question": "Est-ce pertinent pour ma ville en Suisse",
-          "answer": "La stratégie combine SEO local et optimisation du site pour Lausanne, Genève, Fribourg et l’ensemble de la Suisse romande."
+          "question": "Est-ce pertinent pour ma ville en Suisse ?",
+          "answer": "La stratégie combine SEO local et optimisation du site pour Lausanne, Genève, Fribourg et l'ensemble de la Suisse romande."
         },
         {
-          "question": "Faut-il déjà du trafic pour travailler le SEO et le CRO",
+          "question": "Faut-il déjà du trafic pour travailler le SEO et le CRO ?",
           "answer": "Non. Le SEO construit la visibilité et le CRO prépare le site à convertir dès les premiers visiteurs."
         },
         {
-          "question": "Que faire si le site ne convertit pas",
+          "question": "Que faire si le site ne convertit pas ?",
           "answer": "Les freins sont identifiés puis corrigés directement sur le site, du message aux formulaires en passant par les parcours clés."
         },
         {
-          "question": "Intervenez-vous directement sur le site",
+          "question": "Intervenez-vous directement sur le site ?",
           "answer": "Oui. Les optimisations SEO, CRO et techniques sont appliquées directement sur le site et dans le code si nécessaire."
         },
         {
-          "question": "Comment se déroule la collaboration",
+          "question": "Comment se déroule la collaboration ?",
           "answer": "Analyse du site et du business, définition de la stratégie, optimisations SEO et CRO, création de contenu et suivi des performances."
         },
         {
-          "question": "Qu’est-ce que l’AI search et le GEO",
-          "answer": "L’AI search regroupe les moteurs et assistants basés sur l’IA. Le GEO vise à optimiser le site et le contenu pour apparaître dans leurs réponses."
+          "question": "Qu'est-ce que l'AI search et le GEO ?",
+          "answer": "L'AI search regroupe les moteurs et assistants basés sur l'IA. Le GEO vise à optimiser le site et le contenu pour apparaître dans leurs réponses."
         },
         {
-          "question": "Pourquoi l’AI search devient stratégique",
+          "question": "Pourquoi l'AI search devient stratégique ?",
           "answer": "Les moteurs IA privilégient des sites structurés, clairs et crédibles. Sans optimisation, la visibilité recule."
         },
         {
-          "question": "Comment renforcer sa présence en AI search",
+          "question": "Comment renforcer sa présence en AI search ?",
           "answer": "Cela passe par un SEO solide et un site cohérent, avec une structure lisible, des réponses précises et des parcours logiques."
         },
         {
-          "question": "Comment les résultats sont-ils mesurés",
-          "answer": "Le suivi s’appuie sur le trafic, les leads, les conversions et le comportement réel des utilisateurs."
+          "question": "Comment les résultats sont-ils mesurés ?",
+          "answer": "Le suivi s'appuie sur le trafic, les leads, les conversions et le comportement réel des utilisateurs."
         }
       ]
     },

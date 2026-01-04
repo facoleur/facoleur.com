@@ -30,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="mt-auto w-full bg-[url('/homepage/bg_footer.png')] bg-[length:100%_auto] px-4 pt-20 text-sm text-slate-600 md:pt-96 dark:bg-slate-900/40 dark:text-slate-400">
+    <footer className="mt-auto w-full bg-[url('/homepage/bg_footer.png')] bg-[length:100%_auto] px-4 pt-36 text-sm text-slate-600 dark:bg-slate-900/40 dark:text-slate-400">
       <div className="mx-auto flex max-w-5xl flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <div className="grid w-full grid-cols-1 gap-6 md:w-2/3 md:grid-cols-2">
           <div className="space-y-2">
