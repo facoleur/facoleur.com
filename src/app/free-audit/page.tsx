@@ -487,9 +487,9 @@ export default function ToolsPage() {
           </div>
 
           <CallBanner
-            title={t("homepage.cta.title")}
-            subtitle={t("homepage.cta.subtitle")}
-            buttonLabel={t("homepage.cta.button")}
+            title={t("homepage.cta1.title")}
+            subtitle={t("homepage.cta1.subtitle")}
+            buttonLabel={t("homepage.cta1.button")}
           />
         </section>
       ) : null}
