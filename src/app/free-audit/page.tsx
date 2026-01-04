@@ -198,7 +198,7 @@ export default function ToolsPage() {
   };
 
   return (
-    <div className="mx-auto mb-16 w-3/4 space-y-6 text-center">
+    <div className="mx-auto mb-16 space-y-6 text-center">
       <h1 className="font-medium">
         Correctifs SEO que vous pouvez appliquer aujourd&apos;hui
       </h1>
@@ -207,10 +207,10 @@ export default function ToolsPage() {
         des problèmes SEO ayant un impact important.
       </p>
 
-      <section className="mx-auto flex gap-1">
+      <section className="mx-auto flex flex-col gap-1">
         <form
           onSubmit={handleSubmit}
-          className="mt-4 flex w-full flex-row justify-between rounded-xl border border-slate-300 bg-white p-2 pl-4 text-base text-slate-900 ring-2 ring-transparent transition outline-none focus:border-slate-400 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-slate-800"
+          className="mt-4 flex w-full flex-row justify-between rounded-xl border border-slate-300 bg-white p-2 pl-4 text-base text-slate-900 ring-2 ring-transparent transition-none outline-none hover:border-slate-400 focus:border-slate-400 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-slate-800"
         >
           <input
             required
@@ -499,8 +499,8 @@ export default function ToolsPage() {
 
 const Stat = ({ label, value }: { label: string; value: string }) => (
   <div className="bg-slate-100 px-3 py-2 text-slate-800 dark:bg-slate-800 dark:text-slate-100">
-    <p className="text-xs tracking-[0.1em] text-slate-500 uppercase">{label}</p>
-    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+    <p className="!text-left text-xs font-medium text-slate-500">{label}</p>
+    <p className="!text-left !text-md font-semibold text-slate-900 dark:text-slate-100">
       {value}
     </p>
   </div>

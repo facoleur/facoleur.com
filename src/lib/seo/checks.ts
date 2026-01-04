@@ -41,23 +41,6 @@ const statusFromThresholds = (
   return "critical";
 };
 
-const compareUrls = (a?: string | null, b?: string | null) => {
-  if (!a || !b) return false;
-  try {
-    const clean = (url: string) => {
-      const parsed = new URL(url);
-      parsed.hash = "";
-      ["utm_source", "utm_medium", "utm_campaign", "gclid"].forEach((param) =>
-        parsed.searchParams.delete(param),
-      );
-      return parsed.toString().replace(/\/$/, "");
-    };
-    return clean(a) === clean(b);
-  } catch {
-    return false;
-  }
-};
-
 function getHeadingLevels($: CheerioAPI): number[] {
   return $("h1, h2, h3, h4, h5, h6")
     .toArray()

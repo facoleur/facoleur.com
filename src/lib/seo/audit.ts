@@ -8,15 +8,15 @@ const USER_AGENT =
   "Mozilla/5.0 (compatible; LucaFerroSEOAudit/1.0; +https://lucaferro.ch)";
 
 function computeGlobalScore(checks: AuditCheck[]): number {
-  const totalWeight = Object.values(CHECK_WEIGHTS).reduce(
-    (sum, weight) => sum + weight,
-    0,
+  const { totalWeight, weightedScore } = checks.reduce(
+    (acc, check) => {
+      const weight = CHECK_WEIGHTS[check.id] ?? 1;
+      acc.totalWeight += weight;
+      acc.weightedScore += check.score * weight;
+      return acc;
+    },
+    { totalWeight: 0, weightedScore: 0 },
   );
-
-  const weightedScore = checks.reduce((sum, check) => {
-    const weight = CHECK_WEIGHTS[check.id] ?? 1;
-    return sum + check.score * weight;
-  }, 0);
 
   if (!totalWeight) return 0;
 
