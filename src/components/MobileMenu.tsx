@@ -42,10 +42,6 @@ export const MobileMenu = ({ links }: MobileMenuProps) => {
               {label}
             </Link>
           ))}
-          {/* <div className="mt-4 flex items-center space-x-2">
-            <ThemeToggle />
-            <LocaleToggle />
-          </div> */}
         </div>
       )}
     </>

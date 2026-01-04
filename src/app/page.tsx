@@ -1,12 +1,13 @@
+import { CallBanner } from "@/components/CallBanner";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { Features, Problems, Projects } from "@/components/Homepage";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
-  const t = useTranslations();
+export default async function Home() {
+  const t = await getTranslations();
   const essentialsRaw = t.raw("homepage.essentials.items");
   const essentials = Array.isArray(essentialsRaw)
     ? (essentialsRaw as { src: string; title: string; desc: string }[])
@@ -14,6 +15,19 @@ export default function Home() {
   const faqItemsRaw = t.raw("homepage.faq.items");
   const faqItems = Array.isArray(faqItemsRaw)
     ? (faqItemsRaw as { question: string; answer: string }[])
+    : [];
+  const problemsRaw = t.raw("homepage.problems.items");
+  const problems = Array.isArray(problemsRaw)
+    ? (problemsRaw as {
+        pain: string;
+        solution: string;
+        image?: string;
+        img?: string;
+      }[])
+    : [];
+  const featuresRaw = t.raw("homepage.features.items");
+  const features = Array.isArray(featuresRaw)
+    ? (featuresRaw as { pain: string; solution: string }[])
     : [];
 
   return (
@@ -57,7 +71,7 @@ export default function Home() {
 
         <section>
           <h2 className="!mb-12 !text-4xl">{t("homepage.problems.title")}</h2>
-          <Problems />
+          <Problems items={problems} />
         </section>
 
         <section>
@@ -85,7 +99,7 @@ export default function Home() {
 
         <section id="solutions">
           <h2 className="!mb-12 !text-4xl">{t("homepage.features.title")}</h2>
-          <Features />
+          <Features items={features} />
         </section>
 
         <section>
@@ -115,9 +129,9 @@ export default function Home() {
         </section>
 
         <section className="text-center">
-          <h2 className="!text-4xl">{t("homepage.cta.title")}</h2>
-          <p>{t("homepage.cta.subtitle")}</p>
-          <Button>{t("homepage.cta.button")}</Button>
+          <h2 className="!text-4xl">{t("homepage.cta1.title")}</h2>
+          <p>{t("homepage.cta1.subtitle")}</p>
+          <Button>{t("homepage.cta1.button")}</Button>
         </section>
 
         <section>
@@ -167,31 +181,24 @@ export default function Home() {
           </div>
         </section>
 
-        <Projects />
+        <Projects
+          title={t("homepage.completed.title")}
+          subtitle={t("homepage.completed.subtitle")}
+        />
 
         <section className="flex flex-col gap-2 md:flex-row md:items-start">
-          <h2 className="md:sticky  top-24 !mb-12 w-full !text-4xl md:w-1/3 md:self-start">
+          <h2 className="top-24 !mb-12 w-full !text-4xl md:sticky md:w-1/3 md:self-start">
             {t("homepage.faq.title")}
           </h2>
           <FaqAccordion items={faqItems} />
         </section>
 
-        <CallBanner />
+        <CallBanner
+          title={t("homepage.cta2.title")}
+          subtitle={t("homepage.cta2.subtitle")}
+          buttonLabel={t("homepage.cta2.button")}
+        />
       </div>
     </div>
   );
 }
-
-export const CallBanner = () => {
-  const t = useTranslations();
-
-  return (
-    <section className="bg-slate-200/60 bg-[url('/homepage/bg.png')] bg-[length:150%_auto] px-4 py-12 text-center">
-      <h2 className="!text-4xl">{t("homepage.cta.title")}</h2>
-      <p className="!text-lg">{t("homepage.cta.subtitle")}</p>
-      <a href="https://app.cal.eu/facoleur/strategie30">
-        <Button>{t("homepage.cta.button")}</Button>
-      </a>
-    </section>
-  );
-};

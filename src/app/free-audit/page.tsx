@@ -1,10 +1,11 @@
 "use client";
 
-import { CallBanner } from "@/app/page";
+import { CallBanner } from "@/components/CallBanner";
 import { AuditUnlockForm } from "@/components/free-audit/AuditUnlockForm";
 import { Button } from "@/components/ui/button";
 import { CATEGORY_ORDER } from "@/lib/seo/constants";
 import type { AuditCheck, AuditResult, CheckCategory } from "@/lib/seo/types";
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 type StatusColor = "good" | "warning" | "critical";
@@ -44,6 +45,7 @@ const groupByCategory = (checks: AuditCheck[]) => {
 };
 
 export default function ToolsPage() {
+  const t = useTranslations();
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -484,7 +486,11 @@ export default function ToolsPage() {
             ) : null}
           </div>
 
-          <CallBanner />
+          <CallBanner
+            title={t("homepage.cta.title")}
+            subtitle={t("homepage.cta.subtitle")}
+            buttonLabel={t("homepage.cta.button")}
+          />
         </section>
       ) : null}
     </div>

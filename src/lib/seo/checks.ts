@@ -202,6 +202,56 @@ async function estimateImageWeight($: CheerioAPI, baseUrl: string) {
   return { bytes, sampled };
 }
 
+async function estimateScriptWeight($: CheerioAPI, baseUrl: string) {
+  const scripts = $("script:not([type='application/ld+json'])").toArray();
+  let bytes = 0;
+  let sampled = 0;
+
+  // inline scripts weight
+  scripts
+    .filter((node) => !$(node).attr("src"))
+    .forEach((node) => {
+      const content = $(node).html() || "";
+      bytes += Buffer.byteLength(content, "utf8");
+    });
+
+  const externalScripts = scripts
+    .map((node) => $(node).attr("src"))
+    .filter(Boolean)
+    .map((src) => toAbsoluteUrl(src!, baseUrl))
+    .filter(Boolean) as string[];
+
+  const unique = Array.from(new Set(externalScripts)).slice(0, 5);
+
+  await Promise.all(
+    unique.map(async (url) => {
+      if (url.startsWith("data:")) {
+        const base64 = url.split(",")[1] || "";
+        bytes += Math.round((base64.length * 3) / 4);
+        sampled += 1;
+        return;
+      }
+
+      const res = await fetchWithTimeout(url, {
+        method: "HEAD",
+        timeoutMs: 7000,
+      });
+      sampled += 1;
+      if (res.ok) {
+        const length = res.headers?.["content-length"];
+        if (length) {
+          bytes += Number(length);
+        } else {
+          // fallback estimation when header missing
+          bytes += 80_000;
+        }
+      }
+    }),
+  );
+
+  return { bytes, sampled, total: scripts.length };
+}
+
 async function checkExternalLinksHealth(urls: string[]) {
   const sample = urls.slice(0, 5);
   let broken = 0;
@@ -291,8 +341,9 @@ export async function runChecks(
 
   const robotsResult = analyzeRobotsBlocking(robotsTxt);
   const imageWeight = await estimateImageWeight($, normalizedUrl);
+  const scriptWeight = await estimateScriptWeight($, normalizedUrl);
   const externalHealth = await checkExternalLinksHealth(linkSets.external);
-  sampledRequests += imageWeight.sampled + externalHealth.sampled;
+  sampledRequests += imageWeight.sampled + scriptWeight.sampled + externalHealth.sampled;
 
   // HTML & BALISES
   checks.push(
@@ -804,21 +855,26 @@ export async function runChecks(
     }),
   );
 
-  const scriptStatus =
-    scriptCount <= 10 ? "good" : scriptCount <= 20 ? "warning" : "critical";
+  const scriptWeightStatus = statusFromThresholds(
+    scriptWeight.bytes,
+    300_000,
+    600_000,
+  );
   checks.push(
     makeCheck({
       id: "performance_script_count",
       category: "Performance",
-      label: "Nombre de scripts",
-      status: scriptStatus,
+      label: "Poids des scripts",
+      status: scriptWeightStatus,
       score:
-        scriptStatus === "good"
+        scriptWeightStatus === "good"
           ? 95
-          : scriptStatus === "warning"
+          : scriptWeightStatus === "warning"
             ? 60
             : 25,
-      explanation: `${scriptCount} scripts hors JSON-LD.`,
+      explanation: scriptCount
+        ? `Estimé: ${(scriptWeight.bytes / 1024).toFixed(0)} Ko pour ${scriptCount} script(s) hors JSON-LD (échantillon ${scriptWeight.sampled}).`
+        : "Aucun script détecté hors JSON-LD.",
       howToFix:
         "Supprimer les scripts inutiles, mutualiser les bundles et charger en defer/async.",
     }),

@@ -171,10 +171,15 @@
         }
       ]
     },
-    "cta": {
+    "cta1": {
       "title": "Discutons de votre croissance organique",
       "subtitle": "Analyse ciblée de votre potentiel SEO et de votre visibilité locale",
       "button": "Réserver un appel"
+    },
+    "cta2": {
+      "title": "Accélérez votre visibilité naturelle",
+      "subtitle": "Évaluation stratégique de votre présence sur Google et en recherche locale",
+      "button": "Planifier un échange"
     },
     "packages": {
       "title": "Offres et tarifs SEO et CRO",
@@ -197,16 +202,15 @@
           "name": "Développement SEO",
           "description": "Trafic qualifié et visibilité organique sur le long terme",
           "features": [
-            "- Analyse SEO existante",
-            "- Analyse concurrentielle sur les requêtes stratégiques",
-            "- Recherche et sélection de mots-clés",
-            "- Analyse des données Search Console si disponibles",
-            "- Mise en place du suivi Search Console si absent",
-            "- Construction de la stratégie de contenu",
-            "- Optimisations techniques et on-page",
-            "- Rédaction de 4 contenus ou plus par mois",
-            "- SEO local ciblé Suisse romande",
-            "- Suivi et reporting du trafic, des positions et des conversions"
+            "- Diagnostic SEO global",
+            "- Étude concurrentielle sur les requêtes clés",
+            "- Sélection et priorisation des mots-clés",
+            "- Exploitation ou configuration de Google Search Console",
+            "- Définition de la stratégie éditoriale",
+            "- Optimisations techniques et sémantiques",
+            "- Production de 4 contenus ou plus par mois",
+            "- SEO local orienté Suisse romande",
+            "- Suivi des performances trafic, positions et conversions"
           ],
           "price": "800 CHF",
           "par": "par mois"

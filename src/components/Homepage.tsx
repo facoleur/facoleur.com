@@ -1,14 +1,23 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-export const Problems = () => {
-  const t = useTranslations();
-  const items = t.raw("homepage.problems.items") || [];
+type ProblemItem = {
+  pain: string;
+  solution: string;
+  image?: string;
+  img?: string;
+};
+
+type FeatureItem = {
+  pain: string;
+  solution: string;
+};
+
+export const Problems = ({ items }: { items: ProblemItem[] }) => {
+  const safeItems = items || [];
 
   return (
     <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
-      {/* @ts-expect-error suppress any warning */}
-      {items.map((item, idx: number) => (
+      {safeItems.map((item, idx: number) => (
         <div key={idx} className="flex flex-col">
           <Image
             width={400}
@@ -29,17 +38,16 @@ export const Problems = () => {
   );
 };
 
-export const Features = () => {
-  const t = useTranslations();
-  const items = t.raw("homepage.features.items") || [];
+export const Features = ({ items }: { items: FeatureItem[] }) => {
+  const safeItems = items || [];
 
   return (
     <div className="space-y-1">
       <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
         <div className="flex flex-col gap-2 bg-slate-200/60">
           <div className="p-4 pb-0">
-            <h3 className="text-lg font-semibold">{items[0].pain}</h3>
-            <p className="text-sm">{items[0].solution}</p>
+            <h3 className="text-lg font-semibold">{safeItems[0]?.pain}</h3>
+            <p className="text-sm">{safeItems[0]?.solution}</p>
           </div>
           <Image
             width={700}
@@ -52,8 +60,8 @@ export const Features = () => {
 
         <div className="flex flex-col gap-2 bg-slate-200/60">
           <div className="p-4 pb-0">
-            <h3 className="text-lg font-semibold">{items[2].pain}</h3>
-            <p className="text-sm">{items[2].solution}</p>
+            <h3 className="text-lg font-semibold">{safeItems[2]?.pain}</h3>
+            <p className="text-sm">{safeItems[2]?.solution}</p>
           </div>
           <Image
             width={700}
@@ -68,15 +76,15 @@ export const Features = () => {
       <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
         <div className="p- flex flex-col justify-between bg-slate-200/60">
           <div className="p-4 pb-0">
-            <h3 className="text-lg font-semibold">{items[3].pain}</h3>
-            <p className="text-sm">{items[3].solution}</p>
+            <h3 className="text-lg font-semibold">{safeItems[3]?.pain}</h3>
+            <p className="text-sm">{safeItems[3]?.solution}</p>
           </div>
           <Image width={700} height={500} src="/homepage/chart.png" alt="" />
         </div>
 
         <div className="bg-slate-200/60 p-4">
-          <h3 className="text-lg font-semibold">{items[1].pain}</h3>
-          <p className="text-sm">{items[1].solution}</p>
+          <h3 className="text-lg font-semibold">{safeItems[1]?.pain}</h3>
+          <p className="text-sm">{safeItems[1]?.solution}</p>
           <Image
             width={700}
             height={300}
@@ -90,9 +98,13 @@ export const Features = () => {
   );
 };
 
-export const Projects = () => {
-  const t = useTranslations();
-
+export const Projects = ({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) => {
   return (
     <div className="flex flex-col gap-4 bg-slate-200/60 p-6 md:h-48 md:flex-row">
       <div className="group invisible relative overflow-visible md:visible md:top-[-70px]">
@@ -139,8 +151,8 @@ export const Projects = () => {
       </div>
 
       <div className="ml-0 flex h-full flex-col justify-end md:ml-4">
-        <h2 className="!mb-0">{t("homepage.completed.title")}</h2>
-        <p>{t("homepage.completed.subtitle")}</p>
+        <h2 className="!mb-0">{title}</h2>
+        <p>{subtitle}</p>
       </div>
     </div>
   );

@@ -11,11 +11,31 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title:
-    "Agence CRO & SEO | Optimisez le trafic et les conversions | facoleur.com",
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Facoleur",
+  url: "https://facoleur.com",
   description:
-    "Facoleur.com est une agence SEO et CRO en Suisse romande, spécialisée en création de contenu SEO et sites web performants orientés conversion.",
+    "Agence CRO & SEO en Suisse romande, spécialisée en création de contenu SEO et sites web performants orientés conversion.",
+  areaServed: [
+    {
+      "@type": "Country",
+      name: "Suisse",
+    },
+  ],
+  servesType: ["SEO", "CRO", "AI search", "Création de contenu"],
+  inLanguage: ["fr-CH"],
+  brand: {
+    "@type": "Brand",
+    name: "Facoleur",
+  },
+};
+
+export const metadata: Metadata = {
+  title: "Agence CRO & SEO | Optimisez le trafic et les conversions",
+  description:
+    "Facoleur.com est une agence web SEO et CRO en Suisse romande, spécialisée en création de contenu SEO et sites web performants orientés conversion.",
   icons: {
     icon: "/favicon.png",
   },
@@ -24,7 +44,7 @@ export const metadata: Metadata = {
     locale: "fr_CH",
     url: "https://example.ch",
     siteName: "Agence CRO & SEO Suisse",
-    title: "Agence CRO & SEO pour PME en Suisse",
+    title: "Agence CRO & SEO pour entreprises en Suisse",
     description:
       "Optimisation SEO, CRO et AI search. Plus de visibilité, plus de conversions, plus de clients.",
     images: [
@@ -38,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agence CRO & SEO pour PME en Suisse",
+    title: "Agence CRO & SEO pour entreprises en Suisse",
     description: "SEO, CRO et AI search pour générer des leads et des ventes.",
     images: ["https://example.ch/og/og-home.jpg"],
   },
@@ -62,6 +82,13 @@ export default async function RootLayout({
       suppressHydrationWarning
       className="bg-slate-100 bg-[url('/homepage/bg.png')] bg-[length:100%_auto] bg-no-repeat filter dark:bg-gray-950"
     >
+      <head>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <Providers locale={locale} messages={messages}>
           <div className="min-h-screen bg-[url('/homepage/bg.png')] bg-[length:100%_auto] bg-no-repeat">
