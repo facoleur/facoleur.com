@@ -16,7 +16,6 @@ import {
   isReadableUrl,
   normalizeWhitespace,
   toAbsoluteUrl,
-  uniqueWordRatio,
 } from "./utils";
 
 const clampScore = (value: number) => Math.max(0, Math.min(100, Math.round(value)));
@@ -333,7 +332,6 @@ export async function runChecks(
     (_, img) => ($(img).attr("loading") || "").toLowerCase() === "lazy",
   ).length;
   const { text: mainText, words: mainWords } = getMainText($);
-  const uniqueRatio = uniqueWordRatio(mainText);
   const avgSentence = averageSentenceLength(mainText);
   const linkSets = collectLinks($, normalizedUrl);
   const hreflangs = $("link[rel='alternate'][hreflang]").toArray();
@@ -588,30 +586,6 @@ export async function runChecks(
       explanation: `${mainWords} mots trouvés. Une page info devrait viser 500+ mots pertinents.`,
       howToFix:
         "Enrichir le contenu avec des sections supplémentaires (FAQ, preuves, données) sans bourrage de mots-clés.",
-    }),
-  );
-
-  const duplicationStatus =
-    uniqueRatio >= 0.45
-      ? "good"
-      : uniqueRatio >= 0.3
-        ? "warning"
-        : "critical";
-  checks.push(
-    makeCheck({
-      id: "content_duplication",
-      category: "Contenu",
-      label: "Duplication évidente",
-      status: duplicationStatus,
-      score:
-        duplicationStatus === "good"
-          ? 100
-          : duplicationStatus === "warning"
-            ? 55
-            : 20,
-      explanation: `Ratio de mots uniques: ${(uniqueRatio * 100).toFixed(0)}%.`,
-      howToFix:
-        "Réécrire les passages répétitifs, ajouter des exemples originaux et différencier titres/meta.",
     }),
   );
 
@@ -938,19 +912,19 @@ export async function runChecks(
     }),
   );
 
-  checks.push(
-    makeCheck({
-      id: "accessibility_contrast_notice",
-      category: "Accessibilité",
-      label: "Contrastes à vérifier",
-      status: "warning",
-      score: 50,
-      explanation:
-        "Contraste non mesuré automatiquement. Vérifier manuellement (WCAG AA).",
-      howToFix:
-        "Tester les contrastes avec un outil (axe DevTools, Lighthouse) et ajuster couleurs/tailles.",
-    }),
-  );
+  // checks.push(
+  //   makeCheck({
+  //     id: "accessibility_contrast_notice",
+  //     category: "Accessibilité",
+  //     label: "Contrastes à vérifier",
+  //     status: "warning",
+  //     score: 50,
+  //     explanation:
+  //       "Contraste non mesuré automatiquement. Vérifier manuellement (WCAG AA).",
+  //     howToFix:
+  //       "Tester les contrastes avec un outil (axe DevTools, Lighthouse) et ajuster couleurs/tailles.",
+  //   }),
+  // );
 
   const focusable = $(
     "a[href], button, input, select, textarea, [tabindex]:not([tabindex='-1'])",

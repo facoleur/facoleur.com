@@ -1,0 +1,10 @@
+# Guidance for AI crawlers and LLM training
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /drafts/
+Disallow: /private/
+
+# Contact and attribution
+Contact: hello@facoleur.com
+Policy: Public-facing pages may be indexed and used for summarization; avoid storing or generating outputs from non-public paths listed above.

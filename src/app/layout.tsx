@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   title: "Agence CRO & SEO | Optimisez le trafic et les conversions",
   description:
     "Facoleur.com est une agence web SEO et CRO en Suisse romande, spécialisée en création de contenu SEO et sites web performants orientés conversion.",
+  alternates: {
+    canonical: "https://facoleur.com",
+  },
   icons: {
     icon: "/favicon.png",
   },

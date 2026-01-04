@@ -53,7 +53,7 @@ export const Features = ({ items }: { items: FeatureItem[] }) => {
             width={700}
             height={500}
             src="/homepage/offer.png"
-            alt=""
+            alt="Offer"
             className="px-10 pb-8 md:px-32"
           />
         </div>
@@ -67,7 +67,7 @@ export const Features = ({ items }: { items: FeatureItem[] }) => {
             width={700}
             height={500}
             src="/homepage/stripe.png"
-            alt=""
+            alt="Stripe"
             className="px-10 py-8 md:px-16 md:py-12"
           />
         </div>
@@ -79,7 +79,12 @@ export const Features = ({ items }: { items: FeatureItem[] }) => {
             <h3 className="text-lg font-semibold">{safeItems[3]?.pain}</h3>
             <p className="text-sm">{safeItems[3]?.solution}</p>
           </div>
-          <Image width={700} height={500} src="/homepage/chart.png" alt="" />
+          <Image
+            width={700}
+            height={500}
+            src="/homepage/chart.png"
+            alt="Chart"
+          />
         </div>
 
         <div className="bg-slate-200/60 p-4">
@@ -89,7 +94,7 @@ export const Features = ({ items }: { items: FeatureItem[] }) => {
             width={700}
             height={300}
             src="/homepage/avis.png"
-            alt=""
+            alt="Avis"
             className="px-10 py-8 md:px-32"
           />
         </div>
