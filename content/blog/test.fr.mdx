@@ -1,0 +1,111 @@
+---
+title: "FAQ SEO : pourquoi utiliser details/summary plutôt que JavaScript"
+metaTitle: "FAQ SEO : details/summary ou JavaScript, le bon choix"
+metaDescription: "Pourquoi une FAQ en HTML natif avec details/summary est meilleure pour le SEO qu'un accordéon JavaScript côté client."
+publishedAt: 2026-01-03
+type: Blog
+---
+
+## L'essentiel
+
+Pour le SEO, une FAQ doit être lisible immédiatement dans le HTML.
+Une implémentation basée sur `details` et `summary` garantit un contenu indexable, sans JavaScript, sans hydratation et sans dépendance au rendu client.
+C'est l'approche utilisée sur facoleur.com.
+
+## Le snippet utilisé sur facoleur.com
+
+HTML natif, rendu serveur, aucun script requis.
+
+```tsx
+export function FaqAccordion({ items }) {
+  return (
+    <div>
+      {items.map((item, index) => (
+        <details key={index} open={index === 0}>
+          <summary>
+            <h3>{item.question}</h3>
+          </summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  );
+}
+```
+
+Résultat SEO :
+
+- contenu présent dans le HTML initial
+- indexation immédiate
+- compatible moteurs de recherche et moteurs d'IA
+- aucun coût JavaScript
+
+## L'alternative JavaScript côté client
+
+Version dépendante de React, de l'état et de l'hydratation.
+
+```tsx
+"use client";
+import { useState } from "react";
+
+export function FaqAccordion({ items }) {
+  const [open, setOpen] = useState(0);
+
+  return items.map((item, i) => (
+    <button key={i} onClick={() => setOpen(i)}>
+      {item.question}
+      {open === i && <p>{item.answer}</p>}
+    </button>
+  ));
+}
+```
+
+Impact SEO :
+
+- contenu dépendant du JavaScript
+- rendu différé pour les crawlers
+- poids JS inutile
+- complexité sans bénéfice SEO
+
+## Pourquoi le HTML natif gagne en SEO
+
+`details/summary` apporte :
+
+- contenu visible sans exécution JS
+- structure sémantique claire
+- meilleure compatibilité crawl
+- meilleure extraction par l'AI Search
+- accessibilité native
+
+Google et les moteurs d'IA lisent le contenu tel quel, sans attendre l'hydratation.
+
+## Autre exemple SEO-friendly sans accordéon
+
+Quand l'interaction n'est pas nécessaire, une FAQ statique est encore plus efficace.
+
+```html
+<section>
+  <h3>Combien de temps pour voir des résultats SEO</h3>
+  <p>Les premiers signaux apparaissent généralement entre 4 et 8 semaines.</p>
+</section>
+```
+
+Zéro script. Zéro friction. Lisibilité maximale.
+
+## Quand éviter JavaScript
+
+Pour une FAQ SEO :
+
+- pas de logique complexe
+- pas d'état global
+- pas de dépendance client
+
+Le JavaScript est utile pour l'interaction avancée, pas pour afficher du contenu indexable.
+
+## Conclusion
+
+Une FAQ est un contenu, pas une interaction.
+Pour le SEO, le contenu doit être présent, lisible et stable dès le chargement.
+
+HTML natif, rendu serveur, structure simple.
+C'est pour cette raison que facoleur.com utilise `details/summary`.

@@ -1,5 +1,6 @@
 import remarkCaption from "@/lib/remark";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
@@ -9,6 +10,11 @@ Bare-minimum SEO schema.
 Only fields that actually control routing and SERP.
 Everything else lives in MDX.
 */
+
+const prettyCodeOptions = {
+  theme: "dark-plus", // or any Shiki theme
+  keepBackground: false,
+};
 
 export const Page = defineDocumentType(() => ({
   name: "Blog",
@@ -51,6 +57,6 @@ export default makeSource({
   documentTypes: [Page],
   mdx: {
     remarkPlugins: [remarkDirective, remarkGfm, remarkCaption],
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]],
   },
 });

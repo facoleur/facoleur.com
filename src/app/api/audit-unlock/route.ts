@@ -1,5 +1,4 @@
 import { neon } from "@neondatabase/serverless";
-import crypto from "crypto";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
@@ -57,16 +56,16 @@ export async function POST(request: Request) {
     }
 
     const sql = neon(connectionString);
-    const emailHash = crypto
-      .createHash("sha256")
-      .update(normalizedEmail)
-      .digest("hex");
+    // const emailHash = crypto
+    //   .createHash("sha256")
+    //   .update(normalizedEmail)
+    //   .digest("hex");
 
     const insertQuery = `INSERT INTO ${AUDIT_TABLE} (email_hash, audited_site, audit_score)
       VALUES ($1, $2, $3)
       ON CONFLICT DO NOTHING;`;
 
-    await sql.query(insertQuery, [emailHash, auditedSite, numericScore]);
+    await sql.query(insertQuery, [normalizedEmail, auditedSite, numericScore]);
 
     return NextResponse.json({ success: true });
   } catch (error) {
