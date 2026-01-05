@@ -9,19 +9,19 @@ const Footer = () => {
   const resources = [
     {
       label: "AI Search et GEO : Guide complet pour optimiser votre contenu",
-      href: "/aisearch",
+      href: "blog/aisearch",
     },
     {
       label: "Guide de création de contenu pour PME en Suisse",
-      href: "/creationcontenu",
+      href: "blog/creationcontenu",
     },
     {
       label: "Attirer des clients sans publicité payante avec le SEO local",
-      href: "/seolocal",
+      href: "blog/seolocal",
     },
     {
       label: "Structure d’une landing page qui convertit",
-      href: "/structurelanding",
+      href: "blog/structurelanding",
     },
   ];
 
