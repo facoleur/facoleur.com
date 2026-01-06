@@ -11,9 +11,15 @@ import { useMemo, useState } from "react";
 type StatusColor = "good" | "warning" | "critical";
 
 const STATUS_STYLES: Record<StatusColor, string> = {
-  good: "bg-emerald-100 text-emerald-800",
+  good: "bg-green-100 text-green-800",
   warning: "bg-amber-100 text-amber-800",
   critical: "bg-red-100 text-red-700",
+};
+
+const STATUS_BAR_STYLES: Record<StatusColor, string> = {
+  good: "bg-green-500",
+  warning: "bg-amber-500",
+  critical: "bg-red-500",
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,13 +50,15 @@ const groupByCategory = (checks: AuditCheck[]) => {
   );
 };
 
-export default function ToolsPage() {
+export default function Page() {
   const t = useTranslations();
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [unlocked, setUnlocked] = useState(false);
+
+  console.log(process.env.NEXT_PUBLIC_DEV);
   const [email, setEmail] = useState("");
   const [unlockError, setUnlockError] = useState<string | null>(null);
   const [unlockSubmitting, setUnlockSubmitting] = useState(false);
@@ -107,7 +115,7 @@ export default function ToolsPage() {
   const runAudit = async (targetUrl: string) => {
     setLoading(true);
     setError(null);
-    setUnlocked(false);
+    setUnlocked(process.env.NEXT_PUBLIC_DEV === "true" ? true : false);
     setUnlockError(null);
     try {
       const response = await fetch("/api/seo-audit", {
@@ -255,20 +263,20 @@ export default function ToolsPage() {
                       : "Critique"}
                 </div>
               </div>
-              <div className="h-3 w-full rounded-full bg-slate-200 dark:bg-slate-800">
+              <div className="h-3 w-full bg-slate-100 dark:bg-slate-800">
                 <div
-                  className={`h-3 rounded-full transition-all ${STATUS_STYLES[overallStatus]}`}
+                  className={`h-3 transition-all ${STATUS_BAR_STYLES[overallStatus]}`}
                   style={{ width: `${result.score}%` }}
                 />
               </div>
               <div className="grid grid-cols-3 gap-2 text-xs font-semibold">
-                <div className="rounded-sm bg-emerald-50 px-2 py-1 text-emerald-800 dark:bg-emerald-900/30">
+                <div className="rounded-sm bg-green-50 px-2 py-1 text-green-800">
                   OK: {statusCounts.good}
                 </div>
-                <div className="rounded-sm bg-amber-50 px-2 py-1 text-amber-800 dark:bg-amber-900/30">
+                <div className="rounded-sm bg-amber-50 px-2 py-1 text-amber-800">
                   Alertes: {statusCounts.warning}
                 </div>
-                <div className="rounded-sm bg-red-50 px-2 py-1 text-red-800 dark:bg-red-900/30">
+                <div className="rounded-sm bg-red-50 px-2 py-1 text-red-800">
                   Critiques: {statusCounts.critical}
                 </div>
               </div>
@@ -500,7 +508,7 @@ export default function ToolsPage() {
 const Stat = ({ label, value }: { label: string; value: string }) => (
   <div className="bg-slate-100 px-3 py-2 text-slate-800 dark:bg-slate-800 dark:text-slate-100">
     <p className="!text-left text-xs font-medium text-slate-500">{label}</p>
-    <p className="!text-left !text-md font-semibold text-slate-900 dark:text-slate-100">
+    <p className="!text-md !text-left font-semibold text-slate-900 dark:text-slate-100">
       {value}
     </p>
   </div>
