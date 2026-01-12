@@ -4,6 +4,8 @@
   },
 
   "footer": {
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
     "titles": {
       "resources": "Ressources",
       "tools": "Outils"
@@ -78,7 +80,7 @@
       "title": "Gagnez des positions sur Google, soyez référencé par ChatGPT et augmentez vos revenus.",
       "subtitle": "Nos clients occupent les premières places sur Google et sont repris dans les réponses de ChatGPT, Gemini, Claude et Perplexity. Votre site inspire confiance et génère des clients de manière durable.",
       "cta": {
-        "audit": "Demander un audit SEO",
+        "audit": "Audit SEO en 1 clic",
         "call": "Planifier un appel"
       }
     },

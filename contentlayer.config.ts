@@ -52,9 +52,45 @@ export const Page = defineDocumentType(() => ({
   },
 }));
 
+export const Legal = defineDocumentType(() => ({
+  name: "Legal",
+  filePathPattern: `content/legal/*.mdx`,
+  contentType: "mdx",
+
+  fields: {
+    // Page classification
+    type: {
+      type: "enum",
+      options: ["Legal"],
+      required: true,
+    },
+
+    // Publishing
+    publishedAt: { type: "date", required: true },
+
+    // SEO
+    title: { type: "string", required: true }, // H1
+    metaTitle: { type: "string", required: true }, // <title>
+    metaDescription: { type: "string", required: true }, // SERP
+    tags: { type: "list", of: { type: "string" }, required: false },
+    featuredImage: { type: "string", required: false },
+
+    // Indexing control
+    canonical: { type: "string", required: false },
+    noindex: { type: "boolean", required: false },
+  },
+
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Page],
+  documentTypes: [Page, Legal],
   mdx: {
     remarkPlugins: [remarkDirective, remarkGfm, remarkCaption],
     rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]],
