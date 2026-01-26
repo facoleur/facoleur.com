@@ -160,20 +160,23 @@ export default async function Home() {
                       </p>
                     </div>
 
-                    <div className="mt-4 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                    <div className="my-4 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-200">
                       {pkg.features.map((feature, i) => (
                         <div key={i} className="dark:bg-slate-800/80">
                           {feature}
                         </div>
                       ))}
 
-                      <div className="mt-auto">
+                      <a className="!pt-4" href="https://app.cal.eu/facoleur/strategie30">
+                        <Button>Réserver un appel</Button>
+                      </a>
+                      {/* <div className="mt-auto">
                         <p className="mt-8 !mb-0">A partir de</p>
                         <span className="text-2xl font-semibold">
                           {pkg.price}
                         </span>{" "}
                         <span>{pkg.par}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ),

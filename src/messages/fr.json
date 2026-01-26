@@ -65,7 +65,7 @@
   },
 
   "nav": {
-    "pricing": "Tarifs",
+    "pricing": "Offre",
     "blog": "Blog SEO",
     "about": "À propos",
     "contact": "Contact",
@@ -184,7 +184,7 @@
       "button": "Planifier un échange"
     },
     "packages": {
-      "title": "Offres et tarifs SEO et CRO",
+      "title": "Offres SEO et CRO",
       "items": [
         {
           "name": "Optimisation du taux de conversion (CRO)",
