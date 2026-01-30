@@ -94,8 +94,9 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+
       <body className={`${inter.className} antialiased`}>
+        <GoogleTagManager gtmId={"GTM-NSQ4G3MN"} />
         <Providers locale={locale} messages={messages}>
           <div className="min-h-screen bg-[url('/homepage/bg.png')] bg-[length:100%_auto] bg-no-repeat">
             <div className="mx-auto flex max-w-5xl flex-1 flex-col gap-12 px-4 md:px-0">
