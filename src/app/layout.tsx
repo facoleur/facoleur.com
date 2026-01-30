@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/QueryLayout";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { getLocale, getMessages } from "next-intl/server";
 import { Inter } from "next/font/google";
@@ -93,6 +94,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
       <body className={`${inter.className} antialiased`}>
         <Providers locale={locale} messages={messages}>
           <div className="min-h-screen bg-[url('/homepage/bg.png')] bg-[length:100%_auto] bg-no-repeat">
